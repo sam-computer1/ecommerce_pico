@@ -136,7 +136,7 @@ export default function Header() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="hidden md:flex space-x-10"
+            className="hidden md:flex items-center space-x-10"
           >
             <motion.div whileHover={{ y: -2 }}>
               <Link
@@ -327,20 +327,20 @@ export default function Header() {
             </motion.div>
 
             {/* Account Dropdown - Hover */}
-            <div
+            <motion.div 
               ref={accountDropdownRef}
-              className="relative hidden md:block"
+              className="relative"
               onMouseEnter={() => setIsAccountDropdownOpen(true)}
               onMouseLeave={() => setIsAccountDropdownOpen(false)}
             >
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                className="flex items-center gap-1 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                onClick={() => setIsAccountDropdownOpen(!isAccountDropdownOpen)}
               >
                 <User className="h-5 w-5 dark:text-gray-200" />
-                <ChevronDown className="h-4 w-4 dark:text-gray-200" />
-              </motion.button>
+              </Button>
 
               <AnimatePresence>
                 {isAccountDropdownOpen && (
@@ -387,7 +387,7 @@ export default function Header() {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </div>
+            </motion.div>
 
             {/* Wishlist button - visible on desktop */}
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="hidden md:block">
