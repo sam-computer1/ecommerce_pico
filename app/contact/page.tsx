@@ -1,72 +1,75 @@
-import type { Metadata } from "next"
+"use client"
+
 import ContactForm from "@/components/contact-form"
 import { MapPin, Phone, Mail, Clock } from "lucide-react"
+import Map from "@/components/map"
 
-export const metadata: Metadata = {
-  title: "Contact Us - Modern Footwear",
-  description: "Get in touch with our customer service team for any inquiries or assistance.",
+// Store coordinates - easy to change later
+const STORE_LOCATION = {
+  lat: 40.7128,  // New York coordinates
+  lng: -74.0060
 }
 
 export default function ContactPage() {
   return (
-    <main className="flex-1 bg-[#F8F8F8] dark:bg-gray-900 text-[#333333] dark:text-gray-100 transition-colors duration-300">
+    <main className="flex-1 bg-[#FBFBFB] transition-colors duration-300 dark:bg-[#171717] dark:text-[#C0C0C0]">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl font-bold mb-2">Contact Us</h1>
-          <p className="text-lg mb-8 dark:text-gray-300">
+          <h1 className="text-4xl font-bold mb-2 text-[#1A1A1A] dark:text-[#EAEAEA]">Contact Us</h1>
+          <p className="text-lg mb-8 text-[#5E5E5E] dark:text-[#C0C0C0]">
             We'd love to hear from you. Please fill out the form below or reach out directly.
           </p>
 
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h2 className="text-2xl font-semibold mb-4">Send Us a Message</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-[#1A1A1A] dark:text-[#EAEAEA]">Send Us a Message</h2>
               <ContactForm />
             </div>
 
             <div>
-              <h2 className="text-2xl font-semibold mb-4">Contact Information</h2>
+              <h2 className="text-2xl font-semibold mb-4 text-[#1A1A1A] dark:text-[#EAEAEA]">Contact Information</h2>
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md dark:shadow-gray-900/30">
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <MapPin className="h-5 w-5 text-[#2C2C2C] dark:text-gray-300 mt-1" />
+                    <MapPin className="h-5 w-5 text-[#1A1A1A] dark:text-[#EAEAEA] mt-1" />
                     <div>
-                      <p className="font-medium">Our Store</p>
-                      <p className="text-gray-600 dark:text-gray-400">123 Fashion Street, New York, NY 10001</p>
+                      <p className="font-medium text-[#1A1A1A] dark:text-[#EAEAEA]">Our Store</p>
+                      <p className="text-[#5E5E5E] dark:text-[#C0C0C0]">123 Fashion Street, New York, NY 10001</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <Phone className="h-5 w-5 text-[#2C2C2C] dark:text-gray-300 mt-1" />
+                    <Phone className="h-5 w-5 text-[#1A1A1A] dark:text-[#EAEAEA] mt-1" />
                     <div>
-                      <p className="font-medium">Phone</p>
-                      <p className="text-gray-600 dark:text-gray-400">+1 (555) 123-4567</p>
+                      <p className="font-medium text-[#1A1A1A] dark:text-[#EAEAEA]">Phone</p>
+                      <p className="text-[#5E5E5E] dark:text-[#C0C0C0]">+1 (555) 123-4567</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <Mail className="h-5 w-5 text-[#2C2C2C] dark:text-gray-300 mt-1" />
+                    <Mail className="h-5 w-5 text-[#1A1A1A] dark:text-[#EAEAEA] mt-1" />
                     <div>
-                      <p className="font-medium">Email</p>
-                      <p className="text-gray-600 dark:text-gray-400">support@modernkicks.com</p>
+                      <p className="font-medium text-[#1A1A1A] dark:text-[#EAEAEA]">Email</p>
+                      <p className="text-[#5E5E5E] dark:text-[#C0C0C0]">support@modernkicks.com</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
-                    <Clock className="h-5 w-5 text-[#2C2C2C] dark:text-gray-300 mt-1" />
+                    <Clock className="h-5 w-5 text-[#1A1A1A] dark:text-[#EAEAEA] mt-1" />
                     <div>
-                      <p className="font-medium">Hours</p>
-                      <p className="text-gray-600 dark:text-gray-400">Monday - Friday: 9am - 8pm</p>
-                      <p className="text-gray-600 dark:text-gray-400">Saturday: 10am - 6pm</p>
-                      <p className="text-gray-600 dark:text-gray-400">Sunday: 12pm - 5pm</p>
+                      <p className="font-medium text-[#1A1A1A] dark:text-[#EAEAEA]">Hours</p>
+                      <p className="text-[#5E5E5E] dark:text-[#C0C0C0]">Monday - Friday: 9am - 8pm</p>
+                      <p className="text-[#5E5E5E] dark:text-[#C0C0C0]">Saturday: 10am - 6pm</p>
+                      <p className="text-[#5E5E5E] dark:text-[#C0C0C0]">Sunday: 12pm - 5pm</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div className="mt-8">
-                <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
+                <h3 className="text-xl font-semibold mb-4 text-[#1A1A1A] dark:text-[#EAEAEA]">Follow Us</h3>
                 <div className="flex space-x-4">
-                  <a href="#" className="bg-[#2C2C2C] text-white p-2 rounded-full hover:opacity-90 transition-opacity">
+                  <a href="#" className="bg-[#000000] text-white p-2 rounded-full hover:bg-[#D4AF37] transition-colors">
                     <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path
                         fillRule="evenodd"
@@ -75,7 +78,7 @@ export default function ContactPage() {
                       />
                     </svg>
                   </a>
-                  <a href="#" className="bg-[#2C2C2C] text-white p-2 rounded-full hover:opacity-90 transition-opacity">
+                  <a href="#" className="bg-[#000000] text-white p-2 rounded-full hover:bg-[#D4AF37] transition-colors">
                     <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path
                         fillRule="evenodd"
@@ -84,7 +87,7 @@ export default function ContactPage() {
                       />
                     </svg>
                   </a>
-                  <a href="#" className="bg-[#2C2C2C] text-white p-2 rounded-full hover:opacity-90 transition-opacity">
+                  <a href="#" className="bg-[#000000] text-white p-2 rounded-full hover:bg-[#D4AF37] transition-colors">
                     <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                       <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
                     </svg>
@@ -95,12 +98,9 @@ export default function ContactPage() {
           </div>
 
           <div className="mt-16">
-            <h2 className="text-2xl font-semibold mb-6">Visit Our Store</h2>
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/30 overflow-hidden h-[400px] relative">
-              {/* This would be a real map in production */}
-              <div className="absolute inset-0 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-                <p className="text-gray-500 dark:text-gray-400 text-lg">Interactive Map Would Be Here</p>
-              </div>
+            <h2 className="text-2xl font-semibold mb-6 text-[#1A1A1A] dark:text-[#EAEAEA]">Visit Our Store</h2>
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/30 overflow-hidden h-[400px]">
+              <Map />
             </div>
           </div>
         </div>

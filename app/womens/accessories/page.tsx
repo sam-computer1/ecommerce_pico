@@ -5,18 +5,18 @@ import { products } from "@/lib/products"
 
 export const metadata: Metadata = {
   title: "Women's Accessories - Modern Footwear",
-  description: "Browse our collection of women's accessories and other items.",
+  description: "Browse our collection of women's accessories for every occasion.",
 }
 
-export default function WomensOthersPage() {
-  // Filter only women's other products
-  const womensOtherProducts = products
-    .filter((product) => product.category === "women")
-    .slice(0, 3) // For demo purposes, just show some products
+export default function WomensAccessoriesPage() {
+  // Filter only women's accessories products
+  const womensAccessoriesProducts = products
+    .filter((product) => product.category === "women" && product.type === "accessory")
+    .slice(0, 6) // For demo purposes, just show some products
     .map((product) => ({
       ...product,
       name: `Women's ${product.name} Accessory`,
-      description: `Premium women's accessory with exceptional quality and style.`,
+      description: `Premium women's accessories with exceptional quality and style.`,
       type: "accessory",
     }))
 
@@ -24,21 +24,20 @@ export default function WomensOthersPage() {
     <main className="flex-1 bg-[#FAF1E6] transition-colors duration-300 dark:bg-[#2E1A1A] dark:text-[#B3B3B3]">
       <ProductsHeader
         title="Women's Accessories"
-        description="Discover our premium selection of women's accessories to complete your look."
+        description="Discover our premium selection of women's accessories designed for style and functionality."
         imageSrc="/placeholder.svg?height=500&width=1920"
         theme="purple"
       />
 
       <div className="container mx-auto px-4 py-12 md:py-16">
         <ProductsGrid
-          products={womensOtherProducts}
+          products={womensAccessoriesProducts}
           theme="purple"
           hideSearch={true}
-          productType="other"
+          productType="accessory"
           category="women"
         />
       </div>
     </main>
   )
-}
-
+} 

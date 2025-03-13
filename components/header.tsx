@@ -110,17 +110,33 @@ export default function Header() {
     ],
   }
 
+  // Add a new useEffect to handle body scroll locking
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      // Prevent scrolling on the body when mobile menu is open
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Re-enable scrolling when mobile menu is closed
+      document.body.style.overflow = '';
+    }
+    
+    // Cleanup function to ensure scrolling is re-enabled when component unmounts
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   return (
     <header
       ref={headerRef}
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled ? "bg-white dark:bg-gray-900 shadow-md" : "bg-transparent backdrop-blur-sm"
+      className={`fixed top-0 left-0 right-0 z-[100] w-full transition-all duration-300 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md ${
+        isScrolled ? "bg-white dark:bg-gray-900 shadow-md" : ""
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold dark:text-white">
+          <Link href="/" className="text-2xl font-bold dark:text-white relative z-[101]">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -136,7 +152,7 @@ export default function Header() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="hidden md:flex items-center space-x-10"
+            className="hidden md:flex items-center space-x-10 relative z-[101]"
           >
             <motion.div whileHover={{ y: -2 }}>
               <Link
@@ -169,7 +185,7 @@ export default function Header() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-50 border dark:border-gray-700"
+                    className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-[102] border dark:border-gray-700"
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
                     {categoryMenus.men.map((item) => (
@@ -209,7 +225,7 @@ export default function Header() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-50 border dark:border-gray-700"
+                    className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-[102] border dark:border-gray-700"
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
                     {categoryMenus.women.map((item) => (
@@ -249,7 +265,7 @@ export default function Header() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-50 border dark:border-gray-700"
+                    className="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-[102] border dark:border-gray-700"
                     onMouseLeave={() => setActiveDropdown(null)}
                   >
                     {categoryMenus.kids.map((item) => (
@@ -310,7 +326,7 @@ export default function Header() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex items-center space-x-4"
           >
-            {/* Only show theme toggle on desktop */}
+            {/* Theme toggle - only show on desktop */}
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="hidden md:block">
               <ThemeToggle />
             </motion.div>
@@ -319,7 +335,7 @@ export default function Header() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="relative hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="relative hover:bg-transparent dark:hover:bg-transparent transition-colors"
                 onClick={() => setIsSearchOpen(!isSearchOpen)}
               >
                 <Search className="h-5 w-5 dark:text-gray-200" />
@@ -336,7 +352,7 @@ export default function Header() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="hover:bg-transparent dark:hover:bg-transparent transition-colors"
                 onClick={() => setIsAccountDropdownOpen(!isAccountDropdownOpen)}
               >
                 <User className="h-5 w-5 dark:text-gray-200" />
@@ -395,7 +411,7 @@ export default function Header() {
                 variant="ghost"
                 size="icon"
                 asChild
-                className="relative hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="relative hover:bg-transparent dark:hover:bg-transparent transition-colors"
               >
                 <Link href="/wishlist" className="relative">
                   <Heart className="h-5 w-5 dark:text-gray-200" />
@@ -418,7 +434,7 @@ export default function Header() {
                 variant="ghost"
                 size="icon"
                 asChild
-                className="relative hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="relative hover:bg-transparent dark:hover:bg-transparent transition-colors"
               >
                 <Link href="/cart" className="relative">
                   <ShoppingCart className="h-5 w-5 dark:text-gray-200" />
@@ -441,7 +457,7 @@ export default function Header() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="md:hidden hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                className="md:hidden hover:bg-transparent dark:hover:bg-transparent transition-colors"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
                 {isMobileMenuOpen ? (
@@ -495,27 +511,22 @@ export default function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white dark:bg-gray-900 border-t dark:border-gray-700 overflow-y-auto max-h-[80vh]"
+            className="md:hidden fixed top-16 left-0 right-0 bg-white dark:bg-gray-900 border-t dark:border-gray-700 overflow-y-auto max-h-[calc(100vh-4rem)] z-50"
           >
             <div className="container mx-auto px-4 py-4">
-              {/* Theme Toggle in Mobile Menu */}
-              <div className="flex justify-end mb-4">
-                <ThemeToggle />
-              </div>
-
               <Link
                 href="/"
-                className={`block py-3 ${pathname === "/" ? "text-primary font-medium" : "text-gray-700 dark:text-gray-200"}`}
+                className={`block py-3 text-base ${pathname === "/" ? "text-primary font-medium" : "text-gray-700 dark:text-gray-200"}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Home
               </Link>
 
               {/* Mobile Men's Dropdown */}
-              <div className="py-1">
+              <div className="py-2">
                 <button
                   onClick={() => handleDropdownToggle("mobile-men")}
-                  className={`flex items-center justify-between w-full py-2 ${
+                  className={`flex items-center justify-between w-full py-3 text-base ${
                     pathname.startsWith("/mens") ? "text-primary font-medium" : "text-gray-700 dark:text-gray-200"
                   }`}
                 >
@@ -532,13 +543,13 @@ export default function Header() {
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.2 }}
-                      className="pl-4 space-y-2 mt-1"
+                      className="pl-4 space-y-3 mt-2"
                     >
                       {categoryMenus.men.map((item) => (
                         <Link
                           key={item.path}
                           href={item.path}
-                          className={`block py-2 ${
+                          className={`block py-2 text-base ${
                             pathname === item.path ? "text-primary font-medium" : "text-gray-600 dark:text-gray-300"
                           }`}
                           onClick={() => setIsMobileMenuOpen(false)}
@@ -552,10 +563,10 @@ export default function Header() {
               </div>
 
               {/* Mobile Women's Dropdown */}
-              <div className="py-1">
+              <div className="py-2">
                 <button
                   onClick={() => handleDropdownToggle("mobile-women")}
-                  className={`flex items-center justify-between w-full py-2 ${
+                  className={`flex items-center justify-between w-full py-3 text-base ${
                     pathname.startsWith("/womens") ? "text-primary font-medium" : "text-gray-700 dark:text-gray-200"
                   }`}
                 >
@@ -572,13 +583,13 @@ export default function Header() {
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.2 }}
-                      className="pl-4 space-y-2 mt-1"
+                      className="pl-4 space-y-3 mt-2"
                     >
                       {categoryMenus.women.map((item) => (
                         <Link
                           key={item.path}
                           href={item.path}
-                          className={`block py-2 ${
+                          className={`block py-2 text-base ${
                             pathname === item.path ? "text-primary font-medium" : "text-gray-600 dark:text-gray-300"
                           }`}
                           onClick={() => setIsMobileMenuOpen(false)}
@@ -592,10 +603,10 @@ export default function Header() {
               </div>
 
               {/* Mobile Kids' Dropdown */}
-              <div className="py-1">
+              <div className="py-2">
                 <button
                   onClick={() => handleDropdownToggle("mobile-kids")}
-                  className={`flex items-center justify-between w-full py-2 ${
+                  className={`flex items-center justify-between w-full py-3 text-base ${
                     pathname.startsWith("/kids") ? "text-primary font-medium" : "text-gray-700 dark:text-gray-200"
                   }`}
                 >
@@ -612,13 +623,13 @@ export default function Header() {
                       animate={{ opacity: 1, height: "auto" }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.2 }}
-                      className="pl-4 space-y-2 mt-1"
+                      className="pl-4 space-y-3 mt-2"
                     >
                       {categoryMenus.kids.map((item) => (
                         <Link
                           key={item.path}
                           href={item.path}
-                          className={`block py-2 ${
+                          className={`block py-2 text-base ${
                             pathname === item.path ? "text-primary font-medium" : "text-gray-600 dark:text-gray-300"
                           }`}
                           onClick={() => setIsMobileMenuOpen(false)}
@@ -633,7 +644,7 @@ export default function Header() {
 
               <Link
                 href="/products"
-                className={`block py-3 ${pathname === "/products" ? "text-primary font-medium" : "text-gray-700 dark:text-gray-200"}`}
+                className={`block py-3 text-base ${pathname === "/products" ? "text-primary font-medium" : "text-gray-700 dark:text-gray-200"}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 All Products
@@ -641,7 +652,7 @@ export default function Header() {
 
               <Link
                 href="/about"
-                className={`block py-3 ${pathname === "/about" ? "text-primary font-medium" : "text-gray-700 dark:text-gray-200"}`}
+                className={`block py-3 text-base ${pathname === "/about" ? "text-primary font-medium" : "text-gray-700 dark:text-gray-200"}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 About
@@ -649,16 +660,22 @@ export default function Header() {
 
               <Link
                 href="/contact"
-                className={`block py-3 ${pathname === "/contact" ? "text-primary font-medium" : "text-gray-700 dark:text-gray-200"}`}
+                className={`block py-3 text-base ${pathname === "/contact" ? "text-primary font-medium" : "text-gray-700 dark:text-gray-200"}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Contact
               </Link>
 
               <div className="border-t border-gray-200 dark:border-gray-700 mt-3 pt-3">
+                {/* Theme toggle in mobile menu */}
+                <div className="flex items-center justify-between py-3">
+                  <span className="text-base text-gray-700 dark:text-gray-200">Theme</span>
+                  <ThemeToggle />
+                </div>
+
                 <Link
                   href="/account/profile"
-                  className={`block py-3 ${pathname === "/account/profile" ? "text-primary font-medium" : "text-gray-700 dark:text-gray-200"}`}
+                  className={`block py-3 text-base ${pathname === "/account/profile" ? "text-primary font-medium" : "text-gray-700 dark:text-gray-200"}`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   My Account
@@ -666,7 +683,7 @@ export default function Header() {
 
                 <Link
                   href="/wishlist"
-                  className={`flex items-center py-3 ${pathname === "/wishlist" ? "text-primary font-medium" : "text-gray-700 dark:text-gray-200"}`}
+                  className={`flex items-center py-3 text-base ${pathname === "/wishlist" ? "text-primary font-medium" : "text-gray-700 dark:text-gray-200"}`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Wishlist
@@ -679,16 +696,11 @@ export default function Header() {
 
                 <Link
                   href="/cart"
-                  className={`block py-3 ${pathname === "/cart" ? "text-primary font-medium" : "text-gray-700 dark:text-gray-200"}`}
+                  className={`block py-3 text-base ${pathname === "/cart" ? "text-primary font-medium" : "text-gray-700 dark:text-gray-200"}`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Cart
                 </Link>
-
-                <div className="flex items-center py-3">
-                  <span className="text-gray-700 dark:text-gray-200 mr-3">Theme</span>
-                  <ThemeToggle />
-                </div>
               </div>
             </div>
           </motion.div>

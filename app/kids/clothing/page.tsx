@@ -9,30 +9,23 @@ export const metadata: Metadata = {
 }
 
 export default function KidsClothingPage() {
-  // Filter only kids' clothing products
-  const kidsClothingProducts = products
-    .filter((product) => product.category === "kids")
-    .slice(0, 6) // For demo purposes, just show some products
-    .map((product) => ({
-      ...product,
-      name: `Kids' ${product.name} Apparel`,
-      description: `Premium kids' clothing with exceptional comfort and durability.`,
-      type: "clothing",
-    }))
+  const kidsClothingProducts = products.filter(
+    (product) => product.category === "kids" && product.type === "clothing"
+  )
 
   return (
-    <main className="flex-1 bg-blue-50 transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100">
+    <main className="flex-1 bg-[#F8F2EB] transition-colors duration-300 dark:bg-[#1A1A40] dark:text-[#A9A9A9]">
       <ProductsHeader
-        title="Kids' Clothing Collection"
-        description="Discover our premium selection of kids' apparel designed for comfort and durability."
+        title="Kids' Clothing"
+        description="Discover our premium selection of kids' clothing designed for style and comfort."
         imageSrc="/placeholder.svg?height=500&width=1920"
-        theme="blue"
+        theme="skyblue"
       />
 
       <div className="container mx-auto px-4 py-12 md:py-16">
         <ProductsGrid
           products={kidsClothingProducts}
-          theme="blue"
+          theme="skyblue"
           hideSearch={true}
           productType="clothing"
           category="kids"

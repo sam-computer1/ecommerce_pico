@@ -30,7 +30,7 @@ export default function RootLayout({
           <CartProvider>
             <WishlistProvider>
               <Header />
-              <div className="flex-grow dark-transition">
+              <div className="flex-grow dark-transition pt-16">
                 {children}
               </div>
               <Footer />

@@ -3,24 +3,35 @@
 import Image from "next/image"
 import { motion } from "framer-motion"
 
-export default function ProductsHeader({ title, description, imageSrc, theme = "default" }) {
+interface ProductsHeaderProps {
+  title: string
+  description: string
+  imageSrc: string
+  theme?: "default" | "gold" | "purple" | "skyblue" | "brown"
+}
+
+export default function ProductsHeader({ title, description, imageSrc, theme = "default" }: ProductsHeaderProps) {
+  const themeStyles = {
+    default: "bg-gray-100 dark:bg-gray-800",
+    gold: "bg-[#C9A959] text-white",
+    purple: "bg-[#a35b8e] text-white",
+    skyblue: "bg-[#6db1de] text-white",
+    brown: "bg-[#8B5E3B] text-white"
+  }
+
   let bgColor, textColor
 
   switch (theme) {
-    case "dark":
-      bgColor = "bg-gray-900"
+    case "brown":
+      bgColor = "bg-[#8B5E3B]"
       textColor = "text-white"
       break
-    case "pink":
-      bgColor = "bg-pink-100"
-      textColor = "text-pink-900"
+    case "skyblue":
+      bgColor = "bg-[#6db1de]"
+      textColor = "text-white"
       break
-    case "blue":
-      bgColor = "bg-blue-100"
-      textColor = "text-blue-900"
-      break
-    case "gray":
-      bgColor = "bg-[#666666]"
+    case "gold":
+      bgColor = "bg-[#C9A959]"
       textColor = "text-white"
       break
     default:
@@ -29,7 +40,7 @@ export default function ProductsHeader({ title, description, imageSrc, theme = "
   }
 
   return (
-    <section className={`relative overflow-hidden ${bgColor} ${textColor}`}>
+    <section className={`relative overflow-hidden ${themeStyles[theme]}`}>
       <div className="absolute inset-0 z-0">
         <Image src={imageSrc || "/placeholder.svg"} alt={title} fill className="object-cover opacity-20" />
       </div>

@@ -12,41 +12,66 @@ import { Input } from "@/components/ui/input"
 import { motion, AnimatePresence } from "framer-motion"
 import SizeChartDialog from "@/components/size-chart-dialog"
 
+interface Product {
+  id: number
+  name: string
+  description: string
+  price: number
+  rating: number
+  category: string
+  type: "footwear" | "clothing" | "bag" | "accessory"
+  brand?: string
+  colors?: string[]
+  sizes?: string[]
+  materials?: string[]
+  styles?: string[]
+  isFeatured?: boolean
+  createdAt: string
+}
+
+interface ProductsGridProps {
+  products: Product[]
+  theme?: "default" | "gold" | "purple" | "skyblue" | "brown" | "gray"
+  hideSearch?: boolean
+  productType?: string
+  category?: "men" | "women" | "kids"
+}
+
 export default function ProductsGrid({
   products,
   theme = "default",
   hideSearch = false,
   productType = "footwear", // "footwear", "clothing", "bag", "other", "all"
-  category = "men", // "men", "women", "kids"
-}) {
+  category = "women", // "men", "women", "kids"
+}: ProductsGridProps) {
   const [sortBy, setSortBy] = useState("featured")
   const [filteredProducts, setFilteredProducts] = useState(products)
   const [priceRange, setPriceRange] = useState([0, 300])
-  const [selectedBrands, setSelectedBrands] = useState([])
-  const [selectedTypes, setSelectedTypes] = useState([])
-  const [selectedColors, setSelectedColors] = useState([])
-  const [selectedSizes, setSelectedSizes] = useState([])
-  const [selectedMaterials, setSelectedMaterials] = useState([])
-  const [selectedStyles, setSelectedStyles] = useState([])
-  const [selectedRatings, setSelectedRatings] = useState([])
+  const [selectedBrands, setSelectedBrands] = useState<string[]>([])
+  const [selectedTypes, setSelectedTypes] = useState<string[]>([])
+  const [selectedColors, setSelectedColors] = useState<string[]>([])
+  const [selectedSizes, setSelectedSizes] = useState<string[]>([])
+  const [selectedMaterials, setSelectedMaterials] = useState<string[]>([])
+  const [selectedStyles, setSelectedStyles] = useState<string[]>([])
+  const [selectedRatings, setSelectedRatings] = useState<string[]>([])
   const [searchQuery, setSearchQuery] = useState("")
   const [isFilterOpen, setIsFilterOpen] = useState(false)
-  const [selectedCategories, setSelectedCategories] = useState([])
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([])
 
   // New state for filter changes
-  const [pendingPriceRange, setPendingPriceRange] = useState([0, 300])
-  const [pendingBrands, setPendingBrands] = useState([])
-  const [pendingTypes, setPendingTypes] = useState([])
-  const [pendingColors, setPendingColors] = useState([])
-  const [pendingSizes, setPendingSizes] = useState([])
-  const [pendingMaterials, setPendingMaterials] = useState([])
-  const [pendingStyles, setPendingStyles] = useState([])
-  const [pendingCategories, setPendingCategories] = useState([])
-  const [pendingRatings, setPendingRatings] = useState([])
+  const [pendingPriceRange, setPendingPriceRange] = useState<[number, number]>([0, 300])
+  const [pendingBrands, setPendingBrands] = useState<string[]>([])
+  const [pendingTypes, setPendingTypes] = useState<string[]>([])
+  const [pendingColors, setPendingColors] = useState<string[]>([])
+  const [pendingSizes, setPendingSizes] = useState<string[]>([])
+  const [pendingMaterials, setPendingMaterials] = useState<string[]>([])
+  const [pendingStyles, setPendingStyles] = useState<string[]>([])
+  const [pendingCategories, setPendingCategories] = useState<string[]>([])
+  const [pendingRatings, setPendingRatings] = useState<string[]>([])
 
   // Initialize pending filters with current filters
   useEffect(() => {
-    setPendingPriceRange(priceRange)
+    setPendingPriceRange([priceRange[0], priceRange[1]] as [number, number])
     setPendingBrands(selectedBrands)
     setPendingTypes(selectedTypes)
     setPendingColors(selectedColors)
@@ -167,14 +192,14 @@ export default function ProductsGrid({
   ])
 
   // Sort products
-  const sortProducts = (productsToSort, sortBy) => {
+  const sortProducts = (productsToSort: Product[], sortBy: string) => {
     switch (sortBy) {
       case "price-asc":
         return [...productsToSort].sort((a, b) => a.price - b.price)
       case "price-desc":
         return [...productsToSort].sort((a, b) => b.price - a.price)
       case "newest":
-        return [...productsToSort].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+        return [...productsToSort].sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
       case "featured":
         return [...productsToSort].sort((a, b) => (b.isFeatured ? 1 : 0) - (a.isFeatured ? 1 : 0))
       case "rating-desc":
@@ -198,7 +223,7 @@ export default function ProductsGrid({
       : ["4T", "5T", "6", "7", "8", "10", "12", "14"]
 
   // Get the appropriate sizes based on product type and category
-  const togglePendingCategory = (category) => {
+  const togglePendingCategory = (category: string) => {
     if (pendingCategories.includes(category)) {
       setPendingCategories(pendingCategories.filter((c) => c !== category))
     } else {
@@ -259,11 +284,11 @@ export default function ProductsGrid({
     { value: "rating-desc", label: "Highest Rated" },
   ]
 
-  const handleSortChange = (value) => {
+  const handleSortChange = (value: string) => {
     setSortBy(value)
   }
 
-  const togglePendingBrand = (brand) => {
+  const togglePendingBrand = (brand: string) => {
     if (pendingBrands.includes(brand)) {
       setPendingBrands(pendingBrands.filter((b) => b !== brand))
     } else {
@@ -271,7 +296,7 @@ export default function ProductsGrid({
     }
   }
 
-  const togglePendingType = (type) => {
+  const togglePendingType = (type: string) => {
     if (pendingTypes.includes(type)) {
       setPendingTypes(pendingTypes.filter((t) => t !== type))
     } else {
@@ -279,7 +304,7 @@ export default function ProductsGrid({
     }
   }
 
-  const togglePendingColor = (color) => {
+  const togglePendingColor = (color: string) => {
     if (pendingColors.includes(color)) {
       setPendingColors(pendingColors.filter((c) => c !== color))
     } else {
@@ -287,7 +312,7 @@ export default function ProductsGrid({
     }
   }
 
-  const togglePendingSize = (size) => {
+  const togglePendingSize = (size: string) => {
     if (pendingSizes.includes(size)) {
       setPendingSizes(pendingSizes.filter((s) => s !== size))
     } else {
@@ -295,7 +320,7 @@ export default function ProductsGrid({
     }
   }
 
-  const togglePendingMaterial = (material) => {
+  const togglePendingMaterial = (material: string) => {
     if (pendingMaterials.includes(material)) {
       setPendingMaterials(pendingMaterials.filter((m) => m !== material))
     } else {
@@ -303,7 +328,7 @@ export default function ProductsGrid({
     }
   }
 
-  const togglePendingStyle = (style) => {
+  const togglePendingStyle = (style: string) => {
     if (pendingStyles.includes(style)) {
       setPendingStyles(pendingStyles.filter((s) => s !== style))
     } else {
@@ -311,7 +336,7 @@ export default function ProductsGrid({
     }
   }
 
-  const togglePendingRating = (rating) => {
+  const togglePendingRating = (rating: string) => {
     if (pendingRatings.includes(rating)) {
       setPendingRatings(pendingRatings.filter((r) => r !== rating))
     } else {
@@ -319,7 +344,7 @@ export default function ProductsGrid({
     }
   }
 
-  const handleSearch = (e) => {
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value)
   }
 
@@ -359,24 +384,43 @@ export default function ProductsGrid({
     setSearchQuery("")
   }
 
-  const getColorStyle = (color) => {
-    const colorMap = {
-      black: "bg-black",
-      white: "bg-white border border-gray-300",
-      red: "bg-red-500",
-      blue: "bg-blue-500",
-      green: "bg-green-500",
-      gray: "bg-gray-500",
-      pink: "bg-pink-500",
-      purple: "bg-purple-500",
-      yellow: "bg-yellow-500",
-      brown: "bg-amber-800",
+  const getColorStyle = (color: string) => {
+    // Map color names to their hex values
+    const colorHexMap: Record<string, string> = {
+      black: "#000000",
+      white: "#FFFFFF",
+      red: "#DC2626",
+      blue: "#2563EB",
+      green: "#16A34A",
+      gray: "#6B7280",
+      pink: "#DB2777",
+      purple: "#7C3AED",
+      yellow: "#EAB308",
+      brown: "#B45309"
     }
-    return colorMap[color] || "bg-gray-200"
+    
+    // Return border color classes only, background will be set inline
+    const borderColorMap: Record<string, string> = {
+      black: "border-gray-400 dark:border-gray-100",
+      white: "border-gray-300 dark:border-gray-100",
+      red: "border-red-400 dark:border-red-300",
+      blue: "border-blue-400 dark:border-blue-300",
+      green: "border-green-400 dark:border-green-300",
+      gray: "border-gray-400 dark:border-gray-300",
+      pink: "border-pink-400 dark:border-pink-300",
+      purple: "border-purple-400 dark:border-purple-300",
+      yellow: "border-yellow-400 dark:border-yellow-300",
+      brown: "border-amber-600 dark:border-amber-300"
+    }
+    
+    return {
+      hex: colorHexMap[color] || "#E5E7EB", // Default to gray-200 if color not found
+      borderClass: borderColorMap[color] || "border-gray-300 dark:border-gray-600"
+    }
   }
 
   // Render star rating component
-  const renderStars = (rating) => {
+  const renderStars = (rating: string) => {
     const stars = []
     const fullStars = Math.floor(Number.parseFloat(rating))
     const hasHalfStar = Number.parseFloat(rating) % 1 >= 0.5
@@ -404,6 +448,13 @@ export default function ProductsGrid({
         <span className="ml-1 text-sm text-gray-600 dark:text-gray-400">{rating}</span>
       </div>
     )
+  }
+
+  const themeStyles = {
+    default: "bg-white dark:bg-gray-800",
+    gold: "bg-[#d4b56e] text-white",
+    purple: "bg-[#a35b8e] text-white",
+    skyblue: "bg-[#6db1de] text-white"
   }
 
   return (
@@ -544,21 +595,25 @@ export default function ProductsGrid({
 
                 <div>
                   <h3 className="text-lg font-semibold mb-4">Color</h3>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {colors.map((color) => (
-                      <button
-                        key={color}
-                        onClick={() => togglePendingColor(color)}
-                        className={`w-8 h-8 rounded-full flex items-center justify-center ${getColorStyle(color)} ${
-                          pendingColors.includes(color) ? "ring-2 ring-primary" : ""
-                        }`}
-                        title={color.charAt(0).toUpperCase() + color.slice(1)}
-                      >
-                        {pendingColors.includes(color) && (
-                          <span className={`text-xs ${color === "white" ? "text-black" : "text-white"}`}>✓</span>
-                        )}
-                      </button>
-                    ))}
+                  <div className="flex flex-wrap gap-2">
+                    {colors.map((color) => {
+                      const colorStyle = getColorStyle(color);
+                      return (
+                        <motion.button
+                          key={color}
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                          onClick={() => togglePendingColor(color)}
+                          className={`h-8 w-8 rounded-full border-2 ${colorStyle.borderClass} ${
+                            pendingColors.includes(color) 
+                              ? "ring-2 ring-primary ring-offset-2 dark:ring-offset-gray-900" 
+                              : "hover:ring-2 hover:ring-gray-300 hover:ring-offset-2 dark:hover:ring-gray-400 dark:ring-offset-gray-900"
+                          }`}
+                          style={{ backgroundColor: colorStyle.hex }}
+                          title={color.charAt(0).toUpperCase() + color.slice(1)}
+                        />
+                      );
+                    })}
                   </div>
                 </div>
 
@@ -800,21 +855,25 @@ export default function ProductsGrid({
               <h3 className={`text-lg font-semibold mb-4 ${theme === "gray" ? "text-white" : "dark:text-white"}`}>
                 Color
               </h3>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {colors.map((color) => (
-                  <button
-                    key={color}
-                    onClick={() => togglePendingColor(color)}
-                    className={`w-8 h-8 rounded-full flex items-center justify-center ${getColorStyle(color)} ${
-                      pendingColors.includes(color) ? "ring-2 ring-primary" : ""
-                    }`}
-                    title={color.charAt(0).toUpperCase() + color.slice(1)}
-                  >
-                    {pendingColors.includes(color) && (
-                      <span className={`text-xs ${color === "white" ? "text-black" : "text-white"}`}>✓</span>
-                    )}
-                  </button>
-                ))}
+              <div className="flex flex-wrap gap-2">
+                {colors.map((color) => {
+                  const colorStyle = getColorStyle(color);
+                  return (
+                    <motion.button
+                      key={color}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      onClick={() => togglePendingColor(color)}
+                      className={`h-8 w-8 rounded-full border-2 ${colorStyle.borderClass} ${
+                        pendingColors.includes(color) 
+                          ? "ring-2 ring-primary ring-offset-2 dark:ring-offset-gray-900" 
+                          : "hover:ring-2 hover:ring-gray-300 hover:ring-offset-2 dark:hover:ring-gray-400 dark:ring-offset-gray-900"
+                      }`}
+                      style={{ backgroundColor: colorStyle.hex }}
+                      title={color.charAt(0).toUpperCase() + color.slice(1)}
+                    />
+                  );
+                })}
               </div>
             </div>
 

@@ -9,19 +9,8 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
 
   useEffect(() => {
     setMounted(true)
-    
-    // Set light mode as default
-    const userPreference = localStorage.getItem("theme")
-    
-    if (userPreference === "dark") {
-      document.documentElement.classList.add("dark")
-    } else {
-      document.documentElement.classList.remove("dark")
-      localStorage.setItem("theme", "light")
-    }
   }, [])
 
-  // Prevent flash of unstyled content
   if (!mounted) {
     return <>{children}</>
   }

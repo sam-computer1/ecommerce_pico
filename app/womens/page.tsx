@@ -13,18 +13,18 @@ export default function WomensPage() {
   const womensProducts = products.filter((product) => product.category === "women")
 
   return (
-    <main className="flex-1 bg-pink-50 transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100">
+    <main className="flex-1 bg-[#FAF1E6] transition-colors duration-300 dark:bg-[#2E1A1A] dark:text-[#B3B3B3]">
       <ProductsHeader
         title="Women's Collection"
         description="Discover our premium selection of women's footwear designed for style and performance."
         imageSrc="/placeholder.svg?height=500&width=1920"
-        theme="pink"
+        theme="purple"
       />
 
       <div className="container mx-auto px-4 py-12 md:py-16">
         <ProductsGrid
           products={womensProducts}
-          theme="pink"
+          theme="purple"
           hideSearch={true}
           productType="footwear"
           category="women"

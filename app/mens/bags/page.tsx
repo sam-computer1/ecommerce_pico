@@ -21,16 +21,16 @@ export default function MensBagsPage() {
     }))
 
   return (
-    <main className="flex-1 bg-[#666666] transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100">
+    <main className="flex-1 bg-[#F5F5F5] transition-colors duration-300 dark:bg-[#181818] dark:text-[#A1A1A1]">
       <ProductsHeader
         title="Men's Bags Collection"
         description="Discover our premium selection of men's bags designed for style and functionality."
         imageSrc="/placeholder.svg?height=500&width=1920"
-        theme="gray"
+        theme="brown"
       />
 
       <div className="container mx-auto px-4 py-12 md:py-16">
-        <ProductsGrid products={mensBagsProducts} theme="gray" hideSearch={true} productType="bag" category="men" />
+        <ProductsGrid products={mensBagsProducts} theme="brown" hideSearch={true} productType="bag" category="men" />
       </div>
     </main>
   )

@@ -11,7 +11,7 @@ import ScrollToTop from "@/components/scroll-to-top"
 
 export default function HomePage() {
   return (
-    <main className="flex-1 transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100">
+    <main className="flex-1 bg-[#FAF4ED] transition-colors duration-300 dark:bg-[#1E1A17] dark:text-[#D9D9D9]">
       {/* Hero Section */}
       <section className="relative h-[80vh] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10" />
@@ -24,17 +24,17 @@ export default function HomePage() {
         />
         <div className="relative z-20 container mx-auto h-full flex flex-col justify-center items-start px-4 md:px-6">
           <div className="max-w-2xl space-y-4">
-            <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tight hero-text">
+            <h1 className="text-4xl md:text-6xl font-bold text-[#EAEAEA] tracking-tight hero-text">
               The Future of Footwear is Here
             </h1>
-            <p className="text-lg md:text-xl text-gray-200 hero-text">
+            <p className="text-lg md:text-xl text-[#D9D9D9] hero-text">
               Experience revolutionary comfort and style with our latest collection of performance shoes.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4 hero-text">
               <Button
                 size="lg"
                 asChild
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-md shadow-lg hover:shadow-xl transition-all"
+                className="bg-[#000000] hover:bg-[#C9A959] text-white font-bold py-3 px-8 rounded-md shadow-lg hover:shadow-xl transition-all dark:bg-[#B78B26] dark:hover:bg-[#4A3C31]"
               >
                 <Link href="/products" className="px-8">
                   Shop Now
@@ -43,7 +43,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="bg-blue-600 hover:bg-blue-700 text-white border-blue-500 font-bold py-3 px-8 rounded-md shadow-lg hover:shadow-xl transition-all"
+                className="bg-transparent hover:bg-[#C9A959]/20 text-white border-white font-bold py-3 px-8 rounded-md shadow-lg hover:shadow-xl transition-all dark:border-[#B78B26] dark:hover:bg-[#4A3C31]/20"
                 asChild
               >
                 <Link href="/about" className="px-8">

@@ -9,30 +9,23 @@ export const metadata: Metadata = {
 }
 
 export default function WomensClothingPage() {
-  // Filter only women's clothing products
-  const womensClothingProducts = products
-    .filter((product) => product.category === "women")
-    .slice(0, 6) // For demo purposes, just show some products
-    .map((product) => ({
-      ...product,
-      name: `Women's ${product.name} Apparel`,
-      description: `Premium women's clothing with exceptional comfort and style.`,
-      type: "clothing",
-    }))
+  const womensClothingProducts = products.filter(
+    (product) => product.category === "women" && product.type === "clothing"
+  )
 
   return (
-    <main className="flex-1 bg-pink-50 transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100">
+    <main className="flex-1 bg-[#FAF1E6] transition-colors duration-300 dark:bg-[#2E1A1A] dark:text-[#B3B3B3]">
       <ProductsHeader
-        title="Women's Clothing Collection"
-        description="Discover our premium selection of women's apparel designed for style and comfort."
+        title="Women's Clothing"
+        description="Discover our premium selection of women's clothing designed for style and comfort."
         imageSrc="/placeholder.svg?height=500&width=1920"
-        theme="pink"
+        theme="purple"
       />
 
       <div className="container mx-auto px-4 py-12 md:py-16">
         <ProductsGrid
           products={womensClothingProducts}
-          theme="pink"
+          theme="purple"
           hideSearch={true}
           productType="clothing"
           category="women"

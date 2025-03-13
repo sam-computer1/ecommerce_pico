@@ -13,16 +13,16 @@ export default function MensPage() {
   const mensProducts = products.filter((product) => product.category === "men")
 
   return (
-    <main className="flex-1 bg-[#666666] transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100">
+    <main className="flex-1 bg-[#F5F5F5] transition-colors duration-300 dark:bg-[#181818] dark:text-[#A1A1A1]">
       <ProductsHeader
         title="Men's Collection"
         description="Discover our premium selection of men's footwear designed for style and performance."
         imageSrc="/placeholder.svg?height=500&width=1920"
-        theme="gray"
+        theme="brown"
       />
 
       <div className="container mx-auto px-4 py-12 md:py-16">
-        <ProductsGrid products={mensProducts} theme="gray" hideSearch={true} productType="footwear" category="men" />
+        <ProductsGrid products={mensProducts} theme="brown" hideSearch={true} productType="footwear" category="men" />
       </div>
     </main>
   )
