@@ -38,7 +38,7 @@ A modern, responsive e-commerce platform built with Next.js, TypeScript, and Tai
 
 ## Tech Stack
 
-- **Framework:** Next.js 14
+- **Framework:** Next.js 
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS
 - **Animations:** Framer Motion
