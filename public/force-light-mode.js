@@ -1,0 +1,1 @@
+(function(){try{document.documentElement.classList.remove('dark');document.documentElement.classList.add('light');localStorage.setItem('theme','light');}catch(e){console.error('Error setting light mode:',e);}})()

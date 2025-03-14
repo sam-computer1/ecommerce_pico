@@ -9,6 +9,7 @@ import { WishlistProvider } from "@/context/wishlist-context"
 import { Toaster } from "@/components/ui/toaster"
 import { ThemeProvider } from "@/components/theme-provider"
 import ScrollToTop from "@/components/scroll-to-top"
+import Script from "next/script"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -25,12 +26,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className={`${inter.className} min-h-screen flex flex-col dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300`}>
+      <head>
+        <Script id="force-light-mode" strategy="beforeInteractive" src="/force-light-mode.js" />
+      </head>
+      <body className={`${inter.className} min-h-screen flex flex-col transition-colors duration-300`}>
         <ThemeProvider>
           <CartProvider>
             <WishlistProvider>
               <Header />
-              <div className="flex-grow dark-transition pt-16">
+              <div className="flex-grow transition-colors duration-300 pt-16">
                 {children}
               </div>
               <Footer />

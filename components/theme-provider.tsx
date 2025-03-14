@@ -8,6 +8,13 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    // Force light mode on initial load by clearing any stored theme preference
+    if (typeof window !== 'undefined') {
+      // Only set to light if no theme is already stored
+      if (!localStorage.getItem('theme')) {
+        localStorage.setItem('theme', 'light')
+      }
+    }
     setMounted(true)
   }, [])
 

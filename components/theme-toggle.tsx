@@ -3,7 +3,6 @@
 import { useTheme } from "next-themes"
 import { Moon, Sun } from "lucide-react"
 import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 
 export default function ThemeToggle() {
@@ -24,6 +23,7 @@ export default function ThemeToggle() {
       size="icon"
       className="hover:bg-transparent dark:hover:bg-transparent transition-colors"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
     >
       {theme === "dark" ? (
         <Sun className="h-5 w-5 dark:text-gray-200" />
