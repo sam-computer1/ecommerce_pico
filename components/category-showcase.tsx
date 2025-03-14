@@ -17,7 +17,7 @@ export default function CategoryShowcase() {
     {
       id: "mens",
       name: "Men",
-      image: "/placeholder.svg?height=600&width=400&text=Men's Collection",
+      image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=2000&auto=format&fit=crop",
       color: "bg-[#666666]",
       textColor: "text-white",
       link: "/mens",
@@ -25,7 +25,7 @@ export default function CategoryShowcase() {
     {
       id: "womens",
       name: "Women",
-      image: "/placeholder.svg?height=600&width=400&text=Women's Collection",
+      image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=1000&auto=format&fit=crop",
       color: "bg-pink-500",
       textColor: "text-white",
       link: "/womens",
@@ -33,7 +33,7 @@ export default function CategoryShowcase() {
     {
       id: "kids",
       name: "Kids",
-      image: "/placeholder.svg?height=600&width=400&text=Kids' Collection",
+      image: "https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?q=80&w=1000&auto=format&fit=crop",
       color: "bg-blue-500",
       textColor: "text-white",
       link: "/kids",
@@ -73,9 +73,19 @@ export default function CategoryShowcase() {
               whileHover={{ y: -10, scale: 1.03 }}
               className={`group relative overflow-hidden rounded-lg ${category.color} h-[400px] shadow-lg`}
             >
-              <Link href={category.link} className="block h-full">
+              <Link href={category.link} className="block h-full w-full relative">
+                <div className="absolute inset-0 w-full h-full">
+                  <Image
+                    src={category.image || "/placeholder.svg"}
+                    alt={`${category.name} category`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-60 group-hover:opacity-70 transition-opacity duration-300" />
                 <motion.div
-                  className="absolute inset-0 z-10 flex flex-col justify-end p-6 from-black/60 to-transparent bg-gradient-to-t"
+                  className="absolute inset-0 z-10 flex flex-col justify-end p-6"
                   style={{ y: translateY }}
                 >
                   <motion.h3 className={`text-2xl font-bold ${category.textColor} mb-2`}>{category.name}</motion.h3>
@@ -85,15 +95,6 @@ export default function CategoryShowcase() {
                   >
                     Shop Now
                   </motion.span>
-                </motion.div>
-                <motion.div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300" />
-                <motion.div className="h-full w-full" whileHover={{ scale: 1.1 }} transition={{ duration: 0.8 }}>
-                  <Image
-                    src={category.image || "/placeholder.svg"}
-                    alt={`${category.name} category`}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
                 </motion.div>
               </Link>
             </motion.div>
