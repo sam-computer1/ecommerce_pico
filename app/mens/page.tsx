@@ -17,7 +17,7 @@ export default function MensPage() {
       <ProductsHeader
         title="Men's Collection"
         description="Discover our premium selection of men's footwear designed for style and performance."
-        imageSrc="/placeholder.svg?height=500&width=1920"
+        imageSrc="https://images.unsplash.com/photo-1605812860427-4024433a70fd?q=80&w=2000&auto=format&fit=crop"
         theme="brown"
       />
 

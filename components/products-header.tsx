@@ -42,7 +42,7 @@ export default function ProductsHeader({ title, description, imageSrc, theme = "
   return (
     <section className={`relative overflow-hidden ${themeStyles[theme]}`}>
       <div className="absolute inset-0 z-0">
-        <Image src={imageSrc || "/placeholder.svg"} alt={title} fill className="object-cover opacity-20" />
+        <Image src={imageSrc || "/placeholder.svg"} alt={title} fill className="object-cover opacity-75" />
       </div>
 
       <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">

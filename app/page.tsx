@@ -16,7 +16,7 @@ export default function HomePage() {
       <section className="relative h-[80vh] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10" />
         <Image
-          src="/placeholder.svg?height=1080&width=1920"
+          src="https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=2000&auto=format&fit=crop"
           alt="Hero image of signature shoes"
           fill
           priority
