@@ -391,7 +391,7 @@ a:focus-visible {
 .dark .btn:hover,
 .dark .button:hover,
 .dark button:not(.btn-primary, [data-variant="default"]):hover {
-  background-color: rgb(55, 65, 81); /* hover:bg-gray-700 */
+  background-color: rgb(17,24,39); /* hover:bg-gray-700 */
 }
 
 /* Special case for primary buttons */
