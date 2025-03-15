@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { usePathname } from "next/navigation"
 import { Menu, X, ShoppingCart, User, Search, ChevronDown, Heart } from "lucide-react"
@@ -136,14 +137,21 @@ export default function Header() {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="text-2xl font-bold dark:text-white relative z-[101]">
+          <Link href="/" className="relative z-[101]">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
               whileHover={{ scale: 1.05 }}
+              className="h-10 w-auto"
             >
-              Pico
+              <Image 
+                src="/placeholder-logo.png" 
+                alt="Pico Logo" 
+                width={120} 
+                height={40} 
+                className="h-10 w-auto dark:brightness-110 dark:contrast-125"
+              />
             </motion.div>
           </Link>
 
