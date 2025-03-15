@@ -17,7 +17,7 @@ export default function CategoryShowcase() {
     {
       id: "mens",
       name: "Men",
-      image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=2000&auto=format&fit=crop",
+      image: "/images/homepage/men.png",
       color: "bg-[#666666]",
       textColor: "text-white",
       link: "/mens",
@@ -25,7 +25,7 @@ export default function CategoryShowcase() {
     {
       id: "womens",
       name: "Women",
-      image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=1000&auto=format&fit=crop",
+      image: "/images/homepage/women.png",
       color: "bg-pink-500",
       textColor: "text-white",
       link: "/womens",
@@ -33,7 +33,7 @@ export default function CategoryShowcase() {
     {
       id: "kids",
       name: "Kids",
-      image: "https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?q=80&w=1000&auto=format&fit=crop",
+      image: "/images/homepage/kid.png",
       color: "bg-blue-500",
       textColor: "text-white",
       link: "/kids",
