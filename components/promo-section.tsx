@@ -53,7 +53,7 @@ export default function PromoSection() {
             className="relative h-[400px]"
           >
             <Image
-              src="/placeholder.svg?height=800&width=600"
+              src="/images/homepage/productDemo.png?height=400&width=400"
               alt="Promotional shoes"
               fill
               className="object-cover rounded-lg"

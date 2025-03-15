@@ -16,7 +16,8 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Pico - Premium Shoes for Everyone",
   description: "Discover our collection of premium footwear for men, women, and kids.",
-  generator: 'v0.dev'
+  generator: 'v0.dev',
+  icons: '/vite.svg',
 }
 
 export default function RootLayout({

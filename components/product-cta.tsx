@@ -56,7 +56,7 @@ export default function ProductCTA() {
             className="relative h-[500px] order-1 md:order-2"
           >
             <Image
-              src="/placeholder.svg?height=1000&width=800"
+              src="/images/homepage/image3.png?height=200&width=400"
               alt="Featured athletic shoe"
               fill
               className="object-contain"

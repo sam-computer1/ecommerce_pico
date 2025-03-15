@@ -16,7 +16,7 @@ export default function HomePage() {
       <section className="relative h-[80vh] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10" />
         <Image
-          src="https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=2000&auto=format&fit=crop"
+          src="\images\homepage\hero.jpg"
           alt="Hero image of signature shoes"
           fill
           priority
@@ -34,7 +34,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 asChild
-                className="bg-[#000000] hover:bg-[#C9A959] text-white font-bold py-3 px-8 rounded-md shadow-lg hover:shadow-xl transition-all dark:bg-[#B78B26] dark:hover:bg-[#4A3C31]"
+                className="bg-[#474646] hover:bg-[#C9A959] text-white font-bold py-3 px-8 rounded-md shadow-lg hover:shadow-xl transition-all dark:bg-[#B78B26] dark:hover:bg-[#4A3C31]"
               >
                 <Link href="/products" className="px-8">
                   Shop Now

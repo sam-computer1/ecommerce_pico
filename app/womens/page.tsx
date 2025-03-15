@@ -17,7 +17,7 @@ export default function WomensPage() {
       <ProductsHeader
         title="Women's Collection"
         description="Discover our premium selection of women's footwear designed for style and performance."
-        imageSrc="/placeholder.svg?height=500&width=1920"
+        imageSrc="/images/women/person1.png?height=800&width=400"
         theme="purple"
       />
 
