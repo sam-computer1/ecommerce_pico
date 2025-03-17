@@ -59,26 +59,26 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold mb-4 text-[#1A1A1A] dark:text-[#EAEAEA]">Our Values</h2>
-            <p className="mb-8 text-[#4A3C31] dark:text-[#C0C0C0]">We stand by our core values in everything we do, from design to delivery.</p>
+            <p className="mb-8 text-[#4A3C31] dark:text-[#121212]">We stand by our core values in everything we do, from design to delivery.</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white/90 dark:bg-gray-800/10 p-6 rounded-lg backdrop-blur-sm">
               <h3 className="text-xl font-bold mb-3 text-[#1A1A1A] dark:text-[#EAEAEA]">Quality</h3>
-              <p className="text-[#4A3C31] dark:text-[#C0C0C0]">
+              <p className="text-[#4A3C31] dark:text-[#121212]">
                 We never compromise on quality. Every stitch, every material, and every design element is carefully
                 selected and crafted to ensure durability and comfort.
               </p>
             </div>
             <div className="bg-white/90 dark:bg-gray-800/10 p-6 rounded-lg backdrop-blur-sm">
               <h3 className="text-xl font-bold mb-3 text-[#1A1A1A] dark:text-[#EAEAEA]">Innovation</h3>
-              <p className="text-[#4A3C31] dark:text-[#C0C0C0]">
+              <p className="text-[#4A3C31] dark:text-[#121212]">
                 We're constantly pushing the boundaries of footwear design, incorporating the latest technologies and
                 trends to create shoes that are both functional and fashionable.
               </p>
             </div>
             <div className="bg-white/90 dark:bg-gray-800/10 p-6 rounded-lg backdrop-blur-sm">
               <h3 className="text-xl font-bold mb-3 text-[#1A1A1A] dark:text-[#EAEAEA]">Sustainability</h3>
-              <p className="text-[#4A3C31] dark:text-[#C0C0C0]">
+              <p className="text-[#4A3C31] dark:text-[#121212]">
                 We're committed to reducing our environmental impact through sustainable sourcing, eco-friendly
                 materials, and responsible manufacturing practices.
               </p>

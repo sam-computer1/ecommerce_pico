@@ -9,13 +9,13 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-md hover:shadow-lg rounded-md",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-md hover:shadow-lg rounded-md",
+        default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-md hover:shadow-lg rounded-md dark:bg-blue-500 dark:hover:bg-blue-600 dark:text-white",
+        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-md hover:shadow-lg rounded-md dark:bg-red-500 dark:hover:bg-red-600",
         outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground shadow-sm hover:shadow-md rounded-md",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-sm hover:shadow-md rounded-md",
-        ghost: "hover:text-primary focus-visible:ring-0 focus-visible:ring-offset-0",
-        link: "text-primary underline-offset-4 hover:underline",
+          "border border-input bg-background hover:bg-accent hover:text-accent-foreground shadow-sm hover:shadow-md rounded-md dark:border-gray-500 dark:hover:bg-gray-700",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-sm hover:shadow-md rounded-md dark:bg-gray-600 dark:hover:bg-gray-700 dark:text-white",
+        ghost: "hover:text-primary focus-visible:ring-0 focus-visible:ring-offset-0 dark:hover:text-blue-300",
+        link: "text-primary underline-offset-4 hover:underline dark:text-blue-300 dark:hover:text-blue-400",
       },
       size: {
         default: "h-10 px-4 py-2",
