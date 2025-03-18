@@ -78,26 +78,28 @@ export default function Header() {
     >
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="relative z-[101]">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              whileHover={{ scale: 1.05 }}
-              className="h-10 w-auto"
-            >
-              <Image 
-                src="/placeholder-logo.png" 
-                alt="Pico Logo" 
-                width={120} 
-                height={40} 
-                className="h-10 w-auto dark:brightness-110 dark:contrast-125"
-              />
-            </motion.div>
-          </Link>
+          {/* Logo - Left Justified */}
+          <div className="flex items-center">
+            <Link href="/" className="relative z-[101]">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5 }}
+                whileHover={{ scale: 1.05 }}
+                className="h-10 w-auto"
+              >
+                <Image 
+                  src="/placeholder-logo.png" 
+                  alt="Pico Logo" 
+                  width={120} 
+                  height={40} 
+                  className="h-10 w-auto dark:brightness-110 dark:contrast-125"
+                />
+              </motion.div>
+            </Link>
+          </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Center */}
           <motion.nav
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -149,18 +151,19 @@ export default function Header() {
             </motion.div>
           </motion.nav>
 
-          {/* Right Side Actions */}
+          {/* Right Side Actions - Right Justified */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex items-center space-x-4"
           >
-            {/* Theme toggle - only show on desktop */}
+            {/* Theme toggle button */}
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="hidden md:block">
               <ThemeToggle />
             </motion.div>
 
+            {/* Search button */}
             <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
               <Button
                 variant="ghost"

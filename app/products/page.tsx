@@ -1,11 +1,7 @@
-import type { Metadata } from "next"
+"use client"
+
 import ProductsGrid from "@/components/products-grid"
 import { products } from "@/lib/products"
-
-export const metadata: Metadata = {
-  title: "All Products - Modern Footwear",
-  description: "Browse our complete collection of premium footwear and accessories.",
-}
 
 export default function ProductsPage() {
   return (
@@ -14,7 +10,7 @@ export default function ProductsPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10" />
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/placeholder.svg?height=600&width=1920')" }}
+          style={{ backgroundImage: "url('/images/homepage/productDemo.PNG')" }}
         />
         <div className="relative z-20 container mx-auto h-full flex flex-col justify-center items-start px-4 md:px-6">
           <div className="max-w-2xl">

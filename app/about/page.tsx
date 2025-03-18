@@ -1,14 +1,63 @@
-import type { Metadata } from "next"
+"use client"
+
+import { useState } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import TeamMemberDialog, { TeamMemberProps } from "@/components/team-member-dialog"
 
-export const metadata: Metadata = {
-  title: "About Us - Modern Footwear",
-  description: "Learn about our story, mission, and commitment to quality footwear.",
-}
+// Define team members data
+const TEAM_MEMBERS: TeamMemberProps[] = [
+  {
+    id: 1,
+    name: "Emma Johnson",
+    position: "Founder & CEO",
+    bio: "Emma founded Pico in 2010 with a vision to create stylish and comfortable footwear. With over 15 years of experience in fashion design, she leads the company's creative direction and business strategy. She believes in sustainable practices and ethical manufacturing, ensuring that Pico' footprint on the planet is as light as possible.",
+    imageSrc: "/placeholder.svg?height=300&width=300&text=Emma Johnson"
+  },
+  {
+    id: 2,
+    name: "Michael Chen",
+    position: "Head of Design",
+    bio: "Michael brings over a decade of experience in footwear design. Before joining Pico, he worked with several luxury brands in Europe. He's passionate about combining aesthetics with functionality and is constantly exploring new materials and technologies to enhance the comfort and sustainability of our products.",
+    imageSrc: "/placeholder.svg?height=300&width=300&text=Michael Chen"
+  },
+  {
+    id: 3,
+    name: "Mr. Subhrodeep Banerjee",
+    position: "Operations Director",
+    bio: "Mr. Subhrodeep Banerjee brings over 16 years of extensive experience in the IT industry, having played a significant role in various multinational corporations. His expertise spans across multiple domains, with a strong foundation in SAP ERP implementation during his tenure in MNCs.\n\nIn addition to his corporate experience, Mr. Banerjee has served as a leading faculty member in Bhutan and West Bengal-India, for seven years and has been a guest lecturer for several manufacturing companies in West Bengal.\n\nHis academic qualifications include an MBA in Finance, an M.Com., a CS (Inter.), a B.Com., and an LLB. Complementing his finance and legal background, he holds IT certifications in DIT and SAP, with proficiency in SAP FICO, FSCM, FICA, PP, MM, and SD modules.\n\nMr. Banerjee's diverse expertise in IT, finance, and legal domains makes him a valuable asset in the field of enterprise resource planning and business process optimization.",
+    imageSrc: "/placeholder.svg?height=300&width=300&text=Subhrodeep Banerjee"
+  },
+  {
+    id: 4,
+    name: "David Wilson",
+    position: "Marketing Head",
+    bio: "David leads our marketing and brand strategy. With his innovative approach to digital marketing and deep understanding of consumer behavior, he has successfully positioned Pico as a premium footwear brand. He's passionate about storytelling and creating authentic connections with our customers.",
+    imageSrc: "/placeholder.svg?height=300&width=300&text=David Wilson"
+  },
+  {
+    id: 5,
+    name: "Alex Thompson",
+    position: "Co-Founder",
+    bio: "As a co-founder of Pico, Alex brings a unique blend of entrepreneurial spirit and technical expertise to the company. With a background in sustainable materials and manufacturing processes, he has been instrumental in developing our eco-friendly production methods and establishing partnerships with ethical suppliers worldwide.\n\nHis vision for sustainable fashion has helped shape Pico's commitment to environmental responsibility while maintaining the highest standards of quality and comfort. Alex's innovative approach to material sourcing and production has set new industry standards for sustainable footwear manufacturing.",
+    imageSrc: "/placeholder.svg?height=300&width=300&text=Alex Thompson"
+  }
+]
 
 export default function AboutPage() {
+  const [selectedMember, setSelectedMember] = useState<TeamMemberProps | null>(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const handleOpenMemberDialog = (member: TeamMemberProps) => {
+    setSelectedMember(member);
+    setDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setDialogOpen(false);
+  };
+
   return (
     <main className="flex-1 bg-[#F4F2F0] transition-colors duration-300 dark:bg-[#1C1C1C] dark:text-[#D9D9D9]">
       {/* Hero Section */}
@@ -34,7 +83,7 @@ export default function AboutPage() {
             <div>
               <h2 className="text-3xl font-bold mb-4 text-[#1A1A1A] dark:text-[#EAEAEA]">Our Mission</h2>
               <p className="mb-4 text-[#4A3C31] dark:text-[#C0C0C0]">
-                At ModernKicks, we believe that great footwear should be a perfect blend of style, comfort, and
+                At Pico, we believe that great footwear should be a perfect blend of style, comfort, and
                 durability. Our mission is to create shoes that not only look good but feel good too, allowing you to
                 put your best foot forward every day.
               </p>
@@ -93,23 +142,28 @@ export default function AboutPage() {
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold mb-4 text-[#1A1A1A] dark:text-[#EAEAEA]">Our Team</h2>
             <p className="mb-8 text-[#4A3C31] dark:text-[#C0C0C0]">
-              Meet the passionate individuals behind ModernKicks who work tirelessly to bring you the best footwear
+              Meet the passionate individuals behind Pico who work tirelessly to bring you the best footwear
               experience.
             </p>
           </div>
-          <div className="grid md:grid-cols-4 gap-6">
-            {[1, 2, 3, 4].map((i) => (
-              <div key={i} className="text-center">
-                <div className="relative h-64 w-64 mx-auto rounded-full overflow-hidden mb-4 shadow-md">
+          <div className="grid grid-cols-5 gap-4">
+            {TEAM_MEMBERS.map((member) => (
+              <div 
+                key={member.id} 
+                className="text-center cursor-pointer transform transition-transform hover:scale-105"
+                onClick={() => handleOpenMemberDialog(member)}
+              >
+                <div className="relative h-48 w-48 mx-auto rounded-full overflow-hidden mb-3 shadow-md">
                   <Image
-                    src={`/placeholder.svg?height=300&width=300&text=Team Member ${i}`}
-                    alt={`Team member ${i}`}
+                    src={member.imageSrc}
+                    alt={member.name}
                     fill
                     className="object-cover"
                   />
                 </div>
-                <h3 className="text-xl font-bold text-[#1A1A1A] dark:text-[#EAEAEA]">Team Member {i}</h3>
-                <p className="text-[#D4AF37] dark:text-[#C77C48]">Position</p>
+                <h3 className="text-lg font-bold text-[#1A1A1A] dark:text-[#EAEAEA]">{member.name}</h3>
+                <p className="text-sm text-[#D4AF37] dark:text-[#C77C48]">{member.position}</p>
+                <p className="mt-1 text-xs text-[#4A3C31] dark:text-[#C0C0C0]">Click to learn more</p>
               </div>
             ))}
           </div>
@@ -134,7 +188,7 @@ export default function AboutPage() {
                 {
                   year: "2010",
                   title: "The Beginning",
-                  description: "ModernKicks was founded with a vision to create stylish, comfortable footwear.",
+                  description: "Pico was founded with a vision to create stylish, comfortable footwear.",
                 },
                 {
                   year: "2013",
@@ -188,6 +242,13 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Team Member Dialog */}
+      <TeamMemberDialog 
+        member={selectedMember} 
+        isOpen={dialogOpen} 
+        onClose={handleCloseDialog} 
+      />
     </main>
   )
 }
