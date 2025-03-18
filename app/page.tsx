@@ -69,12 +69,6 @@ export default function HomePage() {
       {/* Hero Product Call To Action */}
       <ProductCTA />
 
-      {/* Promo Section */}
-      <PromoSection />
-
-      {/* Newsletter */}
-      <NewsletterSection />
-
       {/* Scroll to Top Button */}
       <ScrollToTop />
     </main>

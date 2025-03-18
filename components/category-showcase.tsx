@@ -20,7 +20,7 @@ export default function CategoryShowcase() {
       image: "/images/homepage/men.png",
       color: "bg-[#666666]",
       textColor: "text-white",
-      link: "/mens",
+      link: "/products",
     },
     {
       id: "womens",
@@ -28,7 +28,7 @@ export default function CategoryShowcase() {
       image: "/images/homepage/women.png",
       color: "bg-pink-500",
       textColor: "text-white",
-      link: "/womens",
+      link: "/products",
     },
     {
       id: "kids",
@@ -36,7 +36,7 @@ export default function CategoryShowcase() {
       image: "/images/homepage/kid.png",
       color: "bg-blue-500",
       textColor: "text-white",
-      link: "/kids",
+      link: "/products",
     },
   ]
 
@@ -90,11 +90,7 @@ export default function CategoryShowcase() {
                 >
                   <motion.h3 className={`text-2xl font-bold ${category.textColor} mb-2`}>{category.name}</motion.h3>
                   <motion.p className={`${category.textColor} mb-4 opacity-80`}>Latest collection</motion.p>
-                  <motion.span
-                    className={`inline-block ${category.textColor} font-medium text-sm underline group-hover:translate-x-2 transition-transform duration-300`}
-                  >
-                    Shop Now
-                  </motion.span>
+
                 </motion.div>
               </Link>
             </motion.div>

@@ -43,7 +43,7 @@ export default function ProductCTA() {
                 <span>Durable construction for long-lasting wear</span>
               </li>
             </ul>
-            <Link href="/products/1" className="inline-flex items-center text-primary font-medium group">
+            <Link href="/products" className="inline-flex items-center text-primary font-medium group">
               Explore the Collection
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
