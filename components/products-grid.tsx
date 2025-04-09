@@ -85,7 +85,7 @@ export default function ProductsGrid({
   const [selectedColors, setSelectedColors] = useState<string[]>([])
   const [selectedSizes, setSelectedSizes] = useState<string[]>([])
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
-  
+
   // Filter sheet state
   const [isFilterOpen, setIsFilterOpen] = useState(false)
   
@@ -308,21 +308,23 @@ export default function ProductsGrid({
 
   return (
     <div>
-      <div className="flex justify-between items-center mb-8">
-        {!hideSearch && (
-          <div className="relative max-w-md">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-3 md:gap-0 mb-8">
+      {!hideSearch && (
+          <div className="relative w-full md:max-w-md">
             <SearchIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
             <Input
               type="text"
               placeholder="Search products..."
-              className="pl-10 border-none bg-white dark:bg-gray-900 shadow-sm rounded-full min-w-[280px]"
+              className="pl-10 border-none bg-white dark:bg-gray-900 shadow-sm rounded-full w-full md:min-w-[280px]"
               value={searchQuery}
               onChange={handleSearch}
+              autoComplete="off"
+              style={{ fontSize: '16px' }}
             />
-          </div>
-        )}
+        </div>
+      )}
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 self-start md:self-auto">
           <div className="hidden md:block">
             <Select value={sortBy} onValueChange={handleSortChange}>
               <SelectTrigger className="bg-white dark:bg-gray-800 border-none min-w-[180px] shadow-sm">
@@ -357,17 +359,17 @@ export default function ProductsGrid({
                 <div>
                   <h3 className="text-lg font-medium mb-4">Sort By</h3>
                   <div className="grid grid-cols-2 gap-2">
-                    <Button
+              <Button
                       variant={sortBy === "featured" ? "default" : "outline"}
                       onClick={() => handleSortChange("featured")}
-                      className={sortBy === "featured" ? "text-white" : ""}
-                    >
+                      className={sortBy === "featured" ? "bg-[#aa0202] text-[#f4edca] dark:bg-[#8a0505] dark:text-[#f4edca]" : ""}
+              >
                       Featured
-                    </Button>
+              </Button>
                     <Button
                       variant={sortBy === "newest" ? "default" : "outline"}
                       onClick={() => handleSortChange("newest")}
-                      className={sortBy === "newest" ? "text-white" : ""}
+                      className={sortBy === "newest" ? "bg-[#aa0202] text-[#f4edca] dark:bg-[#8a0505] dark:text-[#f4edca]" : ""}
                     >
                       Newest
                     </Button>
@@ -385,8 +387,8 @@ export default function ProductsGrid({
                             onClick={() => togglePendingCategory(cat)}
                             className={`h-4 w-4 rounded border cursor-pointer transition-colors duration-200 ${
                               pendingCategories.includes(cat)
-                                ? "bg-black dark:bg-white border-transparent"
-                                : "border-gray-400 dark:border-gray-600"
+                                ? "bg-[#aa0202] dark:bg-[#cb0000] border-transparent"
+                                : "border-[#8a0505] dark:border-[#aa0202]"
                             }`}
                           >
                             {pendingCategories.includes(cat) && (
@@ -398,7 +400,7 @@ export default function ProductsGrid({
                                 strokeWidth="2"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                                className="text-white dark:text-black"
+                                className="text-[#f4edca] dark:text-[#f4edca]"
                               >
                                 <polyline points="20 6 9 17 4 12"></polyline>
                               </svg>
@@ -422,8 +424,8 @@ export default function ProductsGrid({
                             onClick={() => togglePendingType(type)}
                             className={`h-4 w-4 rounded border cursor-pointer transition-colors duration-200 ${
                               pendingTypes.includes(type)
-                                ? "bg-black dark:bg-white border-transparent"
-                                : "border-gray-400 dark:border-gray-600"
+                                ? "bg-[#aa0202] dark:bg-[#cb0000] border-transparent"
+                                : "border-[#8a0505] dark:border-[#aa0202]"
                             }`}
                           >
                             {pendingTypes.includes(type) && (
@@ -435,7 +437,7 @@ export default function ProductsGrid({
                                 strokeWidth="2"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                                className="text-white dark:text-black"
+                                className="text-[#f4edca] dark:text-[#f4edca]"
                               >
                                 <polyline points="20 6 9 17 4 12"></polyline>
                               </svg>
@@ -456,7 +458,7 @@ export default function ProductsGrid({
                       <div
                         key={color}
                         className={`${getColorStyle(color)} ${
-                          pendingColors.includes(color) ? "ring-2 ring-black dark:ring-white ring-offset-2" : ""
+                          pendingColors.includes(color) ? "ring-2 ring-[#aa0202] dark:ring-[#cb0000] ring-offset-2" : ""
                         }`}
                         onClick={() => togglePendingColor(color)}
                       />
@@ -469,7 +471,7 @@ export default function ProductsGrid({
                   <div>
                     <div className="flex justify-between items-center mb-4">
                       <h3 className="text-lg font-medium">Sizes</h3>
-                      <SizeChartDialog 
+                      <SizeChartDialog
                         type={isClothingSelected ? "clothing" : "footwear"} 
                         category={category}
                       />
@@ -480,8 +482,8 @@ export default function ProductsGrid({
                           key={size}
                           className={`px-3 py-2 border rounded-md text-sm cursor-pointer transition-colors duration-200 ${
                             pendingSizes.includes(size)
-                              ? "bg-black text-white dark:bg-white dark:text-black border-transparent"
-                              : "border-gray-300 dark:border-gray-700 hover:border-gray-400"
+                              ? "bg-[#aa0202] dark:bg-[#cb0000] text-[#f4edca] border-transparent"
+                              : "border-[#8a0505] dark:border-[#aa0202] hover:border-[#aa0202]"
                           }`}
                           onClick={() => togglePendingSize(size)}
                         >
@@ -491,14 +493,14 @@ export default function ProductsGrid({
                     </div>
                   </div>
                 )}
-              </div>
+                </div>
 
               <div className="border-t pt-4 mt-6">
                 <div className="flex gap-4">
                   <Button variant="outline" className="flex-1" onClick={clearAllFilters}>
                     Clear All
                   </Button>
-                  <Button className="flex-1" onClick={applyFilters}>
+                  <Button className="flex-1 bg-[#aa0202] text-[#f4edca] hover:bg-[#8a0505] dark:bg-[#8a0505] dark:hover:bg-[#aa0202]" onClick={applyFilters}>
                     Apply Filters
                   </Button>
                 </div>
@@ -515,22 +517,22 @@ export default function ProductsGrid({
           transition={{ duration: 0.3 }}
           className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10 ${THEME_CLASSES[theme]}`}
         >
-          {filteredProducts.length > 0 ? (
-            filteredProducts.map((product) => (
+            {filteredProducts.length > 0 ? (
+              filteredProducts.map((product) => (
               <ProductCard
-                key={product.id}
+                  key={product.id}
                 product={product}
                 theme={theme}
               />
-            ))
-          ) : (
+              ))
+            ) : (
             <div className="col-span-full text-center py-16">
               <h3 className="text-xl font-medium mb-2">No products found</h3>
               <p className="text-gray-500 dark:text-gray-400">Try adjusting your search or filter criteria</p>
             </div>
           )}
-        </motion.div>
-      </AnimatePresence>
+              </motion.div>
+          </AnimatePresence>
     </div>
   )
 }

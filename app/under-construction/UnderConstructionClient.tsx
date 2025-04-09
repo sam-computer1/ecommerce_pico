@@ -92,7 +92,7 @@ export default function UnderConstructionClient() {
                 transition={{ duration: 0.5, delay: 0.6 }}
                 className="flex flex-col sm:flex-row gap-4 justify-center"
               >
-                <Button asChild className="group">
+                <Button asChild className="group text-black dark:text-white">
                   <Link href="/">
                     <ArrowLeft className="mr-2 h-4 w-4 group-hover:-translate-x-1 transition-transform" />
                     Return to Home

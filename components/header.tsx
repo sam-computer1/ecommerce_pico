@@ -5,7 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { usePathname } from "next/navigation"
-import { Menu, X, Search } from "lucide-react"
+import { Menu, X, Search, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { motion, AnimatePresence } from "framer-motion"
@@ -16,9 +16,11 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
+  const [isServicesOpen, setIsServicesOpen] = useState(false)
   const pathname = usePathname()
   const router = useRouter()
   const headerRef = useRef<HTMLElement>(null)
+  const servicesRef = useRef<HTMLDivElement>(null)
 
   // Check if we've scrolled down
   useEffect(() => {
@@ -35,8 +37,32 @@ export default function Header() {
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
-        setIsSearchOpen(false)
+      try {
+        if (isSearchOpen && headerRef.current) {
+          const searchContainer = headerRef.current.querySelector('.search-container');
+          const target = event.target as Element;
+          const isClickingSearchContainer = searchContainer && searchContainer.contains(target);
+          const isClickingSearchToggle = target.closest('button')?.classList.contains('search-toggle');
+          
+          if (!isClickingSearchContainer && !isClickingSearchToggle) {
+            setIsSearchOpen(false);
+          }
+        }
+      } catch (error) {
+        // Fallback if there's an error in querySelector or classList
+        console.error("Error in click handler:", error);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isSearchOpen]);
+
+  // Handle click outside for services dropdown
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (servicesRef.current && !servicesRef.current.contains(event.target as Node)) {
+        setIsServicesOpen(false)
       }
     }
 
@@ -72,8 +98,8 @@ export default function Header() {
   return (
     <header
       ref={headerRef}
-      className={`fixed top-0 left-0 right-0 z-[100] w-full transition-all duration-300 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md ${
-        isScrolled ? "bg-white dark:bg-gray-900 shadow-md" : ""
+      className={`fixed top-0 left-0 right-0 z-[100] w-full transition-all duration-300 bg-background ${
+        isScrolled ? "shadow-md" : ""
       }`}
     >
       <div className="container mx-auto px-4">
@@ -90,7 +116,7 @@ export default function Header() {
               >
                 <Image 
                   src="/placeholder-logo.png" 
-                  alt="Pico Logo" 
+                  alt="PICo. Logo" 
                   width={120} 
                   height={40} 
                   className="h-10 w-auto dark:brightness-110 dark:contrast-125"
@@ -109,41 +135,66 @@ export default function Header() {
             <motion.div whileHover={{ y: -2 }}>
               <Link
                 href="/"
-                className={`text-sm font-medium hover:text-primary transition-colors ${
-                  pathname === "/" ? "text-primary" : "text-gray-700 dark:text-gray-200"
+                className={`text-sm font-medium hover:text-accent-1 dark:hover:text-[#f4edca] transition-colors ${
+                  pathname === "/" ? "text-accent-1 dark:text-[#f4edca]" : "text-accent-3 dark:text-[#f4edca]"
                 }`}
               >
                 Home
               </Link>
             </motion.div>
 
-            <motion.div whileHover={{ y: -2 }}>
-              <Link
-                href="/products"
-                className={`text-sm font-medium hover:text-primary transition-colors ${
-                  pathname === "/products" ? "text-primary" : "text-gray-700 dark:text-gray-200"
+            <motion.div 
+              whileHover={{ y: -2 }}
+              ref={servicesRef}
+              className="relative"
+              onMouseEnter={() => setIsServicesOpen(true)}
+              onMouseLeave={() => setIsServicesOpen(false)}
+            >
+              <button
+                className={`text-sm font-medium hover:text-accent-1 dark:hover:text-[#f4edca] transition-colors flex items-center gap-1 ${
+                  pathname.startsWith("/product") ? "text-accent-1 dark:text-[#f4edca]" : "text-accent-3 dark:text-[#f4edca]"
                 }`}
               >
-                All Products
-              </Link>
-            </motion.div>
+                Our Services
+                <ChevronDown className="h-4 w-4" />
+              </button>
 
-            <motion.div whileHover={{ y: -2 }}>
-              <Link
-                href="/about"
-                className={`text-sm font-medium hover:text-primary transition-colors ${
-                  pathname === "/about" ? "text-primary" : "text-gray-700 dark:text-gray-200"
-                }`}
-              >
-                About
-              </Link>
+              {/* Dropdown Menu */}
+              <AnimatePresence>
+                {isServicesOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-0 mt-2 w-48 bg-background border border-border rounded-md shadow-lg py-2 z-50"
+                  >
+                    <Link
+                      href="/product"
+                      className={`block px-4 py-2 text-sm hover:bg-accent-3/10 transition-colors ${
+                        pathname === "/product" ? "text-accent-1 dark:text-[#f4edca]" : "text-accent-3 dark:text-[#f4edca]"
+                      }`}
+                    >
+                      Featured Products
+                    </Link>
+                    <Link
+                      href="/products"
+                      className={`block px-4 py-2 text-sm hover:bg-accent-3/10 transition-colors ${
+                        pathname === "/products" ? "text-accent-1 dark:text-[#f4edca]" : "text-accent-3 dark:text-[#f4edca]"
+                      }`}
+                    >
+                      All Products
+                    </Link>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
 
             <motion.div whileHover={{ y: -2 }}>
               <Link
                 href="/contact"
-                className={`text-sm font-medium hover:text-primary transition-colors ${
-                  pathname === "/contact" ? "text-primary" : "text-gray-700 dark:text-gray-200"
+                className={`text-sm font-medium hover:text-accent-1 dark:hover:text-[#f4edca] transition-colors ${
+                  pathname === "/contact" ? "text-accent-1 dark:text-[#f4edca]" : "text-accent-3 dark:text-[#f4edca]"
                 }`}
               >
                 Contact
@@ -168,10 +219,15 @@ export default function Header() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="relative hover:bg-transparent dark:hover:bg-transparent transition-colors"
-                onClick={() => setIsSearchOpen(!isSearchOpen)}
+                className="relative hover:bg-transparent transition-colors search-toggle"
+                onClick={() => {
+                  setIsSearchOpen(!isSearchOpen);
+                  if (isMobileMenuOpen) {
+                    setIsMobileMenuOpen(false);
+                  }
+                }}
               >
-                <Search className="h-5 w-5 dark:text-gray-200" />
+                <Search className="h-5 w-5 text-black dark:text-[#f4edca]" />
               </Button>
             </motion.div>
 
@@ -180,13 +236,18 @@ export default function Header() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="md:hidden hover:bg-transparent dark:hover:bg-transparent transition-colors"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="md:hidden hover:bg-transparent transition-colors"
+                onClick={() => {
+                  setIsMobileMenuOpen(!isMobileMenuOpen);
+                  if (isSearchOpen) {
+                    setIsSearchOpen(false);
+                  }
+                }}
               >
                 {isMobileMenuOpen ? (
-                  <X className="h-6 w-6 dark:text-gray-200" />
+                  <X className="h-6 w-6 text-accent-2 dark:text-[#f4edca]" />
                 ) : (
-                  <Menu className="h-6 w-6 dark:text-gray-200" />
+                  <Menu className="h-6 w-6 text-accent-2 dark:text-[#f4edca]" />
                 )}
               </Button>
             </motion.div>
@@ -202,21 +263,24 @@ export default function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900"
+            className="border-t border-border bg-background search-container"
+            data-testid="search-container"
           >
             <div className="container mx-auto px-4 py-4">
               <form onSubmit={handleSearchSubmit} className="flex gap-2">
                 <Input
                   type="search"
                   placeholder="Search for products..."
-                  className="flex-1 dark:bg-gray-800 dark:text-gray-200 dark:border-gray-700"
+                  className="flex-1 bg-background text-foreground border-border"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  autoFocus
+                  autoComplete="off"
+                  style={{ fontSize: '16px' }}
+                  autoFocus={window.innerWidth > 768}
                 />
                 <Button
                   type="submit"
-                  className="shadow-md hover:shadow-lg transition-all dark:bg-primary dark:text-white"
+                  className="bg-black text-white dark:bg-accent-1 dark:hover:bg-accent-2 shadow-md hover:shadow-lg transition-all"
                 >
                   Search
                 </Button>
@@ -234,47 +298,47 @@ export default function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden fixed top-16 left-0 right-0 bg-white dark:bg-gray-900 border-t dark:border-gray-700 overflow-y-auto max-h-[calc(100vh-4rem)] z-50"
+            className="md:hidden fixed top-16 left-0 right-0 bg-background border-t border-border overflow-y-auto max-h-[calc(100vh-4rem)] z-50"
           >
             <div className="container mx-auto px-4 py-4">
               <Link
                 href="/"
-                className={`block py-3 text-base ${pathname === "/" ? "text-primary font-medium" : "text-gray-700 dark:text-gray-200"}`}
+                className={`block py-3 text-base ${pathname === "/" ? "text-accent-1 font-medium" : "text-accent-3"} dark:text-[#f4edca]`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Home
               </Link>
 
-              <Link
-                href="/products"
-                className={`block py-3 text-base ${pathname === "/products" ? "text-primary font-medium" : "text-gray-700 dark:text-gray-200"}`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                All Products
-              </Link>
+              <div className="py-3">
+                <div className="text-base font-medium text-accent-3 dark:text-[#f4edca] mb-2">Our Services</div>
+                <div className="pl-4 space-y-2">
+                  <Link
+                    href="/product"
+                    className={`block py-2 text-base ${pathname === "/product" ? "text-accent-1 font-medium" : "text-accent-3"} dark:text-[#f4edca]`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Featured Products
+                  </Link>
+                  <Link
+                    href="/products"
+                    className={`block py-2 text-base ${pathname === "/products" ? "text-accent-1 font-medium" : "text-accent-3"} dark:text-[#f4edca]`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    All Products
+                  </Link>
+                </div>
+              </div>
 
               <Link
-                href="/about"
-                className={`block py-3 text-base ${pathname === "/about" ? "text-primary font-medium" : "text-gray-700 dark:text-gray-200"}`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                About
-              </Link>
-
-              <Link
-                href="/contact"
-                className={`block py-3 text-base ${pathname === "/contact" ? "text-primary font-medium" : "text-gray-700 dark:text-gray-200"}`}
+                href="/contact" 
+                className={`block py-3 text-base ${pathname === "/contact" ? "text-accent-1 font-medium" : "text-accent-3"} dark:text-[#f4edca]`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Contact
               </Link>
 
-              <div className="border-t border-gray-200 dark:border-gray-700 mt-3 pt-3">
-                {/* Theme toggle in mobile menu */}
-                <div className="flex items-center justify-between py-3">
-                  <span className="text-base text-gray-700 dark:text-gray-200">Theme</span>
-                  <ThemeToggle />
-                </div>
+              <div className="pt-4 mt-4 border-t border-border">
+                <ThemeToggle />
               </div>
             </div>
           </motion.div>

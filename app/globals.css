@@ -4,48 +4,63 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
+    --background: 48, 92%, 93%;          /* #f4edca - Light mode background */
+    --foreground: 0, 88%, 22%;           /* #690707 - Light mode foreground */
+    
+    --accent-1: 0, 100%, 40%;            /* #cb0000 - Accent color 1 */
+    --accent-2: 0, 99%, 33%;             /* #aa0202 - Accent color 2 */
+    --accent-3: 0, 96%, 28%;             /* #8a0505 - Accent color 3 */
+    
+    --card: 48, 92%, 98%;               
+    --card-foreground: 0, 88%, 22%;      /* Same as foreground */
+    
+    --primary: 0, 100%, 40%;             /* Using accent-1 as primary */
+    --primary-foreground: 48, 92%, 93%;  /* Using background as primary foreground */
+    
+    --secondary: 48, 92%, 88%;           /* Slightly darker than background */
+    --secondary-foreground: 0, 88%, 22%; /* Same as foreground */
+    
+    --muted: 48, 70%, 85%;
+    --muted-foreground: 0, 88%, 32%;     /* Slightly lighter than foreground */
+    
+    --accent: 0, 96%, 28%;               /* Using accent-3 as accent */
+    --accent-foreground: 48, 92%, 93%;   /* Using background as accent foreground */
+    
+    --destructive: 0, 100%, 40%;         /* Using accent-1 as destructive */
+    --destructive-foreground: 48, 92%, 93%; /* Using background as destructive foreground */
+    
+    --border: 48, 70%, 80%;
+    --input: 48, 70%, 80%;
+    --ring: 0, 88%, 22%;                 /* Same as foreground */
+    
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 240 10% 7%; /* #121212 equivalent */
-    --foreground: 0 0% 92%; /* #EAEAEA equivalent */
-    --card: 240 10% 10%; /* Slightly lighter than background */
-    --card-foreground: 0 0% 92%;
-    --popover: 240 10% 7%;
-    --popover-foreground: 0 0% 92%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 20%; /* Slightly lighter for contrast */
-    --secondary-foreground: 0 0% 92%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 70%;
-    --accent: 217.2 32.6% 20%;
-    --accent-foreground: 0 0% 92%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 92%;
-    --border: 240 10% 20%;
-    --input: 240 10% 20%;
-    --ring: 224.3 76.3% 48%;
+    --background: 0, 88%, 22%;           /* #690707 - Dark mode background */
+    --foreground: 48, 92%, 93%;          /* #f4edca - Dark mode foreground */
+    
+    --card: 0, 88%, 17%;
+    --card-foreground: 48, 92%, 93%;     /* Same as foreground */
+    
+    --primary: 48, 92%, 88%;             /* Slightly darker than foreground */
+    --primary-foreground: 0, 88%, 22%;   /* Using background as primary foreground */
+    
+    --secondary: 0, 88%, 27%;            /* Slightly lighter than background */
+    --secondary-foreground: 48, 92%, 93%; /* Same as foreground */
+    
+    --muted: 0, 70%, 32%;
+    --muted-foreground: 48, 92%, 83%;    /* Slightly darker than foreground */
+    
+    --accent: 48, 92%, 83%;
+    --accent-foreground: 0, 88%, 22%;    /* Using background as accent foreground */
+    
+    --destructive: 0, 100%, 50%;
+    --destructive-foreground: 48, 92%, 93%; /* Using foreground */
+    
+    --border: 0, 70%, 30%;
+    --input: 0, 70%, 30%;
+    --ring: 48, 92%, 83%;                /* Slightly darker than foreground */
   }
 }
 
@@ -55,59 +70,20 @@
   }
   body {
     @apply bg-background text-foreground transition-colors duration-300;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    width: 100%; /* Ensure full width */
+    position: relative; /* For proper containment */
   }
-
-  .dark body {
-    @apply text-gray-200 bg-[#121212];
+  
+  /* Mobile viewport fixes */
+  input, textarea, select {
+    font-size: 16px !important; /* Prevents zoom on iOS */
   }
-
-  /* Improve dark mode input, select, and textarea styling */
-  .dark input,
-  .dark textarea,
-  .dark select {
-    @apply bg-gray-800 border-gray-700 text-gray-200;
-  }
-
-  /* Improve dark mode button styling */
-  .dark button:not(.btn-primary) {
-    @apply bg-gray-800 border-gray-700 text-gray-200 hover:bg-gray-700;
-  }
-
-  /* Improve dark mode card styling */
-  .dark .card,
-  .dark .bg-white {
-    @apply bg-gray-800 text-gray-200 border-gray-700;
-  }
-
-  /* Improve dark mode dropdown styling */
-  .dark [data-state="open"] > [data-radix-dropdown-menu-content],
-  .dark [data-radix-popper-content-wrapper] {
-    @apply bg-gray-800 border-gray-700;
-  }
-
-  /* Improve dark mode checkbox styling */
-  .dark [data-radix-checkbox-root][data-state="checked"] {
-    @apply bg-primary border-primary;
-  }
-
-  /* Fix for popover content in dark mode */
-  .dark [role="tooltip"],
-  .dark [role="dialog"] {
-    @apply bg-gray-800 text-gray-200 border-gray-700;
-  }
-
-  /* Fix for radix-ui components in dark mode */
-  .dark [data-radix-select-viewport],
-  .dark [data-radix-dropdown-menu-content],
-  .dark [data-radix-popover-content] {
-    @apply bg-gray-800 text-gray-200 border-gray-700;
-  }
-
-  /* Improve dark mode shadow */
-  .dark .shadow-md,
-  .dark .shadow-lg,
-  .dark .shadow-xl {
-    --tw-shadow-color: rgba(0, 0, 0, 0.5);
+  
+  /* Ensure content is contained within viewport */
+  html {
+    overflow-x: hidden;
+    width: 100vw;
   }
 }
 
@@ -165,17 +141,31 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-100 dark:bg-gray-800;
+  background-color: hsl(var(--muted));
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-400 dark:bg-gray-600;
+  background-color: #aa0202;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-500 dark:bg-gray-500;
+  background-color: #8a0505;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background-color: #690707;
+  border-radius: 5px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: #cb0000;
+  border-radius: 5px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: #aa0202;
 }
 
 /* Scroll-driven animations */
@@ -207,17 +197,6 @@
   transform: scale(1.08);
 }
 
-/* Color themes */
-.theme-pink {
-  --primary: 330 73% 50%;
-  --primary-foreground: 330 73% 95%;
-}
-
-.theme-blue {
-  --primary: 220 80% 50%;
-  --primary-foreground: 220 80% 95%;
-}
-
 /* Add a shining animation effect for buttons */
 @keyframes shine {
   0% {
@@ -234,271 +213,60 @@
   animation: shine 2s infinite;
 }
 
-.btn-shine:hover {
-  background-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  background-size: 200% 100%;
-  animation: shine 1.5s infinite;
-}
-
-/* Add glossy effect to premium products */
-.glossy-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.glossy-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transform: skewX(-25deg);
-  transition: 0.75s all ease;
-  z-index: 1;
-}
-
-.glossy-card:hover::before {
-  left: 125%;
-}
-
-/* Add custom scrollbar for filter section */
+/* Filter scrollbar for product filters */
 .filter-scrollbar::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
 
 .filter-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
+  background-color: hsl(var(--muted));
+  border-radius: 3px;
 }
 
 .filter-scrollbar::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 dark:bg-gray-600;
+  background-color: #aa0202;
   border-radius: 3px;
 }
 
 .filter-scrollbar::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-400 dark:bg-gray-500;
+  background-color: #8a0505;
 }
 
-/* For Firefox */
+.dark .filter-scrollbar::-webkit-scrollbar-track {
+  background-color: #690707;
+  border-radius: 3px;
+}
+
+.dark .filter-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #cb0000;
+  border-radius: 3px;
+}
+
+.dark .filter-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #aa0202;
+}
+
 .filter-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+  scrollbar-color: #aa0202 hsl(var(--muted));
 }
 
-/* Enhanced dark mode styles */
-.dark .product-card {
-  background-color: rgb(31, 41, 55); /* bg-gray-800 */
-  color: white;
-  border-color: rgb(55, 65, 81); /* border-gray-700 */
+.dark .filter-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #cb0000 #690707;
 }
 
-.dark .product-card:hover {
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+/* Helper classes for accent text colors */
+.text-accent-1 {
+  color: hsl(var(--accent-1));
 }
 
-/* Responsive image handling */
-.responsive-image {
-  @apply w-full h-auto object-cover transition-all duration-300;
-  aspect-ratio: 16 / 9;
+.text-accent-2 {
+  color: hsl(var(--accent-2));
 }
 
-@media (max-width: 640px) {
-  .responsive-image {
-    aspect-ratio: 1 / 1;
-  }
-}
-
-/* Improved mobile containers */
-.mobile-container {
-  @apply px-4 sm:px-6 md:px-8 w-full max-w-full sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl mx-auto;
-}
-
-/* Theme toggle animation */
-.theme-toggle-icon {
-  @apply transition-transform duration-500;
-}
-
-.theme-toggle-icon.dark {
-  @apply rotate-180;
-}
-
-/* Improved button focus states */
-button:focus-visible,
-a:focus-visible {
-  @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
-}
-
-/* Dark mode transitions */
-.dark-transition {
-  @apply transition-colors duration-300;
-}
-
-/* Improved dark mode styling for UI components */
-.dark .bg-white,
-.dark .bg-gray-50,
-.dark .bg-gray-100,
-.dark .bg-gray-200 {
-  background-color: rgb(31, 41, 55); /* bg-gray-800 */
-}
-
-.dark .text-black,
-.dark .text-gray-800,
-.dark .text-gray-900 {
-  color: rgb(243, 244, 246); /* text-gray-100 */
-}
-
-.dark .text-gray-500,
-.dark .text-gray-600,
-.dark .text-gray-700 {
-  color: rgb(209, 213, 219); /* text-gray-300 */
-}
-
-.dark .border-gray-100,
-.dark .border-gray-200,
-.dark .border-gray-300 {
-  border-color: rgb(55, 65, 81); /* border-gray-700 */
-}
-
-/* Dark mode for components */
-.dark .dialog-content,
-.dark .popover-content,
-.dark .dropdown-content,
-.dark .select-content {
-  background-color: rgb(31, 41, 55); /* bg-gray-800 */
-  border-color: rgb(55, 65, 81); /* border-gray-700 */
-}
-
-/* Dark mode for form elements */
-.dark input,
-.dark select,
-.dark textarea {
-  background-color: rgb(31, 41, 55); /* bg-gray-800 */
-  border-color: rgb(55, 65, 81); /* border-gray-700 */
-  color: rgb(229, 231, 235); /* text-gray-200 */
-}
-
-/* Dark mode for buttons */
-.dark .btn,
-.dark .button,
-.dark button:not(.btn-primary, [data-variant="default"]) {
-  background-color: rgb(17, 24, 39);/* bg-gray-800 */
-  color: rgb(229, 231, 235); /* text-gray-200 */
-  border-color: rgb(55, 65, 81); /* border-gray-700 */
-}
-
-.dark .btn:hover,
-.dark .button:hover,
-.dark button:not(.btn-primary, [data-variant="default"]):hover {
-  background-color: rgb(17,24,39); /* hover:bg-gray-700 */
-}
-
-/* Special case for primary buttons */
-.dark .btn-primary,
-.dark [data-variant="default"] {
-  background-color: hsl(var(--primary));
-  color: hsl(var(--primary-foreground));
-}
-
-.dark .btn-primary:hover,
-.dark [data-variant="default"]:hover {
-  background-color: hsl(var(--primary) / 0.9);
-}
-
-/* Custom dark mode for specific pages */
-.dark .product-detail,
-.dark .checkout-form,
-.dark .cart-content,
-.dark .account-section {
-  background-color: rgb(17, 24, 39); /* bg-gray-900 */
-}
-
-/* Dark mode fix for ShadCN UI components */
-.dark [data-radix-popper-content-wrapper],
-.dark [role="dialog"],
-.dark [role="menu"] {
-  background-color: rgb(31, 41, 55) !important; /* bg-gray-800 */
-  border-color: rgb(55, 65, 81) !important; /* border-gray-700 */
-  color: rgb(229, 231, 235) !important; /* text-gray-200 */
-}
-
-/* Fix for dark theme on specific elements */
-.dark .sticky-header {
-  background-color: rgb(17, 24, 39); /* bg-gray-900 */
-  border-color: rgb(31, 41, 55); /* border-gray-800 */
-}
-
-.dark .footer {
-  background-color: rgb(17, 24, 39); /* bg-gray-900 */
-  color: rgb(209, 213, 219); /* text-gray-300 */
-}
-
-/* Fix for overlay elements in dark mode */
-.dark .modal-overlay,
-.dark .drawer-overlay {
-  background-color: rgba(0, 0, 0, 0.7); /* bg-black/70 */
-}
-
-/* Fix for icons in dark mode */
-.dark svg:not(.text-primary, .fill-current) {
-  color: rgb(209, 213, 219); /* text-gray-300 */
-}
-
-/* Theme specific adjustments for dark mode */
-.dark .pink-theme {
-  background-color: rgb(131, 24, 67); /* bg-pink-900 */
-}
-
-.dark .blue-theme {
-  background-color: rgb(30, 58, 138); /* bg-blue-900 */
-}
-
-.dark .gray-theme {
-  background-color: rgb(17, 24, 39); /* bg-gray-900 */
-}
-
-/* Fix for product cards in dark mode */
-.dark .product-card {
-  @apply bg-gray-800 border-gray-700;
-}
-
-/* Fix for background elements in dark mode */
-.dark .bg-gray-50 {
-  @apply bg-gray-900;
-}
-
-/* Fix for text colors in dark mode */
-.dark .text-gray-800, 
-.dark .text-gray-900 {
-  @apply text-gray-100;
-}
-
-/* Fix for hero sections in dark mode */
-.dark [style*="background-image"] {
-  @apply after:absolute after:inset-0 after:bg-black/40 after:z-[1];
-}
-
-/* Fix for dropdown menus in dark mode */
-.dark [data-state="open"] [data-radix-dropdown-menu-content],
-.dark [data-state="open"] [data-radix-select-content] {
-  @apply bg-gray-800 border-gray-700 !important;
-}
-
-/* Fix for form inputs in dark mode */
-.dark .bg-background {
-  @apply bg-gray-900;
-}
-
-/* Fix for dialog content in dark mode */
-.dark [role="dialog"] {
-  @apply bg-gray-800 border-gray-700;
-}
-
-/* Fix for any remaining light backgrounds */
-.dark .bg-white, 
-.dark .bg-gray-50, 
-.dark .bg-gray-100 {
-  @apply bg-gray-800;
+.text-accent-3 {
+  color: hsl(var(--accent-3));
 }
 

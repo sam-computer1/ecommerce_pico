@@ -30,15 +30,15 @@ export default function ContactPage() {
   const [selectedLocation, setSelectedLocation] = useState(STORE_LOCATIONS.newYork)
 
   return (
-    <main className="flex-1 bg-[#FBFBFB] transition-colors duration-300 dark:bg-[#171717] dark:text-[#C0C0C0]">
+    <main className="flex-1 bg-background text-foreground">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl font-bold mb-2 text-[#1A1A1A] dark:text-[#EAEAEA]">Contact Us</h1>
-          <p className="text-lg mb-8 text-[#5E5E5E] dark:text-[#C0C0C0]">
+          <h1 className="text-4xl font-bold mb-2 text-foreground">Contact Us</h1>
+          <p className="text-lg mb-8 text-foreground/80">
             We'd love to hear from you. Please reach out directly to one of our locations.
           </p>
 
-          <h2 className="text-2xl font-semibold mb-4 text-[#1A1A1A] dark:text-[#EAEAEA]">Our Locations</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-foreground">Our Locations</h2>
           
           {/* Horizontal card layout */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

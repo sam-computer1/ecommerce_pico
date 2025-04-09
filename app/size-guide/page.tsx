@@ -393,7 +393,7 @@ export default function SizeGuidePage() {
 
         <div className="mt-10 text-center">
           <p className="text-gray-600 dark:text-gray-400 mb-4">Still have questions about sizing?</p>
-          <Button asChild>
+          <Button asChild className="text-black dark:text-white">
             <Link href="/contact">Contact Our Support Team</Link>
           </Button>
         </div>

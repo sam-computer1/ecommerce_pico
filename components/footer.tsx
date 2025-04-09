@@ -3,62 +3,62 @@ import { Facebook, Twitter, Instagram, Youtube } from "lucide-react"
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-6 dark:bg-[#121212] dark:border-t dark:border-gray-800">
+    <footer className="bg-background text-accent-3 py-6 border-t border-border">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-16">
-          {/* Brand Section */}
-          <div className="text-center">
-            <h3 className="text-3xl font-bold mb-2">Pico</h3>
-            <p className="text-gray-400 text-sm max-w-xs">
+        <div className="flex flex-col md:flex-row justify-between items-start space-y-8 md:space-y-0">
+          {/* Left Section */}
+          <div className="flex-1 max-w-md">
+            <h3 className="text-3xl font-bold mb-2 text-accent-1">PICo.</h3>
+            <p className="text-accent-2 text-sm mb-4">
               Premium footwear for men, women, and kids. Quality, comfort, and style in every step.
             </p>
-            <div className="flex justify-center space-x-4 mt-4">
-              <Link href="#" className="text-gray-400 hover:text-white transition-colors p-1.5 hover:bg-gray-800 rounded-full">
+            <div className="flex space-x-4">
+              <Link href="#" className="text-accent-3 hover:text-accent-1 transition-colors p-1.5 hover:bg-accent-3/10 rounded-full dark:text-[#f4edca] dark:hover:text-accent-1">
                 <Facebook size={20} />
                 <span className="sr-only">Facebook</span>
               </Link>
-              <Link href="#" className="text-gray-400 hover:text-white transition-colors p-1.5 hover:bg-gray-800 rounded-full">
+              <Link href="#" className="text-accent-3 hover:text-accent-1 transition-colors p-1.5 hover:bg-accent-3/10 rounded-full dark:text-[#f4edca] dark:hover:text-accent-1">
                 <Twitter size={20} />
                 <span className="sr-only">Twitter</span>
               </Link>
-              <Link href="#" className="text-gray-400 hover:text-white transition-colors p-1.5 hover:bg-gray-800 rounded-full">
+              <Link href="#" className="text-accent-3 hover:text-accent-1 transition-colors p-1.5 hover:bg-accent-3/10 rounded-full dark:text-[#f4edca] dark:hover:text-accent-1">
                 <Instagram size={20} />
                 <span className="sr-only">Instagram</span>
               </Link>
-              <Link href="#" className="text-gray-400 hover:text-white transition-colors p-1.5 hover:bg-gray-800 rounded-full">
+              <Link href="#" className="text-accent-3 hover:text-accent-1 transition-colors p-1.5 hover:bg-accent-3/10 rounded-full dark:text-[#f4edca] dark:hover:text-accent-1">
                 <Youtube size={20} />
                 <span className="sr-only">Youtube</span>
               </Link>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="flex space-x-8">
+          {/* Right Section */}
+          <div className="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-16">
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider mb-2">Shop</h3>
+              <h3 className="text-sm font-semibold uppercase tracking-wider mb-2 text-accent-1">Shop</h3>
               <ul className="space-y-1.5">
                 <li>
-                  <Link href="/products" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm dark:text-[#f4edca] dark:hover:text-accent-1">
                     All Products
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm dark:text-[#f4edca] dark:hover:text-accent-1">
                     Footwear
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm dark:text-[#f4edca] dark:hover:text-accent-1">
                     Clothing
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm dark:text-[#f4edca] dark:hover:text-accent-1">
                     Accessories
                   </Link>
                 </li>
                 <li>
-                  <Link href="/size-guide" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  <Link href="/size-guide" className="text-accent-3 hover:text-accent-1 transition-colors text-sm dark:text-[#f4edca] dark:hover:text-accent-1">
                     Size Guide
                   </Link>
                 </li>
@@ -66,20 +66,20 @@ export default function Footer() {
             </div>
 
             <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider mb-2">Support</h3>
+              <h3 className="text-sm font-semibold uppercase tracking-wider mb-2 text-accent-1">Support</h3>
               <ul className="space-y-1.5">
                 <li>
-                  <Link href="/contact" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  <Link href="/contact" className="text-accent-3 hover:text-accent-1 transition-colors text-sm dark:text-[#f4edca] dark:hover:text-accent-1">
                     Contact Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/under-construction" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  <Link href="/under-construction" className="text-accent-3 hover:text-accent-1 transition-colors text-sm dark:text-[#f4edca] dark:hover:text-accent-1">
                     FAQs
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" className="text-gray-400 hover:text-white transition-colors text-sm">
+                  <Link href="/" className="text-accent-3 hover:text-accent-1 transition-colors text-sm dark:text-[#f4edca] dark:hover:text-accent-1">
                     About Us
                   </Link>
                 </li>
@@ -88,8 +88,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-6 pt-4 text-center text-gray-500 text-sm">
-          <p>&copy; {new Date().getFullYear()} Pico. All rights reserved.</p>
+        <div className="border-t border-border mt-6 pt-4 text-center text-accent-2 text-sm">
+          <p>&copy; {new Date().getFullYear()} PICo. All rights reserved.</p>
         </div>
       </div>
     </footer>

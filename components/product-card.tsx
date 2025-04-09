@@ -18,16 +18,16 @@ export default function ProductCard({ product, theme = "default" }: { product: P
 
   switch (theme) {
     case "pink":
-      accentColor = "bg-pink-500 hover:bg-pink-600 dark:bg-pink-700 dark:hover:bg-pink-800"
+      accentColor = "bg-pink-500 hover:bg-pink-600"
       break
     case "blue":
-      accentColor = "bg-blue-500 hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-800"
+      accentColor = "bg-blue-500 hover:bg-blue-600"
       break
     case "gray":
-      accentColor = "bg-[#666666] hover:bg-[#555555] dark:bg-gray-700 dark:hover:bg-gray-800"
+      accentColor = "bg-[#666666] hover:bg-[#555555]"
       break
     default:
-      accentColor = "bg-primary hover:bg-primary/90"
+      accentColor = "bg-accent-1 hover:bg-accent-2"
   }
 
   return (
@@ -43,7 +43,7 @@ export default function ProductCard({ product, theme = "default" }: { product: P
           damping: 15,
         },
       }}
-      className="group product-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 dark:border dark:border-gray-700"
+      className="group product-card bg-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-border"
     >
       <div className="relative h-64 overflow-hidden">
         <Image
@@ -53,7 +53,7 @@ export default function ProductCard({ product, theme = "default" }: { product: P
           className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
         {product.isNew && (
-          <span className="absolute top-2 left-2 bg-primary text-white text-xs font-semibold px-2 py-1 rounded z-10">
+          <span className="absolute top-2 left-2 bg-[#690707] dark:bg-[#cb0000] text-[#f4edca] text-xs font-semibold px-2 py-1 rounded z-10">
             NEW
           </span>
         )}
@@ -70,15 +70,15 @@ export default function ProductCard({ product, theme = "default" }: { product: P
       <div className="p-4">
         <div className="flex justify-between items-start">
           <div>
-            <h3 className="font-medium text-gray-900 dark:text-gray-100 mb-1">{product.name}</h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
+            <h3 className="font-medium text-card-foreground mb-1">{product.name}</h3>
+            <p className="text-sm text-muted-foreground mb-2">
               {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
             </p>
           </div>
         </div>
 
         <div className="flex items-center justify-end mt-2">
-          <div className="text-sm text-gray-500 dark:text-gray-400 capitalize">{product.type}</div>
+          <div className="text-sm text-muted-foreground capitalize">{product.type}</div>
         </div>
       </div>
     </motion.div>

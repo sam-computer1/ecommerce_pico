@@ -21,14 +21,14 @@ export default function ThemeToggle() {
     <Button
       variant="ghost"
       size="icon"
-      className="hover:bg-transparent dark:hover:bg-transparent transition-colors"
+      className="hover:bg-transparent transition-colors"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
     >
       {theme === "dark" ? (
-        <Sun className="h-5 w-5 dark:text-gray-200" />
+        <Sun className="h-5 w-5 text-foreground" />
       ) : (
-        <Moon className="h-5 w-5 text-gray-700" />
+        <Moon className="h-5 w-5 text-foreground" />
       )}
     </Button>
   )

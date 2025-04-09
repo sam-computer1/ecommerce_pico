@@ -14,8 +14,8 @@ import Script from "next/script"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Pico - Premium Shoes for Everyone",
-  description: "Discover our collection of premium footwear for men, women, and kids.",
+  title: "PICo. - Premium Shoes for Everyone",
+  description: "Discover premium footwear for all occasions. Shop the latest styles in shoes, sneakers, and boots.",
   icons: '/vite.svg',
 }
 
@@ -27,9 +27,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <Script id="force-light-mode" strategy="beforeInteractive" src="/force-light-mode.js" />
       </head>
-      <body className={`${inter.className} min-h-screen flex flex-col transition-colors duration-300`}>
+      <body className={`${inter.className} min-h-screen flex flex-col transition-colors duration-300 w-full overflow-x-hidden`}>
         <ThemeProvider>
           <CartProvider>
             <WishlistProvider>
