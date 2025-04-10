@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import UnderConstructionClient from "./UnderConstructionClient"
 
 export const metadata: Metadata = {
-  title: "Under Construction - Pico",
+  title: "Under Construction - PICo.",
   description: "This page is currently under construction. Please check back later.",
 }
 

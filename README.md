@@ -1,6 +1,6 @@
-# Pico
+# PICo.
 
-A modern, responsive e-commerce platform built with Next.js, TypeScript, and Tailwind CSS. Pico offers a seamless shopping experience with features like dark mode, responsive design, and a user-friendly interface.
+A modern, responsive e-commerce platform built with Next.js, TypeScript, and Tailwind CSS. PICo. offers a seamless shopping experience with features like dark mode, responsive design, and a user-friendly interface.
 
 ## Features
 

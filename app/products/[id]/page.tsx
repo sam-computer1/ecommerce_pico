@@ -3,14 +3,15 @@ import { products } from "@/lib/products"
 import ProductDetail from "@/components/product-detail"
 import RelatedProducts from "@/components/related-products"
 
-interface PageParams {
+type Props = {
   params: {
-    id: string;
-  };
+    id: string
+  }
 }
 
-export async function generateMetadata({ params }: PageParams) {
-  const product = products.find((p) => p.id.toString() === params.id)
+export async function generateMetadata(props: Props) {
+  const { id } = await props.params
+  const product = products.find((p) => p.id.toString() === id)
 
   if (!product) {
     return {
@@ -25,18 +26,21 @@ export async function generateMetadata({ params }: PageParams) {
   }
 }
 
-export default function ProductPage({ params }: PageParams) {
-  const product = products.find((p) => p.id.toString() === params.id)
+export default async function Page(props: Props) {
+  const { id } = await props.params
+  const product = products.find((p) => p.id.toString() === id)
 
   if (!product) {
     notFound()
   }
 
   // Find related products with the same category
-  const relatedProducts = products.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 4)
+  const relatedProducts = products.filter(
+    (p) => p.category === product.category && p.id !== product.id
+  ).slice(0, 4)
 
   return (
-    <main className="flex-1 bg-white dark:bg-gray-900 dark:bg-gray-900 transition-colors duration-300 transition-colors duration-300">
+    <main className="flex-1 bg-white dark:bg-gray-900 transition-colors duration-300">
       <ProductDetail product={product} />
       <RelatedProducts products={relatedProducts} />
     </main>
