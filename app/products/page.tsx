@@ -10,7 +10,7 @@ export default function ProductsPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10" />
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/images/homepage/productDemo.PNG')" }}
+          style={{ backgroundImage: "url('https://203fr2t3uf9dwcdt.public.blob.vercel-storage.com/Pico_pics/931293a0-d055-4b52-9107-249ddd06f4b8-ak7t3St8BPfgX54FjnmbVgAPgJVV0y.JPG')" }}
         />
         <div className="relative z-20 container mx-auto h-full flex flex-col justify-center items-start px-4 md:px-6">
           <div className="max-w-2xl">
