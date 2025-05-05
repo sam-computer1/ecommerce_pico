@@ -4,54 +4,45 @@ import { MapPin, Phone, Mail, Clock } from "lucide-react"
 import Map from "@/components/map"
 import { useState } from "react"
 
-// Store coordinates for each location
-const STORE_LOCATIONS = {
-  newYork: {
-    lat: 40.758564,
-    lng: -73.989135,
-    name: "New York",
-    address: "Times Square, Manhattan, NY 10036"
-  },
-  shanghai: {
-    lat: 31.230310,
-    lng: 121.471191,
-    name: "Shanghai",
-    address: "Nanjing Road Pedestrian Street, Huangpu District"
-  },
-  mumbai: {
-    lat: 19.063091,
-    lng: 72.831995,
-    name: "Mumbai",
-    address: "Linking Road, Bandra West, Maharashtra"
-  }
+// Store coordinates for Vietnam location
+const STORE_LOCATION = {
+  lat: 40.758564,
+  lng: -73.989135,
+  name: "Vietnam",
+  address: "351/43 Đ. Lê Đại Hành, Phường 11, Quận 11, Hồ Chí Minh 760000, Vietnam"
 }
 
 export default function ContactPage() {
-  const [selectedLocation, setSelectedLocation] = useState(STORE_LOCATIONS.newYork)
+  // No need for state since we only have one location now
+  const location = STORE_LOCATION
 
   return (
     <main className="flex-1 bg-background text-foreground">
       <div className="container mx-auto px-4 py-12 md:py-16">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl font-bold mb-2 text-foreground">Contact Us</h1>
-          <p className="text-lg mb-8 text-foreground/80">
-            We'd love to hear from you. Please reach out directly to one of our locations.
-          </p>
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold mb-2 text-foreground">Contact Us</h1>
+            <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
+              We'd love to hear from you. Please reach out directly to our Vietnam office using the information below.
+            </p>
+          </div>
 
-          <h2 className="text-2xl font-semibold mb-4 text-foreground">Our Locations</h2>
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-semibold mb-6 text-foreground">Our Location</h2>
+          </div>
           
-          {/* Horizontal card layout */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* New York Store */}
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md dark:shadow-gray-900/30 h-full">
+          {/* Single location card layout */}
+          <div className="flex justify-center">
+            {/* Vietnam Store */}
+            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md dark:shadow-gray-900/30 max-w-2xl w-full">
               <div className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-[#1A1A1A] dark:text-[#EAEAEA] mt-1 flex-shrink-0" />
                 <div>
-                  <p className="font-medium text-[#1A1A1A] dark:text-[#EAEAEA]">New York</p>
-                  <p className="text-[#5E5E5E] dark:text-[#C0C0C0]">Times Square, Manhattan, NY 10036</p>
+                  <p className="font-medium text-[#1A1A1A] dark:text-[#EAEAEA]">Vietnam</p>
+                  <p className="text-[#5E5E5E] dark:text-[#C0C0C0]">351/43 Đ. Lê Đại Hành, Phường 11, Quận 11, Hồ Chí Minh 760000, Vietnam</p>
                   <div className="mt-2 text-[#5E5E5E] dark:text-[#C0C0C0]">
-                    <p>Phone: +1 (555) 123-4567</p>
-                    <p>Email: newyork@modernkicks.com</p>
+                    <p>Phone: +84376803008</p>
+                    <p>Email: info@worldofpico.com</p>
                     <p className="mt-1 text-sm">
                       Mon-Fri: 9am - 8pm<br />
                       Sat: 10am - 6pm<br />
@@ -61,49 +52,11 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
-            
-            {/* Shanghai Store */}
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md dark:shadow-gray-900/30 h-full">
-              <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-[#1A1A1A] dark:text-[#EAEAEA] mt-1 flex-shrink-0" />
-                <div>
-                  <p className="font-medium text-[#1A1A1A] dark:text-[#EAEAEA]">Shanghai</p>
-                  <p className="text-[#5E5E5E] dark:text-[#C0C0C0]">Nanjing Road Pedestrian Street, Huangpu District</p>
-                  <div className="mt-2 text-[#5E5E5E] dark:text-[#C0C0C0]">
-                    <p>Phone: +86 21 5555 8888</p>
-                    <p>Email: shanghai@modernkicks.com</p>
-                    <p className="mt-1 text-sm">
-                      Mon-Fri: 10am - 9pm<br />
-                      Sat-Sun: 11am - 8pm
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {/* Mumbai Store */}
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md dark:shadow-gray-900/30 h-full">
-              <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 text-[#1A1A1A] dark:text-[#EAEAEA] mt-1 flex-shrink-0" />
-                <div>
-                  <p className="font-medium text-[#1A1A1A] dark:text-[#EAEAEA]">Mumbai</p>
-                  <p className="text-[#5E5E5E] dark:text-[#C0C0C0]">Linking Road, Bandra West, Maharashtra</p>
-                  <div className="mt-2 text-[#5E5E5E] dark:text-[#C0C0C0]">
-                    <p>Phone: +91 22 3333 4444</p>
-                    <p>Email: mumbai@modernkicks.com</p>
-                    <p className="mt-1 text-sm">
-                      Mon-Sat: 11am - 9pm<br />
-                      Sun: 12pm - 7pm
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
 
-          <div className="mt-8">
-            <h3 className="text-xl font-semibold mb-4 text-[#1A1A1A] dark:text-[#EAEAEA]">Follow Us</h3>
-            <div className="flex space-x-4">
+          <div className="mt-12 text-center">
+            <h3 className="text-xl font-semibold mb-4 text-foreground">Follow Us</h3>
+            <div className="flex justify-center space-x-4">
               <a href="#" className="bg-[#000000] text-white p-2 rounded-full hover:bg-[#D4AF37] transition-colors">
                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path
@@ -130,45 +83,16 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="mt-16">
-            <h2 className="text-2xl font-semibold mb-6 text-[#1A1A1A] dark:text-[#EAEAEA]">Visit Our Stores</h2>
+          <div className="mt-16 text-center">
+            <h2 className="text-2xl font-semibold mb-6 text-foreground">Visit Our Office</h2>
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md dark:shadow-gray-900/30 overflow-hidden h-[400px]">
-              <Map location={selectedLocation} />
+              <Map location={location} />
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4">
-              <button
-                onClick={() => setSelectedLocation(STORE_LOCATIONS.newYork)}
-                className={`bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md dark:shadow-gray-900/30 transition-all duration-200 hover:shadow-lg dark:hover:shadow-gray-900/50 ${
-                  selectedLocation.name === "New York" 
-                    ? "ring-2 ring-[#D4AF37] dark:ring-[#D4AF37]" 
-                    : ""
-                }`}
-              >
-                <p className="font-semibold text-[#1A1A1A] dark:text-[#EAEAEA]">New York</p>
-                <p className="text-[#5E5E5E] dark:text-[#C0C0C0] text-sm">Times Square, Manhattan, NY 10036</p>
-              </button>
-              <button
-                onClick={() => setSelectedLocation(STORE_LOCATIONS.shanghai)}
-                className={`bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md dark:shadow-gray-900/30 transition-all duration-200 hover:shadow-lg dark:hover:shadow-gray-900/50 ${
-                  selectedLocation.name === "Shanghai" 
-                    ? "ring-2 ring-[#D4AF37] dark:ring-[#D4AF37]" 
-                    : ""
-                }`}
-              >
-                <p className="font-semibold text-[#1A1A1A] dark:text-[#EAEAEA]">Shanghai</p>
-                <p className="text-[#5E5E5E] dark:text-[#C0C0C0] text-sm">Nanjing Road Pedestrian Street, Huangpu District</p>
-              </button>
-              <button
-                onClick={() => setSelectedLocation(STORE_LOCATIONS.mumbai)}
-                className={`bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md dark:shadow-gray-900/30 transition-all duration-200 hover:shadow-lg dark:hover:shadow-gray-900/50 ${
-                  selectedLocation.name === "Mumbai" 
-                    ? "ring-2 ring-[#D4AF37] dark:ring-[#D4AF37]" 
-                    : ""
-                }`}
-              >
-                <p className="font-semibold text-[#1A1A1A] dark:text-[#EAEAEA]">Mumbai</p>
-                <p className="text-[#5E5E5E] dark:text-[#C0C0C0] text-sm">Linking Road, Bandra West, Maharashtra</p>
-              </button>
+            <div className="flex justify-center mt-4">
+              <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md dark:shadow-gray-900/30 transition-all duration-200 ring-2 ring-[#D4AF37] dark:ring-[#D4AF37] max-w-md w-full">
+                <p className="font-semibold text-foreground">Vietnam Office</p>
+                <p className="text-sm text-foreground/80">351/43 Đ. Lê Đại Hành, Phường 11, Quận 11, Hồ Chí Minh 760000, Vietnam</p>
+              </div>
             </div>
           </div>
         </div>

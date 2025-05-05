@@ -106,20 +106,26 @@ export default function Header() {
         <div className="flex h-16 items-center justify-between">
           {/* Logo - Left Justified */}
           <div className="flex items-center">
-            <Link href="/" className="relative z-[101]">
+            <Link href="/" className="relative z-[101] flex items-center h-16">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
                 whileHover={{ scale: 1.05 }}
-                className="h-10 w-auto"
+                className="relative flex items-center justify-center"
+                style={{ 
+                  width: "100px",  // Your custom width
+                  height: "50px"   // Your custom height
+                }}
               >
                 <Image 
                   src="/placeholder-logo.png" 
                   alt="PICo. Logo" 
-                  width={120} 
-                  height={40} 
-                  className="h-10 w-auto dark:brightness-110 dark:contrast-125"
+                  width={180}     // Should match width in style above
+                  height={50}     // Should match height in style above
+                  priority
+                  style={{ objectFit: 'contain' }}
+                  className="dark:brightness-110 dark:contrast-125"
                 />
               </motion.div>
             </Link>

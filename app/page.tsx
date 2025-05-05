@@ -13,7 +13,7 @@ const TEAM_MEMBERS: TeamMemberProps[] = [
     id: 1,
     name: "Jai Prakash Chharia",
     position: "Chairman",
-    bio: "Mr. Jai Prakash Chharia provides strategic direction, leveraging extensive industry experience to guide the company's vision.",
+    bio: "Jai Prakash Chharia is a visionary leader and seasoned expert whose career spans over four decades in the dynamic realm of international trade. His profound understanding of global commerce, cultivated across diverse industries and product sectors, provides PICo. with an unparalleled strategic advantage. Mr. Chharia's journey is defined not only by his extensive experience but also by his entrepreneurial drive, which has been a cornerstone of his professional life for more than 30 years.\nMr. Chharia's expertise encompasses a vast spectrum of international trade activities. He possesses a deep understanding of international markets, trade regulations, and cultural nuances, enabling him to identify and capitalize on global opportunities. He has a proven ability to forge strong international partnerships, negotiate complex trade agreements, and establish successful business ventures across diverse geographical regions. His extensive experience in handling a wide array of industries and products provides a holistic perspective on the intricacies of international commerce. Mr. Chharia also has a thorough understanding of international trade risks, compliance requirements, and ethical business practices, ensuring sustainable and responsible growth.\nAs an entrepreneur for over three decades, Mr. Chharia has demonstrated visionary leadership, with an ability to identify market gaps, develop innovative business models, and inspire teams to achieve ambitious goals. He exhibits strategic thinking, with a talent for long-term planning, anticipating market trends, and positioning businesses for sustained success in the global arena. Mr. Chharia also possesses strong business acumen, with a strong understanding of financial management, operational efficiency, and business growth strategies, driving profitability and maximizing shareholder value. He has the capacity to navigate economic fluctuations, overcome challenges, and adapt business strategies to thrive in ever-changing market conditions.\nIn his role as Chairman of PICo., Jai Prakash Chharia provides invaluable strategic guidance, leveraging his vast experience and entrepreneurial spirit to steer the company towards continued growth and success in the global apparel, accessories, and footwear industry. His leadership fosters a culture of excellence, integrity, and a relentless pursuit of innovation.",
     imageSrc: "/placeholder.svg?height=300&width=300&text=Jai Prakash Chharia"
   },
   {
@@ -27,21 +27,21 @@ const TEAM_MEMBERS: TeamMemberProps[] = [
     id: 3,
     name: "Mr. Subhrodeep Banerjee",
     position: "Director (IT and Digital Processes)",
-    bio: "Mr. Subhrodeep Banerjee brings over 16 years of extensive experience in the IT industry, having played a significant role in various multinational corporations. His expertise spans across multiple domains, with a strong foundation in SAP ERP implementation during his tenure in MNCs.\n\nIn addition to his corporate experience, Mr. Banerjee has served as a leading faculty member in Bhutan and West Bengal-India, for seven years and has been a guest lecturer for several manufacturing companies in West Bengal.\n\nHis academic qualifications include an MBA in Finance, an M.Com., a CS (Inter.), a B.Com., and an LLB. Complementing his finance and legal background, he holds IT certifications in DIT and SAP, with proficiency in SAP FICO, FSCM, FICA, PP, MM, and SD modules.\n\nMr. Banerjee's diverse expertise in IT, finance, and legal domains makes him a valuable asset in the field of enterprise resource planning and business process optimization.",
+    bio: "Mr. Subhrodeep Banerjee brings over 16 years of extensive experience in the IT industry, having played a significant role in various multinational corporations. His expertise spans across multiple domains, with a strong foundation in SAP ERP implementation during his tenure in MNCs.\nIn addition to his corporate experience, Mr. Banerjee has served as a leading faculty member in Bhutan and West Bengal-India, for seven years and has been a guest lecturer for several manufacturing companies in West Bengal.\nHis academic qualifications include an MBA in Finance, an M.Com., a CS (Inter.), a B.Com., and an LLB. Complementing his finance and legal background, he holds IT certifications in DIT and SAP, with proficiency in SAP FICO, FSCM, FICA, PP, MM, and SD modules.\nMr. Banerjee's diverse expertise in IT, finance, and legal domains makes him a valuable asset in the field of enterprise resource planning and business process optimization.",
     imageSrc: "/placeholder.svg?height=300&width=300&text=Subhrodeep Banerjee"
   },
   {
     id: 4,
     name: "Ashutosh Chharia",
     position: "Director (Factories & Production)",
-    bio: "Mr. Ashutosh Chharia oversees factory operations and production, maintaining rigorous quality control and ensuring efficient manufacturing.",
+    bio: "Ashutosh Chharia is a highly driven and technically astute leader who serves as PICo.'s Director of Factories & Production. He brings to this role a potent combination of academic rigor and extensive practical experience in overseeing large-scale manufacturing operations. Mr. Chharia holds a Bachelor of Technology (B.Tech) degree in Food Engineering and Processing, providing him with a robust foundation in process design, optimization, and efficiency principles. \nHis career, spanning over a decade, is characterized by hands-on immersion in the complexities of factory control, management, and oversight. Ashutosh has cultivated a proven track record of success in enhancing productivity and ensuring operational excellence within demanding manufacturing environments. His expertise encompasses advanced process optimization, where he excels at analyzing existing workflows, identifying areas for improvement, and implementing streamlined processes to maximize efficiency and output. He is also skilled in strategic production planning, developing and executing comprehensive production plans that encompass resource allocation, capacity planning, and scheduling to meet production targets and deadlines. Quality management systems are another area of strength; he is highly proficient in establishing and enforcing rigorous quality management systems, implementing quality control checkpoints, and ensuring adherence to international quality standards to deliver superior products. Ashutosh is committed to operational efficiency and cost reduction, minimizing waste, optimizing resource utilization, and implementing cost-effective strategies to enhance profitability and maintain a competitive edge. He possesses strong leadership skills, effectively managing large teams, fostering a collaborative work environment, and mentoring personnel to achieve peak performance. Furthermore, Mr. Chharia ensures strict adherence to all relevant industry regulations, safety protocols, and ethical manufacturing practices, prioritizing a safe and compliant working environment.\nAt PICo., Ashutosh Chharia is the central authority for all production and factory-related matters. His responsibilities include end-to-end production oversight, directing and coordinating all aspects of the production lifecycle, from raw material procurement to finished goods, ensuring seamless execution and timely delivery. He also manages factory operations, including workforce management, equipment maintenance, and facility optimization. He establishes and maintains robust quality assurance and control systems, ensuring that all products meet PICo.'s exacting standards. Ashutosh Chharia's unique combination of technical expertise, practical experience, and strategic vision makes him an invaluable asset to PICo., driving the efficient and high-quality production of our products.",
     imageSrc: "/placeholder.svg?height=300&width=300&text=Ashutosh Chharia"
   },
   {
     id: 5,
     name: "Harshvardhan Chharia",
     position: "Director (Communication)/Legal Representative",
-    bio: "Mr. Harshvardhan Chharia oversees and coordinates between all departments, ensuring effective execution and implementation of plans to drive the company's strategic objectives.",
+    bio: "Harshvardhan Chharia is a dynamic and visionary leader who serves as PICo.'s Director (Communication) and Legal Representative, playing a pivotal role in shaping the company's strategic direction and fostering its growth. His academic foundation is rooted in a Bachelor of Commerce (B.Com.) degree with a major in International Trade, providing him with a robust understanding of the intricacies of global commerce, spanning market dynamics, trade regulations, and international business practices. He further cultivated his expertise through postgraduate studies in Public Relations and Corporate Communications, a specialization that equips him with a unique set of skills to navigate the complexities of modern business communication.\nThis educational background provides Harshvardhan with the ability to craft and communicate a compelling brand vision, developing strategic messaging and managing corporate communications to enhance brand reputation and cultivate strong relationships with stakeholders. He is adept at leveraging his understanding of international trade to identify global opportunities, mitigate potential risks, and establish successful partnerships across diverse markets. Furthermore, he excels at fostering strategic relationships, building and maintaining connections with clients, partners, and key industry influencers through effective communication strategies, public relations initiatives, and proactive stakeholder engagement.\nIn his capacity as PICo.'s Director (Communication) and Legal Representative, Harshvardhan Chharia is responsible for defining and executing the company's comprehensive communication strategy, both internally and externally. He oversees brand development, ensuring consistent messaging across all platforms, and works to enhance brand visibility and recognition in the marketplace. A key aspect of his role involves building and maintaining strong relationships with a wide range of stakeholders, including clients, partners, and media outlets. Beyond his communication responsibilities, as the Legal Representative of the company, he handles and oversees all processes, ensuring effective communication, execution, and implementation of plans across all departments. Additionally, he manages all legal and corporate affairs, ensuring the company's compliance with relevant regulations and overseeing corporate governance to uphold the highest ethical and legal standards. Harshvardhan Chharia's distinctive combination of business acumen, communication expertise, operational oversight, and in-depth knowledge of international trade is instrumental in driving PICo.'s success and expansion within the competitive global landscape of the Fashion and Footwear industry.",
     imageSrc: "/placeholder.svg?height=300&width=300&text=Harshvardhan Chharia"
   }
 ]
@@ -116,7 +116,7 @@ export default function HomePage() {
         variants={fadeIn}
         className="relative py-20 overflow-hidden"
       >
-        <div className="absolute inset-0 z-0 opacity-10">
+        <div className="absolute inset-0 z-0 opacity-1">
           <Image src="https://203fr2t3uf9dwcdt.public.blob.vercel-storage.com/Pico_pics/7eee46af-44bd-41cd-9876-c48a7bb56f82-iF5qLkcLXvCLNwnq5wH2clsrlUiVGz.JPG?height=800&width=1600" alt="Background pattern" fill className="object-cover" />
         </div>
         <motion.div 
@@ -127,13 +127,13 @@ export default function HomePage() {
           >
             <motion.h1 
               variants={fadeInUp}
-              className="text-4xl md:text-5xl font-bold mb-4 text-foreground"
+              className="text-4xl md:text-5xl font-bold mb-4 text-white dark:text-white"
             >
               Our Story
             </motion.h1>
             <motion.p 
               variants={fadeInUp}
-              className="text-lg mb-8 text-foreground/80"
+              className="text-lg mb-8 text-white dark:text-white"
             >
               Crafting premium footwear since 2010, we've been on a mission to combine style, comfort, and
               sustainability.
@@ -413,7 +413,7 @@ export default function HomePage() {
                       <h3 className="text-lg font-semibold mb-2 text-foreground">{item.title}</h3>
                       <p className="text-foreground/80">{item.description}</p>
                     </div>
-            </div>
+                  </div>
                   <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-[#D4AF37] dark:bg-[#C77C48] border-4 border-[#FFFFF0] dark:border-gray-900 z-10"></div>
                   <div className="flex-1"></div>
                 </motion.div>
