@@ -127,13 +127,13 @@ export default function HomePage() {
           >
             <motion.h1 
               variants={fadeInUp}
-              className="text-4xl md:text-5xl font-bold mb-4 text-background"
+              className="text-4xl md:text-5xl font-bold mb-4 text-white dark:text-white"
             >
               Our Story
             </motion.h1>
             <motion.p 
               variants={fadeInUp}
-              className="text-lg mb-8 text-background"
+              className="text-lg mb-8 text-white dark:text-white"
             >
               Crafting premium footwear since 2010, we've been on a mission to combine style, comfort, and
               sustainability.
