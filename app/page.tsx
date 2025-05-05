@@ -116,7 +116,7 @@ export default function HomePage() {
         variants={fadeIn}
         className="relative py-20 overflow-hidden"
       >
-        <div className="absolute inset-0 z-0 opacity-10">
+        <div className="absolute inset-0 z-0 opacity-1">
           <Image src="https://203fr2t3uf9dwcdt.public.blob.vercel-storage.com/Pico_pics/7eee46af-44bd-41cd-9876-c48a7bb56f82-iF5qLkcLXvCLNwnq5wH2clsrlUiVGz.JPG?height=800&width=1600" alt="Background pattern" fill className="object-cover" />
         </div>
         <motion.div 
@@ -127,13 +127,13 @@ export default function HomePage() {
           >
             <motion.h1 
               variants={fadeInUp}
-              className="text-4xl md:text-5xl font-bold mb-4 text-foreground"
+              className="text-4xl md:text-5xl font-bold mb-4 text-background"
             >
               Our Story
             </motion.h1>
             <motion.p 
               variants={fadeInUp}
-              className="text-lg mb-8 text-foreground/80"
+              className="text-lg mb-8 text-background"
             >
               Crafting premium footwear since 2010, we've been on a mission to combine style, comfort, and
               sustainability.
