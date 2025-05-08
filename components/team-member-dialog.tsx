@@ -65,7 +65,12 @@ export default function TeamMemberDialog({ member, isOpen, onClose }: TeamMember
               src={member.imageSrc}
               alt={member.name}
               fill
-              className="object-cover"
+              className="object-cover object-center"
+              style={{ 
+                objectPosition: member.id <= 3 
+                  ? '50% 10%' 
+                  : '50% 25%' 
+              }}
             />
           </div>
           
