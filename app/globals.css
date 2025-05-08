@@ -270,3 +270,66 @@
   color: hsl(var(--accent-3));
 }
 
+/* Markdown Content Styling */
+.markdown-content {
+  line-height: 1.5;
+}
+
+.markdown-content p {
+  margin-bottom: 0.5rem;
+}
+
+.markdown-content strong,
+.markdown-content b {
+  font-weight: 600;
+}
+
+.markdown-content em,
+.markdown-content i {
+  font-style: italic;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  margin: 0.5rem 0 0.5rem 1.5rem;
+}
+
+.markdown-content ul li {
+  list-style-type: disc;
+}
+
+.markdown-content ol li {
+  list-style-type: decimal;
+}
+
+.markdown-content a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+}
+
+.markdown-content code {
+  font-family: monospace;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.markdown-content blockquote {
+  border-left: 3px solid hsl(var(--muted-foreground));
+  padding-left: 0.75rem;
+  color: hsl(var(--muted-foreground));
+  font-style: italic;
+  margin: 0.5rem 0;
+}
+
+.markdown-content hr {
+  border: none;
+  border-top: 1px solid hsl(var(--border));
+  margin: 1rem 0;
+}
+
+.markdown-content p:last-child {
+  margin-bottom: 0;
+}
+

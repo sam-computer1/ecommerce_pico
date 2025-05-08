@@ -6,9 +6,12 @@ import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { CartProvider } from "@/context/cart-context"
 import { WishlistProvider } from "@/context/wishlist-context"
+import { ChatProvider } from "@/context/chat-context"
 import { Toaster } from "@/components/ui/toaster"
 import { ThemeProvider } from "@/components/theme-provider"
 import ScrollToTop from "@/components/scroll-to-top"
+import { ChatWidget } from "@/components/ui/chat-widget"
+import { TooltipProvider } from "@/components/ui/tooltip"
 import Script from "next/script"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -32,17 +35,22 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} min-h-screen flex flex-col transition-colors duration-300 w-full overflow-x-hidden`}>
         <ThemeProvider>
-          <CartProvider>
-            <WishlistProvider>
-              <Header />
-              <div className="flex-grow transition-colors duration-300 pt-16">
-                {children}
-              </div>
-              <Footer />
-              <ScrollToTop />
-              <Toaster />
-            </WishlistProvider>
-          </CartProvider>
+          <TooltipProvider>
+            <CartProvider>
+              <WishlistProvider>
+                <ChatProvider>
+                  <Header />
+                  <div className="flex-grow transition-colors duration-300 pt-16">
+                    {children}
+                  </div>
+                  <Footer />
+                  <ScrollToTop />
+                  <ChatWidget />
+                  <Toaster />
+                </ChatProvider>
+              </WishlistProvider>
+            </CartProvider>
+          </TooltipProvider>
         </ThemeProvider>
       </body>
     </html>

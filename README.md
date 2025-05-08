@@ -1,145 +1,121 @@
-# PICo.
+# E-commerce PICo Application
 
-A modern, responsive e-commerce platform built with Next.js, TypeScript, and Tailwind CSS. PICo. offers a seamless shopping experience with features like dark mode, responsive design, and a user-friendly interface.
+This is an e-commerce application built with Next.js. It includes product listings, shopping cart functionality, and a live chat widget.
 
 ## Features
 
-### 🛍️ Shopping Experience
-- Responsive product grid with filtering and sorting options
-- Category-based navigation (Men, Women, Kids)
-- Detailed product pages with size selection
-- Shopping cart functionality
-- Wishlist management
-- Search functionality with real-time results
-
-### 🎨 User Interface
-- Modern and clean design
-- Dark/Light mode toggle
-- Responsive layout for all devices
-- Smooth animations and transitions
-- Interactive dropdown menus
-- Mobile-friendly navigation
-
-### 👤 User Features
-- User account management
-- Order tracking
-- Wishlist management
-- Shopping cart persistence
-- Profile settings
-
-### 🛠️ Technical Features
-- Built with Next.js 14 and TypeScript
-- Tailwind CSS for styling
-- Framer Motion for animations
-- Context API for state management
+- Product listings with filtering and search
+- Shopping cart and wishlist functionality
+- User authentication
 - Responsive design
-- SEO optimized
-- Server-side rendering
+- **Live Chat Widget** with n8n webhook integration
 
-## Tech Stack
+## Chat Widget Implementation
 
-- **Framework:** Next.js 
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS
-- **Animations:** Framer Motion
-- **State Management:** React Context API
-- **UI Components:** Custom components with shadcn/ui
-- **Icons:** Lucide Icons
-- **Theme:** next-themes
+The application includes a real-time chat widget that connects to an n8n webhook for handling messages. The chat widget allows customers to get immediate assistance while shopping.
+
+### Chat Widget Architecture
+
+- **UI Component**: Located at `components/ui/chat-widget.tsx`
+- **Helper Functions**: Located at `lib/chat.ts`
+- **Custom Hook**: Located at `hooks/use-chat.ts`
+- **Context Provider**: Located at `context/chat-context.tsx`
+- **Webhook Integration**: Messages are sent to an n8n webhook endpoint for processing
+
+### Documentation
+
+For detailed documentation on the chat widget implementation, please see [Chat Widget Documentation](docs/CHAT_WIDGET.md).
+
+### How It Works
+
+1. The chat widget appears as a floating button in the bottom-right corner of all pages
+2. When opened, it displays a chat interface with message history
+3. User messages are sent to the n8n webhook URL for processing
+4. Responses from the webhook are displayed in the chat interface
+5. Session tracking allows for maintaining context across messages
+
+### Session Management
+
+The chat widget implements session tracking to maintain conversation context:
+
+- Each user gets a unique session ID stored in their browser
+- All messages sent to the webhook include this session ID
+- The n8n workflow can use this session ID to maintain conversation context
+- Users can reset their session to start a fresh conversation
+
+### Configuration
+
+The chat widget is configured to use the following webhook URL:
+
+```
+https://n8n.baivab.space/webhook/b36d64de-14af-4047-b2bb-bcf4e79c246a/chat
+```
+
+To change the webhook URL, modify the `webhookUrl` variable in `context/chat-context.tsx`.
+
+### Webhook Payload Format
+
+Messages are sent to the webhook with this structure:
+
+```json
+{
+  "message": "The user's question or message",
+  "sessionId": "session_1234567890_abcdef"
+}
+```
+
+The webhook should respond with:
+
+```json
+{
+  "output": "The assistant's response message, which may include markdown formatting"
+}
+```
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js 18.x or later
+- Node.js 18.x or higher
 - npm or yarn
 
 ### Installation
 
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/pico-ecommerce.git
-cd pico-ecommerce
-```
-
+1. Clone the repository
 2. Install dependencies:
+
 ```bash
 npm install
 # or
 yarn install
 ```
 
-3. Create a `.env.local` file in the root directory and add your environment variables:
-```env
-NEXT_PUBLIC_API_URL=your_api_url
-```
+3. Run the development server:
 
-4. Run the development server:
 ```bash
 npm run dev
 # or
 yarn dev
 ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
-## Project Structure
+## Technology Stack
 
+- **Framework**: Next.js
+- **Styling**: Tailwind CSS
+- **UI Components**: Radix UI
+- **State Management**: React Context
+
+## Deployment
+
+This application can be deployed to Vercel or any other hosting platform that supports Next.js applications.
+
+```bash
+npm run build
+npm run start
 ```
-pico-ecommerce/
-├── app/                    # Next.js app directory
-│   ├── (auth)/            # Authentication routes
-│   ├── (shop)/            # Shop routes
-│   └── layout.tsx         # Root layout
-├── components/            # React components
-│   ├── ui/               # UI components
-│   ├── header.tsx        # Navigation header
-│   └── footer.tsx        # Footer component
-├── context/              # React Context providers
-├── lib/                  # Utility functions
-├── public/              # Static assets
-└── styles/              # Global styles
-```
-
-## Features in Detail
-
-### Navigation
-- Responsive header with dropdown menus
-- Mobile-friendly navigation
-- Category-based navigation
-- Search functionality
-- Cart and wishlist indicators
-
-### Product Management
-- Product filtering by category, size, color
-- Sorting options
-- Product grid view
-- Detailed product pages
-- Size selection
-- Add to cart/wishlist functionality
-
-### User Experience
-- Smooth page transitions
-- Loading states
-- Error handling
-- Form validation
-- Responsive design for all devices
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- [Next.js](https://nextjs.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [shadcn/ui](https://ui.shadcn.com/)
+MIT
