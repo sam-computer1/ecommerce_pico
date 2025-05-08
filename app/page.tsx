@@ -61,14 +61,14 @@ export default function HomePage() {
   const ctaRef = useRef(null);
   
   // InView hooks
-  const heroInView = useInView(heroRef, { once: false, amount: 0.3 });
-  const aboutInView = useInView(aboutRef, { once: false, amount: 0.3 });
-  const visionInView = useInView(visionRef, { once: false, amount: 0.3 });
-  const missionInView = useInView(missionRef, { once: false, amount: 0.3 });
-  const valuesInView = useInView(valuesRef, { once: false, amount: 0.3 });
-  const teamInView = useInView(teamRef, { once: false, amount: 0.3 });
-  const journeyInView = useInView(journeyRef, { once: false, amount: 0.3 });
-  const ctaInView = useInView(ctaRef, { once: false, amount: 0.3 });
+  const heroInView = useInView(heroRef, { once: true, amount: 0.3 });
+  const aboutInView = useInView(aboutRef, { once: true, amount: 0.3 });
+  const visionInView = useInView(visionRef, { once: true, amount: 0.3 });
+  const missionInView = useInView(missionRef, { once: true, amount: 0.3 });
+  const valuesInView = useInView(valuesRef, { once: true, amount: 0.3 });
+  const teamInView = useInView(teamRef, { once: true, amount: 0.3 });
+  const journeyInView = useInView(journeyRef, { once: true, amount: 0.3 });
+  const ctaInView = useInView(ctaRef, { once: true, amount: 0.3 });
 
   const handleOpenMemberDialog = (member: TeamMemberProps) => {
     setSelectedMember(member);
@@ -112,7 +112,7 @@ export default function HomePage() {
       <motion.section 
         ref={heroRef}
         initial="hidden"
-        animate={heroInView ? "visible" : "hidden"}
+        animate={heroInView ? "visible" : "visible"}
         variants={fadeIn}
         className="relative py-20 overflow-hidden"
       >
@@ -146,7 +146,7 @@ export default function HomePage() {
       <motion.section 
         ref={aboutRef}
         initial="hidden"
-        animate={aboutInView ? "visible" : "hidden"}
+        animate={aboutInView ? "visible" : "visible"}
         variants={fadeIn}
         className="py-16"
       >
@@ -181,7 +181,7 @@ export default function HomePage() {
       <motion.section 
         ref={visionRef}
         initial="hidden"
-        animate={visionInView ? "visible" : "hidden"}
+        animate={visionInView ? "visible" : "visible"}
         variants={fadeIn}
         className="py-16 bg-[#1A1A1A]/5 dark:bg-[#EAEAEA]/5"
       >
@@ -216,7 +216,7 @@ export default function HomePage() {
       <motion.section 
         ref={missionRef}
         initial="hidden"
-        animate={missionInView ? "visible" : "hidden"}
+        animate={missionInView ? "visible" : "visible"}
         variants={fadeIn}
         className="py-16"
       >
@@ -251,7 +251,7 @@ export default function HomePage() {
       <motion.section 
         ref={valuesRef}
         initial="hidden"
-        animate={valuesInView ? "visible" : "hidden"}
+        animate={valuesInView ? "visible" : "visible"}
         variants={fadeIn}
         className="py-16 bg-background text-foreground"
       >
@@ -308,7 +308,7 @@ export default function HomePage() {
       <motion.section 
         ref={teamRef}
         initial="hidden"
-        animate={teamInView ? "visible" : "hidden"}
+        animate={teamInView ? "visible" : "visible"}
         variants={fadeIn}
         className="py-16"
       >
@@ -361,7 +361,7 @@ export default function HomePage() {
       <motion.section 
         ref={journeyRef}
         initial="hidden"
-        animate={journeyInView ? "visible" : "hidden"}
+        animate={journeyInView ? "visible" : "visible"}
         variants={fadeIn}
         className="py-16 bg-[#1A1A1A]/5 dark:bg-[#EAEAEA]/5"
       >
@@ -432,7 +432,7 @@ export default function HomePage() {
       <motion.section 
         ref={ctaRef}
         initial="hidden"
-        animate={ctaInView ? "visible" : "hidden"}
+        animate={ctaInView ? "visible" : "visible"}
         variants={fadeIn}
         className="py-16 bg-[#1A1A1A] dark:bg-[#000000] text-white"
       >
