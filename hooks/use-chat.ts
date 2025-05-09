@@ -27,6 +27,14 @@ export function useChat({
     // Add user message to chat
     const userMessage = createMessage(messageText, "user")
     setMessages((prev) => [...prev, userMessage])
+    
+    // Generate a random delay between 3-7 seconds
+    const randomDelay = Math.floor(Math.random() * (7000 - 3000 + 1)) + 3000
+    
+    // Wait for the random delay before showing the loading indicator
+    await new Promise(resolve => setTimeout(resolve, randomDelay))
+    
+    // Now show loading indicator
     setIsLoading(true)
 
     try {
