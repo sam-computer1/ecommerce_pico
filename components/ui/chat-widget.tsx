@@ -30,7 +30,7 @@ export function ChatWidget() {
     if (messageEndRef.current) {
       messageEndRef.current.scrollIntoView({ behavior: "smooth" })
     }
-  }, [messages])
+  }, [messages, isLoading])
 
   const handleSendMessage = async () => {
     if (!inputMessage.trim()) return
@@ -45,10 +45,10 @@ export function ChatWidget() {
   }
 
   return (
-    <div className="fixed bottom-5 right-5 z-50">
+    <div className="fixed bottom-5 right-5 z-[100]">
       {isOpen ? (
-        <Card className="w-80 sm:w-96 h-[450px] shadow-lg flex flex-col">
-          <div className="flex items-center justify-between bg-primary text-primary-foreground p-3 rounded-t-lg">
+        <Card className="w-80 sm:w-96 h-[450px] shadow-xl flex flex-col border-2 border-primary/20 bg-card overflow-hidden">
+          <div className="flex items-center justify-between bg-primary text-primary-foreground p-3">
             <div className="flex items-center gap-2">
               <MessageCircle size={20} />
               <h3 className="font-medium">Chat Support</h3>
@@ -59,7 +59,7 @@ export function ChatWidget() {
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="h-8 w-8 text-primary-foreground"
+                    className="h-8 w-8 text-primary-foreground hover:bg-primary/80"
                     onClick={handleResetSession}
                   >
                     <RotateCcw size={16} />
@@ -72,7 +72,7 @@ export function ChatWidget() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="h-8 w-8 text-primary-foreground"
+                className="h-8 w-8 text-primary-foreground hover:bg-primary/80"
                 onClick={closeChat}
               >
                 <X size={18} />
@@ -80,7 +80,7 @@ export function ChatWidget() {
             </div>
           </div>
           
-          <ScrollArea className="flex-1 p-3">
+          <ScrollArea className="flex-1 p-3 bg-background">
             <div className="flex flex-col gap-3">
               {messages.map((msg) => (
                 <div
@@ -90,10 +90,10 @@ export function ChatWidget() {
                   }`}
                 >
                   <div
-                    className={`max-w-[80%] px-3 py-2 rounded-lg ${
+                    className={`max-w-[80%] px-3 py-2 rounded-lg shadow-sm ${
                       msg.sender === "user"
                         ? "bg-primary text-primary-foreground"
-                        : "bg-muted"
+                        : "bg-card border border-border"
                     }`}
                   >
                     {msg.sender === "bot" && (
@@ -101,7 +101,7 @@ export function ChatWidget() {
                         <Avatar className="h-6 w-6">
                           <div className="bg-primary text-primary-foreground flex items-center justify-center h-full w-full text-xs">AI</div>
                         </Avatar>
-                        <span className="text-xs font-medium">Assistant</span>
+                        <span className="text-xs font-medium">Alex</span>
                       </div>
                     )}
                     {msg.sender === "bot" ? (
@@ -120,11 +120,30 @@ export function ChatWidget() {
                   </div>
                 </div>
               ))}
+              
+              {isLoading && (
+                <div className="flex justify-start">
+                  <div className="max-w-[80%] px-3 py-2 rounded-lg shadow-sm bg-card border border-border">
+                    <div className="flex items-center gap-2 mb-1">
+                      <Avatar className="h-6 w-6">
+                        <div className="bg-primary text-primary-foreground flex items-center justify-center h-full w-full text-xs">AI</div>
+                      </Avatar>
+                      <span className="text-xs font-medium">Assistant</span>
+                    </div>
+                    <div className="typing-indicator my-1">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+                  </div>
+                </div>
+              )}
+              
               <div ref={messageEndRef} />
             </div>
           </ScrollArea>
           
-          <div className="p-3 border-t">
+          <div className="p-3 border-t bg-card/90">
             <div className="mb-2">
               <p className="text-xs text-muted-foreground">Session ID: {sessionId.substring(0, 15)}...</p>
             </div>
@@ -140,12 +159,13 @@ export function ChatWidget() {
                 onChange={(e) => setInputMessage(e.target.value)}
                 placeholder="Type your message..."
                 disabled={isLoading}
-                className="flex-1"
+                className="flex-1 bg-background border-primary/30 focus-visible:ring-primary/50"
               />
               <Button
                 size="icon"
                 type="submit"
                 disabled={isLoading || !inputMessage.trim()}
+                className="bg-primary hover:bg-primary/90"
               >
                 <SendHorizontal size={18} />
               </Button>
@@ -155,7 +175,7 @@ export function ChatWidget() {
       ) : (
         <Button
           size="icon"
-          className="h-12 w-12 rounded-full shadow-lg"
+          className="h-12 w-12 rounded-full shadow-lg bg-primary hover:bg-primary/90"
           onClick={openChat}
         >
           <MessageCircle size={24} />
