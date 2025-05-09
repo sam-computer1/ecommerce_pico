@@ -128,7 +128,7 @@ export function ChatWidget() {
                       <Avatar className="h-6 w-6">
                         <div className="bg-primary text-primary-foreground flex items-center justify-center h-full w-full text-xs">AI</div>
                       </Avatar>
-                      <span className="text-xs font-medium">Assistant</span>
+                      <span className="text-xs font-medium">Alex</span>
                     </div>
                     <div className="typing-indicator my-1">
                       <span></span>
