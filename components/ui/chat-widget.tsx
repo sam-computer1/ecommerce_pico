@@ -14,6 +14,7 @@ import ReactMarkdown from "react-markdown"
 export function ChatWidget() {
   const [inputMessage, setInputMessage] = useState("")
   const messageEndRef = useRef<HTMLDivElement>(null)
+  const scrollAreaRef = useRef<HTMLDivElement>(null)
   
   const { 
     messages, 
@@ -32,6 +33,23 @@ export function ChatWidget() {
     }
   }, [messages, isLoading])
 
+  // Prevent wheel events from propagating to the parent elements
+  useEffect(() => {
+    const scrollAreaElement = scrollAreaRef.current
+    
+    if (!scrollAreaElement) return
+    
+    const handleWheel = (e: WheelEvent) => {
+      e.stopPropagation()
+    }
+    
+    scrollAreaElement.addEventListener('wheel', handleWheel, { passive: false })
+    
+    return () => {
+      scrollAreaElement.removeEventListener('wheel', handleWheel)
+    }
+  }, [isOpen])
+
   const handleSendMessage = async () => {
     if (!inputMessage.trim()) return
     
@@ -44,10 +62,19 @@ export function ChatWidget() {
     resetSession()
   }
 
+  // Prevent scroll event from bubbling up when interacting with the chat
+  const handleChatInteraction = (e: React.MouseEvent | React.TouchEvent) => {
+    e.stopPropagation()
+  }
+
   return (
-    <div className="fixed bottom-5 right-5 z-[100]">
+    <div 
+      className="fixed bottom-5 right-5 z-[100]"
+      onClick={handleChatInteraction}
+      onTouchStart={handleChatInteraction}
+    >
       {isOpen ? (
-        <Card className="w-80 sm:w-96 h-[450px] shadow-xl flex flex-col border-2 border-primary/20 bg-card overflow-hidden">
+        <Card className="w-80 sm:w-96 h-[450px] shadow-xl flex flex-col border-2 border-primary/20 bg-card overflow-hidden isolate">
           <div className="flex items-center justify-between bg-primary text-primary-foreground p-3">
             <div className="flex items-center gap-2">
               <MessageCircle size={20} />
@@ -80,68 +107,74 @@ export function ChatWidget() {
             </div>
           </div>
           
-          <ScrollArea className="flex-1 p-3 bg-background">
-            <div className="flex flex-col gap-3">
-              {messages.map((msg) => (
-                <div
-                  key={msg.id}
-                  className={`flex ${
-                    msg.sender === "user" ? "justify-end" : "justify-start"
-                  }`}
-                >
+          <div 
+            ref={scrollAreaRef} 
+            className="relative overflow-hidden flex-1"
+            onWheel={(e) => e.stopPropagation()}
+          >
+            <ScrollArea className="flex-1 p-3 bg-background h-full">
+              <div className="flex flex-col gap-3">
+                {messages.map((msg) => (
                   <div
-                    className={`max-w-[80%] px-3 py-2 rounded-lg shadow-sm ${
-                      msg.sender === "user"
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-card border border-border"
+                    key={msg.id}
+                    className={`flex ${
+                      msg.sender === "user" ? "justify-end" : "justify-start"
                     }`}
                   >
-                    {msg.sender === "bot" && (
+                    <div
+                      className={`max-w-[80%] px-3 py-2 rounded-lg shadow-sm ${
+                        msg.sender === "user"
+                          ? "bg-primary text-primary-foreground"
+                          : "bg-card border border-border"
+                      }`}
+                    >
+                      {msg.sender === "bot" && (
+                        <div className="flex items-center gap-2 mb-1">
+                          <Avatar className="h-6 w-6">
+                            <div className="bg-primary text-primary-foreground flex items-center justify-center h-full w-full text-xs">AI</div>
+                          </Avatar>
+                          <span className="text-xs font-medium">Maya</span>
+                        </div>
+                      )}
+                      {msg.sender === "bot" ? (
+                        <div className="text-sm markdown-content">
+                          <ReactMarkdown>{msg.content}</ReactMarkdown>
+                        </div>
+                      ) : (
+                        <p className="text-sm">{msg.content}</p>
+                      )}
+                      <p className="text-xs opacity-70 text-right mt-1">
+                        {msg.timestamp.toLocaleTimeString([], {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        })}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+                
+                {isLoading && (
+                  <div className="flex justify-start">
+                    <div className="max-w-[80%] px-3 py-2 rounded-lg shadow-sm bg-card border border-border">
                       <div className="flex items-center gap-2 mb-1">
                         <Avatar className="h-6 w-6">
                           <div className="bg-primary text-primary-foreground flex items-center justify-center h-full w-full text-xs">AI</div>
                         </Avatar>
                         <span className="text-xs font-medium">Maya</span>
                       </div>
-                    )}
-                    {msg.sender === "bot" ? (
-                      <div className="text-sm markdown-content">
-                        <ReactMarkdown>{msg.content}</ReactMarkdown>
+                      <div className="typing-indicator my-1">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                       </div>
-                    ) : (
-                      <p className="text-sm">{msg.content}</p>
-                    )}
-                    <p className="text-xs opacity-70 text-right mt-1">
-                      {msg.timestamp.toLocaleTimeString([], {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })}
-                    </p>
-                  </div>
-                </div>
-              ))}
-              
-              {isLoading && (
-                <div className="flex justify-start">
-                  <div className="max-w-[80%] px-3 py-2 rounded-lg shadow-sm bg-card border border-border">
-                    <div className="flex items-center gap-2 mb-1">
-                      <Avatar className="h-6 w-6">
-                        <div className="bg-primary text-primary-foreground flex items-center justify-center h-full w-full text-xs">AI</div>
-                      </Avatar>
-                      <span className="text-xs font-medium">Maya</span>
-                    </div>
-                    <div className="typing-indicator my-1">
-                      <span></span>
-                      <span></span>
-                      <span></span>
                     </div>
                   </div>
-                </div>
-              )}
-              
-              <div ref={messageEndRef} />
-            </div>
-          </ScrollArea>
+                )}
+                
+                <div ref={messageEndRef} />
+              </div>
+            </ScrollArea>
+          </div>
           
           <div className="p-3 border-t bg-card/90">
             <div className="mb-2">
