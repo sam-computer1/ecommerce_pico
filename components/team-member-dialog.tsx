@@ -82,7 +82,7 @@ export default function TeamMemberDialog({ member, isOpen, onClose }: TeamMember
               } transition-all duration-300`}
             >
               {member.bio.split('\n\n').map((paragraph, index) => (
-                <p key={index} className="mb-3">
+                <p key={index} className="mb-3 text-justify">
                   {paragraph}
                 </p>
               ))}
