@@ -8,11 +8,9 @@ import { CartProvider } from "@/context/cart-context"
 import { WishlistProvider } from "@/context/wishlist-context"
 import { ChatProvider } from "@/context/chat-context"
 import { Toaster } from "@/components/ui/toaster"
-import { ThemeProvider } from "@/components/theme-provider"
 import ScrollToTop from "@/components/scroll-to-top"
 import { ChatWidget } from "@/components/ui/chat-widget"
 import { TooltipProvider } from "@/components/ui/tooltip"
-import Script from "next/script"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -28,30 +26,27 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <Script id="force-light-mode" strategy="beforeInteractive" src="/force-light-mode.js" />
       </head>
       <body className={`${inter.className} min-h-screen flex flex-col transition-colors duration-300 w-full overflow-x-hidden`}>
-        <ThemeProvider>
-          <TooltipProvider>
-            <CartProvider>
-              <WishlistProvider>
-                <ChatProvider>
-                  <Header />
-                  <div className="flex-grow transition-colors duration-300 pt-16">
-                    {children}
-                  </div>
-                  <Footer />
-                  <ScrollToTop />
-                  <ChatWidget />
-                  <Toaster />
-                </ChatProvider>
-              </WishlistProvider>
-            </CartProvider>
-          </TooltipProvider>
-        </ThemeProvider>
+        <TooltipProvider>
+          <CartProvider>
+            <WishlistProvider>
+              <ChatProvider>
+                <Header />
+                <div className="flex-grow transition-colors duration-300 pt-16">
+                  {children}
+                </div>
+                <Footer />
+                <ScrollToTop />
+                <ChatWidget />
+                <Toaster />
+              </ChatProvider>
+            </WishlistProvider>
+          </CartProvider>
+        </TooltipProvider>
       </body>
     </html>
   )

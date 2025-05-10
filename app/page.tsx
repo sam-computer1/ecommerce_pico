@@ -32,7 +32,7 @@ const TEAM_MEMBERS: TeamMemberProps[] = [
   },
   {
     id: 3,
-    name: "Mr. Subhrodeep Banerjee",
+    name: "Subhrodeep Banerjee",
     position: "Director (IT and Digital Processes)",
     bio: "Mr. Subhrodeep Banerjee brings over 16 years of extensive experience in the IT industry, having played a significant role in various multinational corporations. His expertise spans across multiple domains, with a strong foundation in SAP ERP implementation during his tenure in MNCs.\nIn addition to his corporate experience, Mr. Banerjee has served as a leading faculty member in Bhutan and West Bengal-India, for seven years and has been a guest lecturer for several manufacturing companies in West Bengal.\nHis academic qualifications include an MBA in Finance, an M.Com., a CS (Inter.), a B.Com., and an LLB. Complementing his finance and legal background, he holds IT certifications in DIT and SAP, with proficiency in SAP FICO, FSCM, FICA, PP, MM, and SD modules.\nMr. Banerjee's diverse expertise in IT, finance, and legal domains makes him a valuable asset in the field of enterprise resource planning and business process optimization.",
     imageSrc: "https://203fr2t3uf9dwcdt.public.blob.vercel-storage.com/Pico_pics/Mr.%20Subhrodeep-heUHKhck9im1y39TNtGXsoyfh3qfoy.jpg"
@@ -110,12 +110,12 @@ export default function HomePage() {
   };
   
   return (
-    <main className="flex-1 bg-[#FAF4ED] transition-colors duration-300 dark:bg-[#1E1A17] dark:text-[#D9D9D9]">
+    <main className="flex-1 bg-[#FAF4ED] transition-colors duration-300">
       {/* Hero Section */}
       <section className="relative h-[80vh] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10" />
         <Image
-          src="\images\homepage\hero.jpg"
+          src="/images/homepage/collection-header.jpg"
           alt="Hero image of signature shoes"
           fill
           priority
@@ -133,7 +133,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 asChild
-                className="bg-[#474646] hover:bg-[#C9A959] text-white font-bold py-3 px-8 rounded-md shadow-lg hover:shadow-xl transition-all dark:bg-[#B78B26] dark:hover:bg-[#4A3C31]"
+                className="bg-[#474646] hover:bg-[#C9A959] text-white font-bold py-3 px-8 rounded-md shadow-lg hover:shadow-xl transition-all"
               >
                 <Link href="/products" className="px-8">
                   Shop Now
@@ -142,7 +142,7 @@ export default function HomePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="bg-transparent hover:bg-[#C9A959]/20 text-white border-white font-bold py-3 px-8 rounded-md shadow-lg hover:shadow-xl transition-all dark:border-[#B78B26] dark:hover:bg-[#4A3C31]/20"
+                className="bg-transparent hover:bg-[#C9A959]/20 text-white border-white font-bold py-3 px-8 rounded-md shadow-lg hover:shadow-xl transition-all"
                 asChild
               >
                 <Link href="/" className="px-8">
@@ -169,14 +169,8 @@ export default function HomePage() {
               className="order-2 md:order-1"
             >
               <h2 className="text-3xl font-bold mb-4 text-foreground">About Us</h2>
-              <p className="mb-4 text-foreground/80">
-                PICo. is a dedicated partner for global brands seeking excellence in apparel, accessories, and footwear production. We streamline the complexities of product development by offering a meticulously integrated suite of services tailored to the unique needs of our B2B clients. From the initial spark of concept and design development, where we translate brand visions into tangible creations through trend forecasting, material innovation, and technical design solutions, to the crucial stages of sourcing and manufacturing partnerships, we connect brands with a carefully vetted global network.
-              </p>
-              <p className="mb-4 text-foreground/80">
-                Our expertise extends to optimizing the entire supply chain, ensuring efficient logistics, inventory management, and robust quality control systems. We provide rigorous production control and oversight, meticulously managing every detail to guarantee adherence to specifications, timelines, and the highest quality standards.
-              </p>
               <p className="text-foreground/80">
-                PICo. also simplifies the complexities of international trade, offering comprehensive export and delivery solutions to ensure a smooth and reliable journey to the final destination.
+                PICo. is a strategic partner for global brands in the apparel, accessories, and footwear industries, delivering end-to-end B2B solutions. We support every stage of the product lifecycle—from concept development and design, informed by trend forecasting and material innovation, to sourcing and manufacturing through our vetted global network. Our services include comprehensive supply chain optimization, covering logistics, inventory management, and stringent quality control. With meticulous production oversight and expert handling of international trade and export logistics, PICo. ensures a seamless path from concept to final delivery.
               </p>
             </motion.div>
             <motion.div 
@@ -195,7 +189,7 @@ export default function HomePage() {
         initial="hidden"
         animate={visionInView ? "visible" : "visible"}
         variants={fadeIn}
-        className="py-16 bg-[#1A1A1A]/5 dark:bg-[#EAEAEA]/5"
+        className="py-16 bg-[#1A1A1A]/5"
       >
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -210,14 +204,8 @@ export default function HomePage() {
               className="order-2 md:order-2"
             >
               <h2 className="text-3xl font-bold mb-4 text-foreground">Our Vision</h2>
-              <p className="mb-4 text-foreground/80">
-                PICo. envisions a future where global brands can realize their creative ambitions without compromise or complexity. We strive to be the definitive end-to-end solution provider, recognized for our unwavering commitment to providing a seamless and comprehensive suite of services that simplifies the product development process and empowers our clients to focus on their core brand identity and creative vision.
-              </p>
-              <p className="mb-4 text-foreground/80">
-                Our vision is to set the industry standard for operational efficiency, ethical production, and supply chain mastery, enabling our partners to achieve unparalleled market competitiveness. We are dedicated to cultivating long-term, collaborative relationships with our B2B clients, acting as a trusted advisor and proactive problem-solver, focused on their sustained success.
-              </p>
               <p className="text-foreground/80">
-                PICo. is committed to continuously evolving our expertise, embracing new technologies, and anticipating industry trends, ensuring that our clients always have access to the most advanced and effective solutions. PICo. aspires to be synonymous with reliability, efficiency, and exceptional quality, empowering our partners to lead in the global marketplace.
+                PICo. envisions a future where global brands can bring their creative visions to life with ease and confidence. As a trusted end-to-end solution provider, we are committed to simplifying the product development process, enabling our B2B clients to focus on their brand identity and innovation. Our vision is to set the benchmark for operational excellence, ethical production, and supply chain expertise, fostering long-term partnerships built on trust and shared success. We continuously evolve by embracing new technologies and anticipating industry trends, ensuring our clients benefit from cutting-edge, reliable, and high-quality solutions that drive global competitiveness.
               </p>
             </motion.div>
           </div>
@@ -245,14 +233,8 @@ export default function HomePage() {
               className="order-2 md:order-1"
             >
               <h2 className="text-3xl font-bold mb-4 text-foreground">Our Mission</h2>
-              <p className="mb-4 text-foreground/80">
-                PICo. is the strategic orchestrator of seamless product development for global brands. We provide a meticulously integrated suite of services designed to empower our B2B partners at every stage of their journey, from initial concept to final delivery. Our expertise encompasses translating brand visions into tangible designs, offering trend forecasting, material innovation, and technical design solutions.
-              </p>
-              <p className="mb-4 text-foreground/80">
-                We leverage a global network of carefully vetted manufacturers, ensuring access to specialized capabilities, ethical production practices, and competitive pricing. PICo. streamlines the flow of materials and goods, implementing efficient logistics, inventory management, and quality control systems to maximize efficiency and minimize risk.
-              </p>
               <p className="text-foreground/80">
-                We also provide rigorous monitoring and management of the production process, ensuring adherence to specifications, timelines, and quality standards, and manage all aspects of international shipping, customs clearance, and final delivery, ensuring a smooth and reliable experience. While our PICo. label showcases our design sensibility and commitment to quality, our core mission is to be the indispensable partner for global brands, providing tailored solutions, fostering transparent collaborations, and delivering exceptional results that drive their success.
+                PICo. is a strategic partner in end-to-end product development for global brands, offering an integrated suite of B2B services from concept to delivery. We transform brand visions into market-ready designs through trend forecasting, material innovation, and technical expertise. Backed by a global network of vetted manufacturers, we ensure ethical production, specialized capabilities, and cost efficiency. Our supply chain solutions encompass logistics, inventory, quality control, and production oversight to ensure precision and reliability. From international shipping to final delivery, PICo. delivers seamless execution. While our in-house label reflects our design excellence, our primary focus is empowering brands with tailored, transparent, and results-driven partnerships.
               </p>
             </motion.div>
           </div>
@@ -281,9 +263,9 @@ export default function HomePage() {
           >
             <motion.div 
               variants={fadeInScale}
-              className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transition-colors duration-300"
+              className="p-6 bg-white rounded-lg shadow-md transition-colors duration-300"
             >
-              <div className="text-[#D4AF37] dark:text-[#C77C48] font-bold text-xl mb-2">Quality</div>
+              <div className="text-[#D4AF37] font-bold text-xl mb-2">Quality</div>
               <h3 className="text-lg font-semibold mb-2 text-foreground">Our Standard</h3>
               <p className="text-foreground/80">
                 We never compromise on quality. Every stitch, every material, and every design element is carefully
@@ -292,9 +274,9 @@ export default function HomePage() {
             </motion.div>
             <motion.div 
               variants={fadeInScale}
-              className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transition-colors duration-300"
+              className="p-6 bg-white rounded-lg shadow-md transition-colors duration-300"
             >
-              <div className="text-[#D4AF37] dark:text-[#C77C48] font-bold text-xl mb-2">Innovation</div>
+              <div className="text-[#D4AF37] font-bold text-xl mb-2">Innovation</div>
               <h3 className="text-lg font-semibold mb-2 text-foreground">Our Approach</h3>
               <p className="text-foreground/80">
                 We're constantly pushing the boundaries of footwear design, incorporating the latest technologies and
@@ -303,9 +285,9 @@ export default function HomePage() {
             </motion.div>
             <motion.div 
               variants={fadeInScale}
-              className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transition-colors duration-300"
+              className="p-6 bg-white rounded-lg shadow-md transition-colors duration-300"
             >
-              <div className="text-[#D4AF37] dark:text-[#C77C48] font-bold text-xl mb-2">Sustainability</div>
+              <div className="text-[#D4AF37] font-bold text-xl mb-2">Sustainability</div>
               <h3 className="text-lg font-semibold mb-2 text-foreground">Our Commitment</h3>
               <p className="text-foreground/80">
                 We're committed to reducing our environmental impact through sustainable sourcing, eco-friendly
@@ -387,7 +369,7 @@ export default function HomePage() {
         initial="hidden"
         animate={joinJourneyInView ? "visible" : "visible"}
         variants={fadeIn}
-        className="py-16 bg-[#1A1A1A] dark:bg-[#000000] text-white"
+        className="py-16 bg-[#1A1A1A] text-white"
       >
         <div className="container mx-auto px-4 text-center">
           <motion.h2 
@@ -407,7 +389,7 @@ export default function HomePage() {
             variants={fadeInScale}
             className="flex justify-center"
           >
-            <Button asChild variant="outline" className="border-white text-white hover:bg-white/10 dark:border-white dark:text-white border-gray-800 text-gray-800">
+            <Button asChild variant="outline" className="border-white text-white hover:bg-white/10">
               <Link href="/contact">Contact Us</Link>
             </Button>
           </motion.div>

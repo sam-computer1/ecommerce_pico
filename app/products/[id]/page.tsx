@@ -40,7 +40,7 @@ export default async function Page(props: Props) {
   ).slice(0, 4)
 
   return (
-    <main className="flex-1 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <main className="flex-1 bg-white transition-colors duration-300">
       <ProductDetail product={product} />
       <RelatedProducts products={relatedProducts} />
     </main>

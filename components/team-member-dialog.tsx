@@ -54,7 +54,7 @@ export default function TeamMemberDialog({ member, isOpen, onClose }: TeamMember
       <DialogContent className="sm:max-w-2xl max-h-[80vh] overflow-hidden flex flex-col">
         <DialogHeader className="sm:text-center">
           <DialogTitle className="text-xl font-bold">{member.name}</DialogTitle>
-          <DialogDescription className="text-[#D4AF37] dark:text-[#C77C48]">
+          <DialogDescription className="text-[#D4AF37]">
             {member.position}
           </DialogDescription>
         </DialogHeader>

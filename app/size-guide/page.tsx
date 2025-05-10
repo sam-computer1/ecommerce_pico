@@ -10,24 +10,24 @@ export const metadata: Metadata = {
 
 export default function SizeGuidePage() {
   return (
-    <main className="flex-1 bg-gray-50 dark:bg-gray-900 dark:bg-gray-900 transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300 transition-colors duration-300">
+    <main className="flex-1 bg-gray-50 transition-colors duration-300">
       <div className="container mx-auto px-4 py-12">
         <h1 className="text-3xl font-bold mb-2">Size Guide</h1>
-        <p className="text-gray-600 dark:text-gray-400 mb-8">Find your perfect fit with our comprehensive size guide</p>
+        <p className="text-gray-600 mb-8">Find your perfect fit with our comprehensive size guide</p>
 
         <Tabs defaultValue="mens" className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-8">
+          <TabsList className="mb-6">
             <TabsTrigger value="mens">Men's Sizes</TabsTrigger>
             <TabsTrigger value="womens">Women's Sizes</TabsTrigger>
             <TabsTrigger value="kids">Kids' Sizes</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="mens" className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+          <TabsContent value="mens" className="bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-semibold mb-4">Men's Footwear Size Chart</h2>
             <div className="overflow-x-auto">
               <table className="min-w-full border-collapse">
                 <thead>
-                  <tr className="bg-gray-100 dark:bg-gray-800">
+                  <tr className="bg-gray-100">
                     <th className="border px-4 py-2 text-left">US</th>
                     <th className="border px-4 py-2 text-left">UK</th>
                     <th className="border px-4 py-2 text-left">EU</th>
@@ -43,7 +43,7 @@ export default function SizeGuidePage() {
                     <td className="border px-4 py-2">25</td>
                     <td className="border px-4 py-2">9.8"</td>
                   </tr>
-                  <tr className="bg-gray-50 dark:bg-gray-900">
+                  <tr className="bg-gray-50">
                     <td className="border px-4 py-2">8</td>
                     <td className="border px-4 py-2">7</td>
                     <td className="border px-4 py-2">41</td>
@@ -57,7 +57,7 @@ export default function SizeGuidePage() {
                     <td className="border px-4 py-2">27</td>
                     <td className="border px-4 py-2">10.6"</td>
                   </tr>
-                  <tr className="bg-gray-50 dark:bg-gray-900">
+                  <tr className="bg-gray-50">
                     <td className="border px-4 py-2">10</td>
                     <td className="border px-4 py-2">9</td>
                     <td className="border px-4 py-2">43</td>
@@ -71,7 +71,7 @@ export default function SizeGuidePage() {
                     <td className="border px-4 py-2">29</td>
                     <td className="border px-4 py-2">11.4"</td>
                   </tr>
-                  <tr className="bg-gray-50 dark:bg-gray-900">
+                  <tr className="bg-gray-50">
                     <td className="border px-4 py-2">12</td>
                     <td className="border px-4 py-2">11</td>
                     <td className="border px-4 py-2">45</td>
@@ -86,7 +86,7 @@ export default function SizeGuidePage() {
             <div className="overflow-x-auto">
               <table className="min-w-full border-collapse">
                 <thead>
-                  <tr className="bg-gray-100 dark:bg-gray-800">
+                  <tr className="bg-gray-100">
                     <th className="border px-4 py-2 text-left">Size</th>
                     <th className="border px-4 py-2 text-left">Chest (inches)</th>
                     <th className="border px-4 py-2 text-left">Waist (inches)</th>
@@ -100,7 +100,7 @@ export default function SizeGuidePage() {
                     <td className="border px-4 py-2">29-31</td>
                     <td className="border px-4 py-2">35-37</td>
                   </tr>
-                  <tr className="bg-gray-50 dark:bg-gray-900">
+                  <tr className="bg-gray-50">
                     <td className="border px-4 py-2">M</td>
                     <td className="border px-4 py-2">38-40</td>
                     <td className="border px-4 py-2">32-34</td>
@@ -112,7 +112,7 @@ export default function SizeGuidePage() {
                     <td className="border px-4 py-2">35-37</td>
                     <td className="border px-4 py-2">41-43</td>
                   </tr>
-                  <tr className="bg-gray-50 dark:bg-gray-900">
+                  <tr className="bg-gray-50">
                     <td className="border px-4 py-2">XL</td>
                     <td className="border px-4 py-2">44-46</td>
                     <td className="border px-4 py-2">38-40</td>
@@ -129,12 +129,12 @@ export default function SizeGuidePage() {
             </div>
           </TabsContent>
 
-          <TabsContent value="womens" className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+          <TabsContent value="womens" className="bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-semibold mb-4">Women's Footwear Size Chart</h2>
             <div className="overflow-x-auto">
               <table className="min-w-full border-collapse">
                 <thead>
-                  <tr className="bg-gray-100 dark:bg-gray-800">
+                  <tr className="bg-gray-100">
                     <th className="border px-4 py-2 text-left">US</th>
                     <th className="border px-4 py-2 text-left">UK</th>
                     <th className="border px-4 py-2 text-left">EU</th>
@@ -150,7 +150,7 @@ export default function SizeGuidePage() {
                     <td className="border px-4 py-2">22</td>
                     <td className="border px-4 py-2">8.7"</td>
                   </tr>
-                  <tr className="bg-gray-50 dark:bg-gray-900">
+                  <tr className="bg-gray-50">
                     <td className="border px-4 py-2">6</td>
                     <td className="border px-4 py-2">4</td>
                     <td className="border px-4 py-2">36-37</td>
@@ -164,7 +164,7 @@ export default function SizeGuidePage() {
                     <td className="border px-4 py-2">24</td>
                     <td className="border px-4 py-2">9.4"</td>
                   </tr>
-                  <tr className="bg-gray-50 dark:bg-gray-900">
+                  <tr className="bg-gray-50">
                     <td className="border px-4 py-2">8</td>
                     <td className="border px-4 py-2">6</td>
                     <td className="border px-4 py-2">38-39</td>
@@ -178,7 +178,7 @@ export default function SizeGuidePage() {
                     <td className="border px-4 py-2">26</td>
                     <td className="border px-4 py-2">10.2"</td>
                   </tr>
-                  <tr className="bg-gray-50 dark:bg-gray-900">
+                  <tr className="bg-gray-50">
                     <td className="border px-4 py-2">10</td>
                     <td className="border px-4 py-2">8</td>
                     <td className="border px-4 py-2">40-41</td>
@@ -193,7 +193,7 @@ export default function SizeGuidePage() {
             <div className="overflow-x-auto">
               <table className="min-w-full border-collapse">
                 <thead>
-                  <tr className="bg-gray-100 dark:bg-gray-800">
+                  <tr className="bg-gray-100">
                     <th className="border px-4 py-2 text-left">Size</th>
                     <th className="border px-4 py-2 text-left">Bust (inches)</th>
                     <th className="border px-4 py-2 text-left">Waist (inches)</th>
@@ -207,7 +207,7 @@ export default function SizeGuidePage() {
                     <td className="border px-4 py-2">24-26</td>
                     <td className="border px-4 py-2">34-36</td>
                   </tr>
-                  <tr className="bg-gray-50 dark:bg-gray-900">
+                  <tr className="bg-gray-50">
                     <td className="border px-4 py-2">S (4-6)</td>
                     <td className="border px-4 py-2">34-36</td>
                     <td className="border px-4 py-2">27-29</td>
@@ -219,7 +219,7 @@ export default function SizeGuidePage() {
                     <td className="border px-4 py-2">30-32</td>
                     <td className="border px-4 py-2">40-42</td>
                   </tr>
-                  <tr className="bg-gray-50 dark:bg-gray-900">
+                  <tr className="bg-gray-50">
                     <td className="border px-4 py-2">L (12-14)</td>
                     <td className="border px-4 py-2">40-42</td>
                     <td className="border px-4 py-2">33-35</td>
@@ -236,12 +236,12 @@ export default function SizeGuidePage() {
             </div>
           </TabsContent>
 
-          <TabsContent value="kids" className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+          <TabsContent value="kids" className="bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-semibold mb-4">Kids' Footwear Size Chart</h2>
             <div className="overflow-x-auto">
               <table className="min-w-full border-collapse">
                 <thead>
-                  <tr className="bg-gray-100 dark:bg-gray-800">
+                  <tr className="bg-gray-100">
                     <th className="border px-4 py-2 text-left">US</th>
                     <th className="border px-4 py-2 text-left">UK</th>
                     <th className="border px-4 py-2 text-left">EU</th>
@@ -257,7 +257,7 @@ export default function SizeGuidePage() {
                     <td className="border px-4 py-2">16.5</td>
                     <td className="border px-4 py-2">4-5 years</td>
                   </tr>
-                  <tr className="bg-gray-50 dark:bg-gray-900">
+                  <tr className="bg-gray-50">
                     <td className="border px-4 py-2">11C</td>
                     <td className="border px-4 py-2">10</td>
                     <td className="border px-4 py-2">28</td>
@@ -271,7 +271,7 @@ export default function SizeGuidePage() {
                     <td className="border px-4 py-2">18.1</td>
                     <td className="border px-4 py-2">6-7 years</td>
                   </tr>
-                  <tr className="bg-gray-50 dark:bg-gray-900">
+                  <tr className="bg-gray-50">
                     <td className="border px-4 py-2">13C</td>
                     <td className="border px-4 py-2">12</td>
                     <td className="border px-4 py-2">31</td>
@@ -285,7 +285,7 @@ export default function SizeGuidePage() {
                     <td className="border px-4 py-2">20.0</td>
                     <td className="border px-4 py-2">8-9 years</td>
                   </tr>
-                  <tr className="bg-gray-50 dark:bg-gray-900">
+                  <tr className="bg-gray-50">
                     <td className="border px-4 py-2">2Y</td>
                     <td className="border px-4 py-2">1</td>
                     <td className="border px-4 py-2">33</td>
@@ -300,7 +300,7 @@ export default function SizeGuidePage() {
             <div className="overflow-x-auto">
               <table className="min-w-full border-collapse">
                 <thead>
-                  <tr className="bg-gray-100 dark:bg-gray-800">
+                  <tr className="bg-gray-100">
                     <th className="border px-4 py-2 text-left">Size</th>
                     <th className="border px-4 py-2 text-left">Height (inches)</th>
                     <th className="border px-4 py-2 text-left">Weight (lbs)</th>
@@ -314,7 +314,7 @@ export default function SizeGuidePage() {
                     <td className="border px-4 py-2">35-39</td>
                     <td className="border px-4 py-2">4 years</td>
                   </tr>
-                  <tr className="bg-gray-50 dark:bg-gray-900">
+                  <tr className="bg-gray-50">
                     <td className="border px-4 py-2">5T</td>
                     <td className="border px-4 py-2">42-44</td>
                     <td className="border px-4 py-2">40-44</td>
@@ -326,7 +326,7 @@ export default function SizeGuidePage() {
                     <td className="border px-4 py-2">45-49</td>
                     <td className="border px-4 py-2">6 years</td>
                   </tr>
-                  <tr className="bg-gray-50 dark:bg-gray-900">
+                  <tr className="bg-gray-50">
                     <td className="border px-4 py-2">7</td>
                     <td className="border px-4 py-2">48-50</td>
                     <td className="border px-4 py-2">50-54</td>
@@ -344,7 +344,7 @@ export default function SizeGuidePage() {
           </TabsContent>
         </Tabs>
 
-        <div className="mt-10 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+        <div className="mt-10 bg-white p-6 rounded-lg shadow-md">
           <h2 className="text-xl font-semibold mb-4">How to Measure</h2>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -392,8 +392,8 @@ export default function SizeGuidePage() {
         </div>
 
         <div className="mt-10 text-center">
-          <p className="text-gray-600 dark:text-gray-400 mb-4">Still have questions about sizing?</p>
-          <Button asChild className="text-black dark:text-white">
+          <p className="text-gray-600 mb-4">Still have questions about sizing?</p>
+          <Button asChild className="text-black">
             <Link href="/contact">Contact Our Support Team</Link>
           </Button>
         </div>

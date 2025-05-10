@@ -12,22 +12,18 @@ export default function Footer() {
             <p className="text-accent-2 text-sm mb-4">
               Premium footwear for men, women, and kids. Quality, comfort, and style in every step.
             </p>
-            <div className="flex space-x-4">
-              <Link href="#" className="text-accent-3 hover:text-accent-1 transition-colors p-1.5 hover:bg-accent-3/10 rounded-full dark:text-[#f4edca] dark:hover:text-accent-1">
+            <div className="flex space-x-4 mt-4">
+              <Link href="#" className="text-accent-3 hover:text-accent-1 transition-colors p-1.5 hover:bg-accent-3/10 rounded-full">
                 <Facebook size={20} />
-                <span className="sr-only">Facebook</span>
               </Link>
-              <Link href="#" className="text-accent-3 hover:text-accent-1 transition-colors p-1.5 hover:bg-accent-3/10 rounded-full dark:text-[#f4edca] dark:hover:text-accent-1">
+              <Link href="#" className="text-accent-3 hover:text-accent-1 transition-colors p-1.5 hover:bg-accent-3/10 rounded-full">
                 <Twitter size={20} />
-                <span className="sr-only">Twitter</span>
               </Link>
-              <Link href="#" className="text-accent-3 hover:text-accent-1 transition-colors p-1.5 hover:bg-accent-3/10 rounded-full dark:text-[#f4edca] dark:hover:text-accent-1">
+              <Link href="#" className="text-accent-3 hover:text-accent-1 transition-colors p-1.5 hover:bg-accent-3/10 rounded-full">
                 <Instagram size={20} />
-                <span className="sr-only">Instagram</span>
               </Link>
-              <Link href="#" className="text-accent-3 hover:text-accent-1 transition-colors p-1.5 hover:bg-accent-3/10 rounded-full dark:text-[#f4edca] dark:hover:text-accent-1">
+              <Link href="#" className="text-accent-3 hover:text-accent-1 transition-colors p-1.5 hover:bg-accent-3/10 rounded-full">
                 <Youtube size={20} />
-                <span className="sr-only">Youtube</span>
               </Link>
             </div>
           </div>
@@ -38,27 +34,27 @@ export default function Footer() {
               <h3 className="text-sm font-semibold uppercase tracking-wider mb-2 text-accent-1">Shop</h3>
               <ul className="space-y-1.5">
                 <li>
-                  <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm dark:text-[#f4edca] dark:hover:text-accent-1">
+                  <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
                     All Products
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm dark:text-[#f4edca] dark:hover:text-accent-1">
+                  <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
                     Footwear
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm dark:text-[#f4edca] dark:hover:text-accent-1">
+                  <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
                     Clothing
                   </Link>
                 </li>
                 <li>
-                  <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm dark:text-[#f4edca] dark:hover:text-accent-1">
+                  <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
                     Accessories
                   </Link>
                 </li>
                 <li>
-                  <Link href="/size-guide" className="text-accent-3 hover:text-accent-1 transition-colors text-sm dark:text-[#f4edca] dark:hover:text-accent-1">
+                  <Link href="/size-guide" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
                     Size Guide
                   </Link>
                 </li>
@@ -69,17 +65,17 @@ export default function Footer() {
               <h3 className="text-sm font-semibold uppercase tracking-wider mb-2 text-accent-1">Support</h3>
               <ul className="space-y-1.5">
                 <li>
-                  <Link href="/contact" className="text-accent-3 hover:text-accent-1 transition-colors text-sm dark:text-[#f4edca] dark:hover:text-accent-1">
+                  <Link href="/contact" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
                     Contact Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/under-construction" className="text-accent-3 hover:text-accent-1 transition-colors text-sm dark:text-[#f4edca] dark:hover:text-accent-1">
+                  <Link href="/under-construction" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
                     FAQs
                   </Link>
                 </li>
                 <li>
-                  <Link href="/" className="text-accent-3 hover:text-accent-1 transition-colors text-sm dark:text-[#f4edca] dark:hover:text-accent-1">
+                  <Link href="/" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
                     About Us
                   </Link>
                 </li>

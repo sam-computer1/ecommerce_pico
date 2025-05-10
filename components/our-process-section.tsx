@@ -40,7 +40,7 @@ const ProcessStep = ({
         <div className="flex flex-col items-center">
           {/* Step Number */}
           <motion.div
-            className="w-16 h-16 rounded-full bg-[#690707] dark:bg-[#cb0000] text-[#f4edca] flex items-center justify-center text-2xl font-bold mb-4 z-10"
+            className="w-16 h-16 rounded-full bg-[#690707] text-[#f4edca] flex items-center justify-center text-2xl font-bold mb-4 z-10"
             whileHover={{ scale: 1.1 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
@@ -82,7 +82,7 @@ const ProcessStep = ({
             }
           }}
         >
-          <ArrowRight size={32} className="text-[#690707] dark:text-[#cb0000] animate-pulse" />
+          <ArrowRight size={32} className="text-[#690707] animate-pulse" />
         </motion.div>
       )}
     </div>
@@ -105,8 +105,8 @@ const MobileArrow = ({ index, controls }: { index: number; controls: any }) => {
         }
       }}
     >
-      <div className="h-12 w-0.5 bg-[#690707] dark:bg-[#cb0000] relative">
-        <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 border-b-2 border-r-2 border-[#690707] dark:border-[#cb0000] rotate-45" />
+      <div className="h-12 w-0.5 bg-[#690707] relative">
+        <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 border-b-2 border-r-2 border-[#690707] rotate-45" />
       </div>
     </motion.div>
   )
@@ -140,8 +140,8 @@ export default function OurProcessSection() {
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4 text-[#666666] dark:text-[#cb0000]">Our Process</h2>
-          <p className="text-[#666666] dark:text-[#cb0000] max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold mb-4 text-[#666666]">Our Process</h2>
+          <p className="text-[#666666] max-w-2xl mx-auto">
             From concept to delivery, we ensure quality and excellence at every step of the manufacturing process.
           </p>
         </div>

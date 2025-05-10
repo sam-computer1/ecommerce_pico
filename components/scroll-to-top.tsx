@@ -38,11 +38,13 @@ export default function ScrollToTop() {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.5 }}
           transition={{ duration: 0.3 }}
-          className="fixed bottom-20 right-5 z-50"
+          className={`${
+            isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+          } fixed bottom-6 right-6 z-[90] flex h-10 w-10 items-center justify-center rounded-full bg-background text-primary-foreground border-2 border-white/20 transition-all hover:shadow-xl`}
         >
           <Button
             onClick={scrollToTop}
-            className="h-12 w-12 rounded-full shadow-lg bg-secondary hover:bg-secondary/90 text-secondary-foreground border-2 border-white/20 dark:border-white/10 transition-all hover:shadow-xl"
+            className="h-12 w-12 rounded-full shadow-lg bg-secondary hover:bg-secondary/90 text-secondary-foreground border-2 border-white/20 transition-all hover:shadow-xl"
             size="icon"
             aria-label="Scroll to top"
           >
