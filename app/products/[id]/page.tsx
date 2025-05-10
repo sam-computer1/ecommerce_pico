@@ -1,7 +1,5 @@
 import { notFound } from "next/navigation"
 import { products } from "@/lib/products"
-import ProductDetail from "@/components/product-detail"
-import RelatedProducts from "@/components/related-products"
 
 type Props = {
   params: {
@@ -34,15 +32,20 @@ export default async function Page(props: Props) {
     notFound()
   }
 
-  // Find related products with the same category
-  const relatedProducts = products.filter(
-    (p) => p.category === product.category && p.id !== product.id
-  ).slice(0, 4)
-
   return (
     <main className="flex-1 bg-white transition-colors duration-300">
-      <ProductDetail product={product} />
-      <RelatedProducts products={relatedProducts} />
+      <div className="container mx-auto px-4 py-16">
+        <div className="text-center">
+          <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            {product.description || "Product description not available."}
+          </p>
+          <p className="mt-4 text-xl font-semibold">${product.price.toFixed(2)}</p>
+          <div className="mt-8">
+            <p>This page is currently under development.</p>
+          </div>
+        </div>
+      </div>
     </main>
   )
 }

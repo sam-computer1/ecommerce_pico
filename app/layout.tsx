@@ -4,8 +4,6 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
-import { CartProvider } from "@/context/cart-context"
-import { WishlistProvider } from "@/context/wishlist-context"
 import { ChatProvider } from "@/context/chat-context"
 import { Toaster } from "@/components/ui/toaster"
 import ScrollToTop from "@/components/scroll-to-top"
@@ -32,20 +30,16 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} min-h-screen flex flex-col transition-colors duration-300 w-full overflow-x-hidden`}>
         <TooltipProvider>
-          <CartProvider>
-            <WishlistProvider>
-              <ChatProvider>
-                <Header />
-                <div className="flex-grow transition-colors duration-300 pt-16">
-                  {children}
-                </div>
-                <Footer />
-                <ScrollToTop />
-                <ChatWidget />
-                <Toaster />
-              </ChatProvider>
-            </WishlistProvider>
-          </CartProvider>
+          <ChatProvider>
+            <Header />
+            <div className="flex-grow transition-colors duration-300 pt-16">
+              {children}
+            </div>
+            <Footer />
+            <ScrollToTop />
+            <ChatWidget />
+            <Toaster />
+          </ChatProvider>
         </TooltipProvider>
       </body>
     </html>
