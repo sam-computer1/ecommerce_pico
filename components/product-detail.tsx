@@ -259,7 +259,7 @@ export default function ProductDetail({ product }) {
             <div className="flex gap-4">
               <Button
                 size="lg"
-                className="flex-1 relative bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all overflow-hidden"
+                className="flex-1 relative bg-primary hover:bg-[#8a0505] shadow-lg hover:shadow-xl transition-all overflow-hidden"
                 onClick={handleAddToCart}
                 disabled={isAdded}
               >

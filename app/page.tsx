@@ -389,7 +389,7 @@ export default function HomePage() {
             variants={fadeInScale}
             className="flex justify-center"
           >
-            <Button asChild variant="outline" className="border-white text-white hover:bg-white/10">
+            <Button asChild variant="outline" className="border-white text-white bg-black/30 hover:bg-white/20 hover:text-white border-2">
               <Link href="/contact">Contact Us</Link>
             </Button>
           </motion.div>

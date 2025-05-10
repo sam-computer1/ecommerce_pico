@@ -92,7 +92,7 @@ export default function WishlistContent() {
                   Remove
                 </Button>
 
-                <Button size="sm" className="bg-primary hover:bg-primary/90" onClick={() => handleAddToCart(item)}>
+                <Button size="sm" className="bg-primary hover:bg-[#8a0505]" onClick={() => handleAddToCart(item)}>
                   <ShoppingCart className="h-4 w-4 mr-2" />
                   Add to Cart
                 </Button>

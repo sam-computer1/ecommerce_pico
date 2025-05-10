@@ -327,12 +327,12 @@ export default function ProductsGrid({
         <div className="flex items-center gap-4 self-start md:self-auto">
           <div className="hidden md:block">
             <Select value={sortBy} onValueChange={handleSortChange}>
-              <SelectTrigger className="bg-white border-none min-w-[180px] shadow-sm">
+              <SelectTrigger className="bg-white border border-gray-200 min-w-[180px] shadow-md hover:shadow-lg text-foreground font-medium">
                 <SelectValue placeholder="Sort by" />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="featured">Featured</SelectItem>
-                <SelectItem value="newest">Newest</SelectItem>
+              <SelectContent className="bg-white border border-gray-200 shadow-lg">
+                <SelectItem value="featured" className="hover:bg-gray-100 cursor-pointer">Featured</SelectItem>
+                <SelectItem value="newest" className="hover:bg-gray-100 cursor-pointer">Newest</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -340,7 +340,7 @@ export default function ProductsGrid({
           {/* Filter Button - separate from Sheet */}
           <Button
             variant="outline"
-            className="bg-white border-none shadow-sm flex items-center gap-2"
+            className="bg-white border border-gray-200 shadow-md hover:shadow-lg flex items-center gap-2 text-foreground font-medium"
             onClick={handleOpenFilterSheet}
           >
             <SlidersHorizontal className="h-4 w-4" />
