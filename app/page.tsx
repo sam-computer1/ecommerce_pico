@@ -1,9 +1,16 @@
 "use client"
 
-import { useState, useRef } from "react"
-import Image from "next/image"
-import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import Image from "next/image"
+import { useState, useRef } from "react"
+import { Button } from "@/components/ui/button"
+import OurProcessSection from "@/components/our-process-section"
+import FeaturedProductsSection from "@/components/featured-products-section"
+import PromoSection from "@/components/promo-section"
+import CategoryShowcase from "@/components/category-showcase"
+import ProductCTA from "@/components/product-cta"
+import NewsletterSection from "@/components/newsletter-section"
+import ScrollToTop from "@/components/scroll-to-top"
 import TeamMemberDialog, { TeamMemberProps } from "@/components/team-member-dialog"
 import { motion, useInView } from "framer-motion"
 
@@ -33,8 +40,8 @@ const TEAM_MEMBERS: TeamMemberProps[] = [
   {
     id: 4,
     name: "Ashutosh Chharia",
-    position: "Director (Factories & Production)",
-    bio: "Ashutosh Chharia is a highly driven and technically astute leader who serves as PICo.'s Director of Factories & Production. He brings to this role a potent combination of academic rigor and extensive practical experience in overseeing large-scale manufacturing operations. Mr. Chharia holds a Bachelor of Technology (B.Tech) degree in Food Engineering and Processing, providing him with a robust foundation in process design, optimization, and efficiency principles. \nHis career, spanning over a decade, is characterized by hands-on immersion in the complexities of factory control, management, and oversight. Ashutosh has cultivated a proven track record of success in enhancing productivity and ensuring operational excellence within demanding manufacturing environments. His expertise encompasses advanced process optimization, where he excels at analyzing existing workflows, identifying areas for improvement, and implementing streamlined processes to maximize efficiency and output. He is also skilled in strategic production planning, developing and executing comprehensive production plans that encompass resource allocation, capacity planning, and scheduling to meet production targets and deadlines. Quality management systems are another area of strength; he is highly proficient in establishing and enforcing rigorous quality management systems, implementing quality control checkpoints, and ensuring adherence to international quality standards to deliver superior products. Ashutosh is committed to operational efficiency and cost reduction, minimizing waste, optimizing resource utilization, and implementing cost-effective strategies to enhance profitability and maintain a competitive edge. He possesses strong leadership skills, effectively managing large teams, fostering a collaborative work environment, and mentoring personnel to achieve peak performance. Furthermore, Mr. Chharia ensures strict adherence to all relevant industry regulations, safety protocols, and ethical manufacturing practices, prioritizing a safe and compliant working environment.\nAt PICo., Ashutosh Chharia is the central authority for all production and factory-related matters. His responsibilities include end-to-end production oversight, directing and coordinating all aspects of the production lifecycle, from raw material procurement to finished goods, ensuring seamless execution and timely delivery. He also manages factory operations, including workforce management, equipment maintenance, and facility optimization. He establishes and maintains robust quality assurance and control systems, ensuring that all products meet PICo.'s exacting standards. Ashutosh Chharia's unique combination of technical expertise, practical experience, and strategic vision makes him an invaluable asset to PICo., driving the efficient and high-quality production of our products.",
+    position: "Director (Factory Operations & Production)",
+    bio: "Ashutosh Chharia is a highly driven and technically astute leader who serves as PICo.'s Director of Factory Operations & Production. He brings to this role a potent combination of academic rigor and extensive practical experience in overseeing large-scale manufacturing operations. Mr. Chharia holds a Bachelor of Technology (B.Tech) degree in Food Engineering and Processing, providing him with a robust foundation in process design, optimization, and efficiency principles. \nHis career, spanning over a decade, is characterized by hands-on immersion in the complexities of factory control, management, and oversight. Ashutosh has cultivated a proven track record of success in enhancing productivity and ensuring operational excellence within demanding manufacturing environments. His expertise encompasses advanced process optimization, where he excels at analyzing existing workflows, identifying areas for improvement, and implementing streamlined processes to maximize efficiency and output. He is also skilled in strategic production planning, developing and executing comprehensive production plans that encompass resource allocation, capacity planning, and scheduling to meet production targets and deadlines. Quality management systems are another area of strength; he is highly proficient in establishing and enforcing rigorous quality management systems, implementing quality control checkpoints, and ensuring adherence to international quality standards to deliver superior products. Ashutosh is committed to operational efficiency and cost reduction, minimizing waste, optimizing resource utilization, and implementing cost-effective strategies to enhance profitability and maintain a competitive edge. He possesses strong leadership skills, effectively managing large teams, fostering a collaborative work environment, and mentoring personnel to achieve peak performance. Furthermore, Mr. Chharia ensures strict adherence to all relevant industry regulations, safety protocols, and ethical manufacturing practices, prioritizing a safe and compliant working environment.\nAt PICo., Ashutosh Chharia is the central authority for all production and factory-related matters. His responsibilities include end-to-end production oversight, directing and coordinating all aspects of the production lifecycle, from raw material procurement to finished goods, ensuring seamless execution and timely delivery. He also manages factory operations, including workforce management, equipment maintenance, and facility optimization. He establishes and maintains robust quality assurance and control systems, ensuring that all products meet PICo.'s exacting standards. Ashutosh Chharia's unique combination of technical expertise, practical experience, and strategic vision makes him an invaluable asset to PICo., driving the efficient and high-quality production of our products.",
     imageSrc: "https://203fr2t3uf9dwcdt.public.blob.vercel-storage.com/Pico_pics/Ashutosh-FdsAZjhOL8Vn41MnSceufKALuohAeM.jpeg"
   },
   {
@@ -49,12 +56,22 @@ const TEAM_MEMBERS: TeamMemberProps[] = [
 export default function HomePage() {
   const [selectedMember, setSelectedMember] = useState<TeamMemberProps | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
-
+  
   // Refs for scroll animations
-  const heroRef = useRef(null);
+  const aboutRef = useRef(null);
+  const visionRef = useRef(null);
+  const missionRef = useRef(null);
+  const valuesRef = useRef(null);
+  const teamRef = useRef(null);
+  const joinJourneyRef = useRef(null);
   
   // InView hooks
-  const heroInView = useInView(heroRef, { once: true, amount: 0.3 });
+  const aboutInView = useInView(aboutRef, { once: true, amount: 0.3 });
+  const visionInView = useInView(visionRef, { once: true, amount: 0.3 });
+  const missionInView = useInView(missionRef, { once: true, amount: 0.3 });
+  const valuesInView = useInView(valuesRef, { once: true, amount: 0.3 });
+  const teamInView = useInView(teamRef, { once: true, amount: 0.3 });
+  const joinJourneyInView = useInView(joinJourneyRef, { once: true, amount: 0.3 });
 
   const handleOpenMemberDialog = (member: TeamMemberProps) => {
     setSelectedMember(member);
@@ -91,41 +108,310 @@ export default function HomePage() {
       }
     }
   };
-
+  
   return (
-    <main className="flex-1 bg-background text-foreground">
+    <main className="flex-1 bg-[#FAF4ED] transition-colors duration-300 dark:bg-[#1E1A17] dark:text-[#D9D9D9]">
       {/* Hero Section */}
-      <motion.section 
-        ref={heroRef}
-        initial="hidden"
-        animate={heroInView ? "visible" : "visible"}
-        variants={fadeIn}
-        className="relative py-20 overflow-hidden"
-      >
-        <div className="absolute inset-0 z-0 opacity-1">
-          <Image src="https://203fr2t3uf9dwcdt.public.blob.vercel-storage.com/Pico_pics/7eee46af-44bd-41cd-9876-c48a7bb56f82-iF5qLkcLXvCLNwnq5wH2clsrlUiVGz.JPG?height=800&width=1600" alt="Background pattern" fill className="object-cover" />
+      <section className="relative h-[80vh] overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10" />
+        <Image
+          src="\images\homepage\hero.jpg"
+          alt="Hero image of signature shoes"
+          fill
+          priority
+          className="object-cover object-center scale-105 animate-[zoomOut_10s_ease-in-out_infinite_alternate]"
+        />
+        <div className="relative z-20 container mx-auto h-full flex flex-col justify-center items-start px-4 md:px-6">
+          <div className="max-w-2xl space-y-4">
+            <h1 className="text-4xl md:text-6xl font-bold text-[#EAEAEA] tracking-tight hero-text">
+            Modern Luxury
+            </h1>
+            <p className="text-lg md:text-xl text-[#D9D9D9] hero-text">
+            Modern Luxury is the ability to think clearly, sleep deeply, move slowly and live quietly in a world designed to prevent all four
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 pt-4 hero-text">
+              <Button
+                size="lg"
+                asChild
+                className="bg-[#474646] hover:bg-[#C9A959] text-white font-bold py-3 px-8 rounded-md shadow-lg hover:shadow-xl transition-all dark:bg-[#B78B26] dark:hover:bg-[#4A3C31]"
+              >
+                <Link href="/products" className="px-8">
+                  Shop Now
+                </Link>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="bg-transparent hover:bg-[#C9A959]/20 text-white border-white font-bold py-3 px-8 rounded-md shadow-lg hover:shadow-xl transition-all dark:border-[#B78B26] dark:hover:bg-[#4A3C31]/20"
+                asChild
+              >
+                <Link href="/" className="px-8">
+                  Learn More
+                </Link>
+              </Button>
+            </div>
+          </div>
         </div>
-        <motion.div 
-          className="container mx-auto px-4 relative z-10"
-        >
+      </section>
+
+      {/* About Us Section */}
+      <motion.section 
+        ref={aboutRef}
+        initial="hidden"
+        animate={aboutInView ? "visible" : "visible"}
+        variants={fadeIn}
+        className="py-16"
+      >
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div 
+              variants={fadeInUp}
+              className="order-2 md:order-1"
+            >
+              <h2 className="text-3xl font-bold mb-4 text-foreground">About Us</h2>
+              <p className="mb-4 text-foreground/80">
+                PICo. is a dedicated partner for global brands seeking excellence in apparel, accessories, and footwear production. We streamline the complexities of product development by offering a meticulously integrated suite of services tailored to the unique needs of our B2B clients. From the initial spark of concept and design development, where we translate brand visions into tangible creations through trend forecasting, material innovation, and technical design solutions, to the crucial stages of sourcing and manufacturing partnerships, we connect brands with a carefully vetted global network.
+              </p>
+              <p className="mb-4 text-foreground/80">
+                Our expertise extends to optimizing the entire supply chain, ensuring efficient logistics, inventory management, and robust quality control systems. We provide rigorous production control and oversight, meticulously managing every detail to guarantee adherence to specifications, timelines, and the highest quality standards.
+              </p>
+              <p className="text-foreground/80">
+                PICo. also simplifies the complexities of international trade, offering comprehensive export and delivery solutions to ensure a smooth and reliable journey to the final destination.
+              </p>
+            </motion.div>
+            <motion.div 
+              variants={fadeInScale}
+              className="relative h-[400px] rounded-lg overflow-hidden shadow-xl order-1 md:order-2"
+            >
+              <Image src="https://203fr2t3uf9dwcdt.public.blob.vercel-storage.com/Pico_pics/8c074977-6abd-49f7-880f-e86e6fda6849-GNeczudDdumtOnABrULkH1gXx85fNM.JPG?height=800&width=600&text=About PICo." alt="About our company" fill className="object-cover" />
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Our Vision Section */}
+      <motion.section 
+        ref={visionRef}
+        initial="hidden"
+        animate={visionInView ? "visible" : "visible"}
+        variants={fadeIn}
+        className="py-16 bg-[#1A1A1A]/5 dark:bg-[#EAEAEA]/5"
+      >
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div 
+              variants={fadeInScale}
+              className="relative h-[400px] rounded-lg overflow-hidden shadow-xl order-1 md:order-1"
+            >
+              <Image src="https://203fr2t3uf9dwcdt.public.blob.vercel-storage.com/Pico_pics/931293a0-d055-4b52-9107-249ddd06f4b8-ak7t3St8BPfgX54FjnmbVgAPgJVV0y.JPG?height=800&width=600&text=Our Vision" alt="Our company vision" fill className="object-cover" />
+            </motion.div>
+            <motion.div 
+              variants={fadeInUp}
+              className="order-2 md:order-2"
+            >
+              <h2 className="text-3xl font-bold mb-4 text-foreground">Our Vision</h2>
+              <p className="mb-4 text-foreground/80">
+                PICo. envisions a future where global brands can realize their creative ambitions without compromise or complexity. We strive to be the definitive end-to-end solution provider, recognized for our unwavering commitment to providing a seamless and comprehensive suite of services that simplifies the product development process and empowers our clients to focus on their core brand identity and creative vision.
+              </p>
+              <p className="mb-4 text-foreground/80">
+                Our vision is to set the industry standard for operational efficiency, ethical production, and supply chain mastery, enabling our partners to achieve unparalleled market competitiveness. We are dedicated to cultivating long-term, collaborative relationships with our B2B clients, acting as a trusted advisor and proactive problem-solver, focused on their sustained success.
+              </p>
+              <p className="text-foreground/80">
+                PICo. is committed to continuously evolving our expertise, embracing new technologies, and anticipating industry trends, ensuring that our clients always have access to the most advanced and effective solutions. PICo. aspires to be synonymous with reliability, efficiency, and exceptional quality, empowering our partners to lead in the global marketplace.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Mission Section */}
+      <motion.section 
+        ref={missionRef}
+        initial="hidden"
+        animate={missionInView ? "visible" : "visible"}
+        variants={fadeIn}
+        className="py-16"
+      >
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div 
+              variants={fadeInScale}
+              className="relative h-[400px] rounded-lg overflow-hidden shadow-xl order-1 md:order-2"
+            >
+              <Image src="https://203fr2t3uf9dwcdt.public.blob.vercel-storage.com/Pico_pics/7eee46af-44bd-41cd-9876-c48a7bb56f82-iF5qLkcLXvCLNwnq5wH2clsrlUiVGz.JPG?height=800&width=600" alt="Our workshop" fill className="object-cover" />
+            </motion.div>
+            <motion.div 
+              variants={fadeInUp}
+              className="order-2 md:order-1"
+            >
+              <h2 className="text-3xl font-bold mb-4 text-foreground">Our Mission</h2>
+              <p className="mb-4 text-foreground/80">
+                PICo. is the strategic orchestrator of seamless product development for global brands. We provide a meticulously integrated suite of services designed to empower our B2B partners at every stage of their journey, from initial concept to final delivery. Our expertise encompasses translating brand visions into tangible designs, offering trend forecasting, material innovation, and technical design solutions.
+              </p>
+              <p className="mb-4 text-foreground/80">
+                We leverage a global network of carefully vetted manufacturers, ensuring access to specialized capabilities, ethical production practices, and competitive pricing. PICo. streamlines the flow of materials and goods, implementing efficient logistics, inventory management, and quality control systems to maximize efficiency and minimize risk.
+              </p>
+              <p className="text-foreground/80">
+                We also provide rigorous monitoring and management of the production process, ensuring adherence to specifications, timelines, and quality standards, and manage all aspects of international shipping, customs clearance, and final delivery, ensuring a smooth and reliable experience. While our PICo. label showcases our design sensibility and commitment to quality, our core mission is to be the indispensable partner for global brands, providing tailored solutions, fostering transparent collaborations, and delivering exceptional results that drive their success.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </motion.section>
+
+      {/* Values Section */}
+      <motion.section 
+        ref={valuesRef}
+        initial="hidden"
+        animate={valuesInView ? "visible" : "visible"}
+        variants={fadeIn}
+        className="py-16 bg-background text-foreground"
+      >
+        <div className="container mx-auto px-4">
           <motion.div 
-            className="max-w-3xl mx-auto text-center"
+            variants={fadeInUp}
+            className="text-center max-w-3xl mx-auto"
           >
-            <motion.h1 
-              variants={fadeInUp}
-              className="text-4xl md:text-5xl font-bold mb-4 text-white dark:text-white"
-            >
-              Our Story
-            </motion.h1>
-            <motion.p 
-              variants={fadeInUp}
-              className="text-lg mb-8 text-white dark:text-white"
-            >
-              Crafting premium footwear since 2010, we've been on a mission to combine style, comfort, and
-              sustainability.
-            </motion.p>
+            <h2 className="text-3xl font-bold mb-4 text-foreground">Our Values</h2>
+            <p className="mb-8 text-foreground/80">We stand by our core values in everything we do, from design to delivery.</p>
           </motion.div>
-        </motion.div>
+          <motion.div 
+            variants={staggerContainer}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            <motion.div 
+              variants={fadeInScale}
+              className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transition-colors duration-300"
+            >
+              <div className="text-[#D4AF37] dark:text-[#C77C48] font-bold text-xl mb-2">Quality</div>
+              <h3 className="text-lg font-semibold mb-2 text-foreground">Our Standard</h3>
+              <p className="text-foreground/80">
+                We never compromise on quality. Every stitch, every material, and every design element is carefully
+                selected and crafted to ensure durability and comfort.
+              </p>
+            </motion.div>
+            <motion.div 
+              variants={fadeInScale}
+              className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transition-colors duration-300"
+            >
+              <div className="text-[#D4AF37] dark:text-[#C77C48] font-bold text-xl mb-2">Innovation</div>
+              <h3 className="text-lg font-semibold mb-2 text-foreground">Our Approach</h3>
+              <p className="text-foreground/80">
+                We're constantly pushing the boundaries of footwear design, incorporating the latest technologies and
+                trends to create shoes that are both functional and fashionable.
+              </p>
+            </motion.div>
+            <motion.div 
+              variants={fadeInScale}
+              className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md transition-colors duration-300"
+            >
+              <div className="text-[#D4AF37] dark:text-[#C77C48] font-bold text-xl mb-2">Sustainability</div>
+              <h3 className="text-lg font-semibold mb-2 text-foreground">Our Commitment</h3>
+              <p className="text-foreground/80">
+                We're committed to reducing our environmental impact through sustainable sourcing, eco-friendly
+                materials, and responsible manufacturing practices.
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Team Section */}
+      <motion.section 
+        ref={teamRef}
+        initial="hidden"
+        animate={teamInView ? "visible" : "visible"}
+        variants={fadeIn}
+        className="py-16"
+      >
+        <div className="container mx-auto px-4">
+          <motion.div 
+            variants={fadeInUp}
+            className="text-center max-w-3xl mx-auto"
+          >
+            <h2 className="text-3xl font-bold mb-4 text-foreground">Our Team</h2>
+            <p className="mb-8 text-foreground/80">
+              Meet the passionate individuals behind PICo. who work tirelessly to bring you the best footwear
+              experience.
+            </p>
+          </motion.div>
+          <motion.div 
+            variants={staggerContainer}
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-4"
+          >
+            {TEAM_MEMBERS.map((member, index) => (
+              <motion.div 
+                key={member.id} 
+                variants={fadeInScale}
+                className="text-center cursor-pointer transform transition-transform hover:scale-105"
+                onClick={() => handleOpenMemberDialog(member)}
+                custom={index}
+              >
+                <div className="relative h-48 w-48 mx-auto rounded-full overflow-hidden mb-3 shadow-md">
+                  <Image
+                    src={member.imageSrc}
+                    alt={member.name}
+                    fill
+                    className="object-cover object-center"
+                    style={{ 
+                      objectPosition: member.id <= 3 
+                        ? '50% 10%' 
+                        : '50% 25%' 
+                    }}
+                  />
+                </div>
+                <h3 className="text-lg font-bold text-foreground">{member.name}</h3>
+                <p className="text-sm text-[#D4AF37]">{member.position}</p>
+                <p className="mt-1 text-xs text-foreground">Click to learn more</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </motion.section>
+
+      {/* Our Process (replaces New Arrivals) */}
+      <OurProcessSection />
+
+      {/* Category Showcase */}
+      <CategoryShowcase />
+
+      {/* Featured Products */}
+      <FeaturedProductsSection />
+
+      {/* Hero Product Call To Action */}
+      <ProductCTA />
+
+      {/* Join Our Journey Section */}
+      <motion.section 
+        ref={joinJourneyRef}
+        initial="hidden"
+        animate={joinJourneyInView ? "visible" : "visible"}
+        variants={fadeIn}
+        className="py-16 bg-[#1A1A1A] dark:bg-[#000000] text-white"
+      >
+        <div className="container mx-auto px-4 text-center">
+          <motion.h2 
+            variants={fadeInUp}
+            className="text-3xl font-bold mb-4 text-foreground"
+          >
+            Join Our Journey
+          </motion.h2>
+          <motion.p 
+            variants={fadeInUp}
+            className="max-w-2xl mx-auto mb-8 text-foreground/80"
+          >
+            We're always looking for passionate individuals to join our team and help us continue to create amazing
+            footwear.
+          </motion.p>
+          <motion.div 
+            variants={fadeInScale}
+            className="flex justify-center"
+          >
+            <Button asChild variant="outline" className="border-white text-white hover:bg-white/10 dark:border-white dark:text-white border-gray-800 text-gray-800">
+              <Link href="/contact">Contact Us</Link>
+            </Button>
+          </motion.div>
+        </div>
       </motion.section>
 
       {/* Team Member Dialog */}
@@ -134,7 +420,9 @@ export default function HomePage() {
         isOpen={dialogOpen} 
         onClose={handleCloseDialog} 
       />
+
+      {/* Scroll to Top Button */}
+      <ScrollToTop />
     </main>
   )
-}
-
+} 

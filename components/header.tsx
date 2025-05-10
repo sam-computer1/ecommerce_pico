@@ -16,11 +16,9 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
-  const [isServicesOpen, setIsServicesOpen] = useState(false)
   const pathname = usePathname()
   const router = useRouter()
   const headerRef = useRef<HTMLElement>(null)
-  const servicesRef = useRef<HTMLDivElement>(null)
 
   // Check if we've scrolled down
   useEffect(() => {
@@ -57,18 +55,6 @@ export default function Header() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isSearchOpen]);
-
-  // Handle click outside for services dropdown
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (servicesRef.current && !servicesRef.current.contains(event.target as Node)) {
-        setIsServicesOpen(false)
-      }
-    }
-
-    document.addEventListener("mousedown", handleClickOutside)
-    return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [])
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -149,51 +135,15 @@ export default function Header() {
               </Link>
             </motion.div>
 
-            <motion.div 
-              whileHover={{ y: -2 }}
-              ref={servicesRef}
-              className="relative"
-              onMouseEnter={() => setIsServicesOpen(true)}
-              onMouseLeave={() => setIsServicesOpen(false)}
-            >
-              <button
-                className={`text-sm font-medium hover:text-accent-1 dark:hover:text-[#f4edca] transition-colors flex items-center gap-1 ${
-                  pathname.startsWith("/product") ? "text-accent-1 dark:text-[#f4edca]" : "text-accent-3 dark:text-[#f4edca]"
+            <motion.div whileHover={{ y: -2 }}>
+              <Link
+                href="/products"
+                className={`text-sm font-medium hover:text-accent-1 dark:hover:text-[#f4edca] transition-colors ${
+                  pathname === "/products" ? "text-accent-1 dark:text-[#f4edca]" : "text-accent-3 dark:text-[#f4edca]"
                 }`}
               >
-                Our Services
-                <ChevronDown className="h-4 w-4" />
-              </button>
-
-              {/* Dropdown Menu */}
-              <AnimatePresence>
-                {isServicesOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute top-full left-0 mt-2 w-48 bg-background border border-border rounded-md shadow-lg py-2 z-50"
-                  >
-                    <Link
-                      href="/product"
-                      className={`block px-4 py-2 text-sm hover:bg-accent-3/10 transition-colors ${
-                        pathname === "/product" ? "text-accent-1 dark:text-[#f4edca]" : "text-accent-3 dark:text-[#f4edca]"
-                      }`}
-                    >
-                      Featured Products
-                    </Link>
-                    <Link
-                      href="/products"
-                      className={`block px-4 py-2 text-sm hover:bg-accent-3/10 transition-colors ${
-                        pathname === "/products" ? "text-accent-1 dark:text-[#f4edca]" : "text-accent-3 dark:text-[#f4edca]"
-                      }`}
-                    >
-                      All Products
-                    </Link>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                All Products
+              </Link>
             </motion.div>
 
             <motion.div whileHover={{ y: -2 }}>
@@ -315,25 +265,13 @@ export default function Header() {
                 Home
               </Link>
 
-              <div className="py-3">
-                <div className="text-base font-medium text-accent-3 dark:text-[#f4edca] mb-2">Our Services</div>
-                <div className="pl-4 space-y-2">
-                  <Link
-                    href="/product"
-                    className={`block py-2 text-base ${pathname === "/product" ? "text-accent-1 font-medium" : "text-accent-3"} dark:text-[#f4edca]`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    Featured Products
-                  </Link>
-                  <Link
-                    href="/products"
-                    className={`block py-2 text-base ${pathname === "/products" ? "text-accent-1 font-medium" : "text-accent-3"} dark:text-[#f4edca]`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    All Products
-                  </Link>
-                </div>
-              </div>
+              <Link
+                href="/products"
+                className={`block py-3 text-base ${pathname === "/products" ? "text-accent-1 font-medium" : "text-accent-3"} dark:text-[#f4edca]`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                All Products
+              </Link>
 
               <Link
                 href="/contact" 
