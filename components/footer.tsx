@@ -30,38 +30,63 @@ export default function Footer() {
 
           {/* Right Section */}
           <div className="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-16">
-            <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider mb-2 text-accent-1">Shop</h3>
-              <ul className="space-y-1.5">
-                <li>
-                  <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
-                    All Products
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
-                    Footwear
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
-                    Clothing
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
-                    Accessories
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/size-guide" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
-                    Size Guide
-                  </Link>
-                </li>
-              </ul>
+            {/* Mobile: row layout for Shop and Support, Desktop: original layout */}
+            <div className="flex flex-row md:flex-col space-x-8 md:space-x-0 space-y-0 md:space-y-0">
+              <div>
+                <h3 className="text-sm font-semibold uppercase tracking-wider mb-2 text-accent-1">Shop</h3>
+                <ul className="space-y-1.5">
+                  <li>
+                    <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
+                      All Products
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
+                      Footwear
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
+                      Clothing
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
+                      Accessories
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/size-guide" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
+                      Size Guide
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="md:hidden">
+                <h3 className="text-sm font-semibold uppercase tracking-wider mb-2 text-accent-1">Support</h3>
+                <ul className="space-y-1.5">
+                  <li>
+                    <Link href="/contact" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
+                      Contact Us
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/under-construction" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
+                      FAQs
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
+                      About Us
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </div>
 
-            <div>
+            {/* Desktop Only Support Section */}
+            <div className="hidden md:block">
               <h3 className="text-sm font-semibold uppercase tracking-wider mb-2 text-accent-1">Support</h3>
               <ul className="space-y-1.5">
                 <li>

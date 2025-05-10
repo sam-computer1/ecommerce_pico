@@ -36,8 +36,7 @@ interface ProductsGridProps {
 }
 
 // Define static arrays outside the component to avoid recreating them on each render
-const TYPES = ["footwear", "clothing", "bag", "accessory"]
-const COLORS = ["black", "white", "red", "blue", "green", "gray", "pink", "purple", "yellow", "brown"]
+const TYPES = ["footwear", "clothing", "accessory"]
 const CATEGORIES = ["men", "women", "kids"]
 const FOOTWEAR_SIZES = ["US 5", "US 6", "US 7", "US 8", "US 9", "US 10", "US 11", "US 12"]
 const MENS_CLOTHING_SIZES = ["S", "M", "L", "XL", "XXL", "3XL"]
@@ -55,20 +54,6 @@ const THEME_CLASSES = {
   gray: "bg-gray-100"
 }
 
-// Color mapping for the color filter
-const COLOR_MAPPINGS: Record<string, string> = {
-  black: "bg-black",
-  white: "bg-white border border-gray-300",
-  red: "bg-red-600",
-  blue: "bg-blue-600",
-  green: "bg-green-600",
-  gray: "bg-gray-500",
-  pink: "bg-pink-500",
-  purple: "bg-purple-600",
-  yellow: "bg-yellow-400",
-  brown: "bg-amber-800",
-}
-
 export default function ProductsGrid({
   products,
   theme = "default",
@@ -82,7 +67,6 @@ export default function ProductsGrid({
   
   // Filter states - what's actually applied
   const [selectedTypes, setSelectedTypes] = useState<string[]>([])
-  const [selectedColors, setSelectedColors] = useState<string[]>([])
   const [selectedSizes, setSelectedSizes] = useState<string[]>([])
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
 
@@ -91,18 +75,16 @@ export default function ProductsGrid({
   
   // Pending filter states - what's shown in the filter sheet before applying
   const [pendingTypes, setPendingTypes] = useState<string[]>([])
-  const [pendingColors, setPendingColors] = useState<string[]>([])
   const [pendingSizes, setPendingSizes] = useState<string[]>([])
   const [pendingCategories, setPendingCategories] = useState<string[]>([])
 
   // Handle filter sheet opening - initialize pending filters with current values
   const handleOpenFilterSheet = useCallback(() => {
     setPendingTypes([...selectedTypes])
-    setPendingColors([...selectedColors])
     setPendingSizes([...selectedSizes])
     setPendingCategories([...selectedCategories])
     setIsFilterOpen(true)
-  }, [selectedTypes, selectedColors, selectedSizes, selectedCategories])
+  }, [selectedTypes, selectedSizes, selectedCategories])
 
   // Handle filter sheet closing directly - no state changes
   const handleCloseFilterSheet = useCallback(() => {
@@ -199,14 +181,13 @@ export default function ProductsGrid({
 
     // Apply type filter (only for "all" and "other" product types)
     if ((productType === "all" || productType === "other") && selectedTypes.length > 0) {
-      result = result.filter((product) => selectedTypes.includes(product.type))
-    }
-
-    // Apply color filter
-    if (selectedColors.length > 0) {
-      result = result.filter(
-        (product) => product.colors && product.colors.some((color) => selectedColors.includes(color))
-      )
+      result = result.filter((product) => {
+        // Treat "bag" as part of "accessory" category
+        if (product.type === "bag" && selectedTypes.includes("accessory")) {
+          return true;
+        }
+        return selectedTypes.includes(product.type);
+      })
     }
 
     // Apply size filter
@@ -247,7 +228,6 @@ export default function ProductsGrid({
     sortBy,
     searchQuery,
     selectedTypes,
-    selectedColors,
     selectedSizes,
     selectedCategories,
     productType
@@ -270,12 +250,6 @@ export default function ProductsGrid({
     )
   }, [])
 
-  const togglePendingColor = useCallback((color: string) => {
-    setPendingColors(prev => 
-      prev.includes(color) ? prev.filter(c => c !== color) : [...prev, color]
-    )
-  }, [])
-
   const togglePendingSize = useCallback((size: string) => {
     setPendingSizes(prev => 
       prev.includes(size) ? prev.filter(s => s !== size) : [...prev, size]
@@ -289,21 +263,14 @@ export default function ProductsGrid({
   const applyFilters = useCallback(() => {
     setSelectedCategories([...pendingCategories])
     setSelectedTypes([...pendingTypes])
-    setSelectedColors([...pendingColors])
     setSelectedSizes([...pendingSizes])
     setIsFilterOpen(false)
-  }, [pendingCategories, pendingTypes, pendingColors, pendingSizes])
+  }, [pendingCategories, pendingTypes, pendingSizes])
 
   const clearAllFilters = useCallback(() => {
     setPendingCategories([])
     setPendingTypes([])
-    setPendingColors([])
     setPendingSizes([])
-  }, [])
-
-  // Helper functions
-  const getColorStyle = useCallback((color: string) => {
-    return `${COLOR_MAPPINGS[color]} h-6 w-6 rounded-full cursor-pointer transition-all duration-200`
   }, [])
 
   return (
@@ -449,22 +416,6 @@ export default function ProductsGrid({
                     </div>
                   </div>
                 )}
-
-                {/* Color filter */}
-                <div>
-                  <h3 className="text-lg font-medium mb-4">Colors</h3>
-                  <div className="flex flex-wrap gap-3">
-                    {COLORS.map((color) => (
-                      <div
-                        key={color}
-                        className={`${getColorStyle(color)} ${
-                          pendingColors.includes(color) ? "ring-2 ring-[#aa0202] ring-offset-2" : ""
-                        }`}
-                        onClick={() => togglePendingColor(color)}
-                      />
-                    ))}
-                  </div>
-                </div>
 
                 {/* Size filter - only show if relevant product type is selected */}
                 {shouldShowSizeFilter && displaySizes.length > 0 && (
