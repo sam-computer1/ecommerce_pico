@@ -12,7 +12,7 @@ interface ProductsHeaderProps {
 
 export default function ProductsHeader({ title, description, imageSrc, theme = "default" }: ProductsHeaderProps) {
   const themeStyles = {
-    default: "bg-gray-100 dark:bg-gray-800",
+    default: "bg-gray-100",
     gold: "bg-[#C9A959] text-white",
     purple: "bg-[#a35b8e] text-white",
     skyblue: "bg-[#6db1de] text-white",
@@ -42,10 +42,11 @@ export default function ProductsHeader({ title, description, imageSrc, theme = "
   return (
     <section className={`relative overflow-hidden ${themeStyles[theme]}`}>
       <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-black/60 z-10"></div>
         <Image src={imageSrc || "/placeholder.svg"} alt={title} fill className="object-cover opacity-75" />
       </div>
 
-      <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
+      <div className="container mx-auto px-4 py-16 md:py-24 relative z-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

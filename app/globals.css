@@ -35,33 +35,6 @@
     
     --radius: 0.5rem;
   }
-
-  .dark {
-    --background: 0, 88%, 22%;           /* #690707 - Dark mode background */
-    --foreground: 48, 92%, 93%;          /* #f4edca - Dark mode foreground */
-    
-    --card: 0, 88%, 17%;
-    --card-foreground: 48, 92%, 93%;     /* Same as foreground */
-    
-    --primary: 48, 92%, 88%;             /* Slightly darker than foreground */
-    --primary-foreground: 0, 88%, 22%;   /* Using background as primary foreground */
-    
-    --secondary: 0, 88%, 27%;            /* Slightly lighter than background */
-    --secondary-foreground: 48, 92%, 93%; /* Same as foreground */
-    
-    --muted: 0, 70%, 32%;
-    --muted-foreground: 48, 92%, 83%;    /* Slightly darker than foreground */
-    
-    --accent: 48, 92%, 83%;
-    --accent-foreground: 0, 88%, 22%;    /* Using background as accent foreground */
-    
-    --destructive: 0, 100%, 50%;
-    --destructive-foreground: 48, 92%, 93%; /* Using foreground */
-    
-    --border: 0, 70%, 30%;
-    --input: 0, 70%, 30%;
-    --ring: 48, 92%, 83%;                /* Slightly darker than foreground */
-  }
 }
 
 @layer base {
@@ -154,20 +127,6 @@
   background-color: #8a0505;
 }
 
-.dark ::-webkit-scrollbar-track {
-  background-color: #690707;
-  border-radius: 5px;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background-color: #cb0000;
-  border-radius: 5px;
-}
-
-.dark ::-webkit-scrollbar-thumb:hover {
-  background-color: #aa0202;
-}
-
 /* Scroll-driven animations */
 @keyframes reveal {
   from {
@@ -233,28 +192,9 @@
   background-color: #8a0505;
 }
 
-.dark .filter-scrollbar::-webkit-scrollbar-track {
-  background-color: #690707;
-  border-radius: 3px;
-}
-
-.dark .filter-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #cb0000;
-  border-radius: 3px;
-}
-
-.dark .filter-scrollbar::-webkit-scrollbar-thumb:hover {
-  background-color: #aa0202;
-}
-
 .filter-scrollbar {
   scrollbar-width: thin;
   scrollbar-color: #aa0202 hsl(var(--muted));
-}
-
-.dark .filter-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: #cb0000 #690707;
 }
 
 /* Helper classes for accent text colors */
@@ -340,17 +280,15 @@
 }
 
 .fixed.bottom-5.right-5.z-\[100\] > button:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(var(--primary), 0.5);
+  transform: translateY(-3px) scale(1.05) !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4), 0 0 0 3px rgba(255, 255, 255, 0.3) !important;
+  background-color: #8a0505 !important;
+  color: white !important;
 }
 
 .fixed.bottom-5.right-5.z-\[100\] > .card {
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease;
-}
-
-.dark .fixed.bottom-5.right-5.z-\[100\] > .card {
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
 /* Animation for chat open/close */

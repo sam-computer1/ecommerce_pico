@@ -13,7 +13,7 @@ export default function NewsletterSection() {
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsLoading(true)
 
@@ -84,7 +84,7 @@ export default function NewsletterSection() {
               <Button
                 type="submit"
                 disabled={isLoading}
-                className="bg-primary hover:bg-primary/90 text-white font-bold py-2 px-6 rounded-md shadow-lg hover:shadow-xl transition-all text-base"
+                className="bg-primary hover:bg-[#8a0505] text-white font-bold py-2 px-6 rounded-md shadow-lg hover:shadow-xl transition-all text-base"
               >
                 {isLoading ? "Subscribing..." : "Subscribe"}
               </Button>

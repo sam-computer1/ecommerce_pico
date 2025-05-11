@@ -181,7 +181,7 @@ export function ChatWidget() {
       ) : (
         <Button
           size="icon"
-          className="h-12 w-12 rounded-full shadow-lg bg-primary hover:bg-primary/90"
+          className="h-12 w-12 rounded-full shadow-lg bg-primary hover:bg-[#8a0505] hover:scale-105 hover:shadow-xl transition-all duration-300 text-white border-2 border-white/20"
           onClick={openChat}
         >
           <MessageCircle size={24} />

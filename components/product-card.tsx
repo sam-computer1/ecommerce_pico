@@ -53,7 +53,7 @@ export default function ProductCard({ product, theme = "default" }: { product: P
           className="object-cover transition-transform duration-700 group-hover:scale-110"
         />
         {product.isNew && (
-          <span className="absolute top-2 left-2 bg-[#690707] dark:bg-[#cb0000] text-[#f4edca] text-xs font-semibold px-2 py-1 rounded z-10">
+          <span className="absolute top-2 left-2 bg-[#690707] text-[#f4edca] text-xs font-semibold px-2 py-1 rounded z-10">
             NEW
           </span>
         )}

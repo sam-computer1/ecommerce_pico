@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
@@ -74,18 +73,5 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-  safelist: [
-    // Ensure these dark mode classes are always included
-    "dark:bg-gray-900",
-    "dark:bg-gray-800",
-    "dark:text-white",
-    "dark:text-gray-200",
-    "dark:text-gray-300",
-    "dark:text-gray-400",
-    "dark:border-gray-700",
-    "dark:bg-gray-700",
-    "dark:hover:bg-gray-700",
-    "dark:hover:bg-gray-800",
-  ],
 }
 

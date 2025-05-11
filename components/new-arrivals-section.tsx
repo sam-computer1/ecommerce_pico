@@ -67,8 +67,8 @@ export default function NewArrivalsSection() {
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold mb-4 text-[#666666] dark:text-[#cb0000]">New Arrivals</h2>
-          <p className="text-[#666666] dark:text-[#cb0000] max-w-2xl mx-auto">
+          <h2 className="text-3xl font-bold mb-4 text-[#666666]">New Arrivals</h2>
+          <p className="text-[#666666] max-w-2xl mx-auto">
             Check out our latest drops featuring innovative designs and premium materials.
           </p>
 
@@ -83,8 +83,8 @@ export default function NewArrivalsSection() {
                 }}
                 className={`px-4 py-2 rounded-full transition-colors ${
                   visibleCategory === category.id
-                    ? "bg-[#690707] text-[#f4edca] dark:bg-[#cb0000] dark:text-[#f4edca]"
-                    : "bg-[#aa0202] text-[#f4edca] hover:bg-[#690707] dark:bg-[#8a0505] dark:text-[#f4edca] dark:hover:bg-[#aa0202]"
+                    ? "bg-[#690707] text-[#f4edca]"
+                    : "bg-[#aa0202] text-[#f4edca] hover:bg-[#690707]"
                 }`}
               >
                 {category.name}
@@ -100,9 +100,9 @@ export default function NewArrivalsSection() {
               variant="outline"
               size="icon"
               onClick={prevSlide}
-              className="rounded-full bg-white shadow-md hover:bg-gray-100 dark:bg-[#aa0202] dark:border-[#f4edca] dark:hover:bg-[#8a0505]"
+              className="rounded-full bg-white shadow-md hover:bg-gray-100"
             >
-              <ChevronLeft className="h-5 w-5 dark:text-[#f4edca]" />
+              <ChevronLeft className="h-5 w-5" />
             </Button>
           </div>
 
@@ -111,9 +111,9 @@ export default function NewArrivalsSection() {
               variant="outline"
               size="icon"
               onClick={nextSlide}
-              className="rounded-full bg-white shadow-md hover:bg-gray-100 dark:bg-[#aa0202] dark:border-[#f4edca] dark:hover:bg-[#8a0505]"
+              className="rounded-full bg-white shadow-md hover:bg-gray-100"
             >
-              <ChevronRight className="h-5 w-5 dark:text-[#f4edca]" />
+              <ChevronRight className="h-5 w-5" />
             </Button>
           </div>
 
@@ -157,7 +157,7 @@ export default function NewArrivalsSection() {
                 key={index}
                 onClick={() => setCurrentIndex(index)}
                 className={`w-3 h-3 rounded-full transition-colors ${
-                  currentIndex === index ? "bg-accent-1 dark:bg-[#aa0202]" : "bg-gray-300 dark:bg-[#8a0505]"
+                  currentIndex === index ? "bg-accent-1" : "bg-gray-300"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
@@ -168,7 +168,7 @@ export default function NewArrivalsSection() {
         <div className="text-center mt-10">
           <Link
             href="/products"
-            className="inline-block bg-white px-6 py-3 border border-gray-300 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors dark:bg-[#aa0202] dark:text-[#f4edca] dark:border-[#f4edca] dark:hover:bg-[#8a0505]"
+            className="inline-block bg-white px-6 py-3 border border-gray-300 rounded-full text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors"
           >
             View All Products
           </Link>

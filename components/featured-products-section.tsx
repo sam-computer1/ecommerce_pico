@@ -36,7 +36,7 @@ export default function FeaturedProductsSection() {
         <div className="text-center mt-10">
           <Link
             href="/products"
-            className="inline-block bg-primary text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-primary/90 transition-colors"
+            className="inline-block bg-primary text-white px-6 py-3 rounded-full text-sm font-medium hover:bg-[#8a0505] hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-white/20"
           >
             Shop All Featured Products
           </Link>
