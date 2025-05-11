@@ -36,8 +36,7 @@ interface ProductsGridProps {
 }
 
 // Define static arrays outside the component to avoid recreating them on each render
-const TYPES = ["footwear", "clothing", "bag", "accessory"]
-const COLORS = ["black", "white", "red", "blue", "green", "gray", "pink", "purple", "yellow", "brown"]
+const TYPES = ["footwear", "clothing", "accessory"]
 const CATEGORIES = ["men", "women", "kids"]
 const FOOTWEAR_SIZES = ["US 5", "US 6", "US 7", "US 8", "US 9", "US 10", "US 11", "US 12"]
 const MENS_CLOTHING_SIZES = ["S", "M", "L", "XL", "XXL", "3XL"]
@@ -47,26 +46,12 @@ const KIDS_CLOTHING_SIZES = ["4T", "5T", "6", "7", "8", "10", "12", "14"]
 
 // Theme color classes
 const THEME_CLASSES = {
-  default: "bg-[#F6F6F6] dark:bg-[#191919]",
-  gold: "bg-[#FCFAEE]",
-  purple: "bg-[#F9F5FC]",
-  skyblue: "bg-[#F0F9FF]",
-  brown: "bg-[#F8F6F4]",
-  gray: "bg-[#F4F5F7]",
-}
-
-// Color mapping for the color filter
-const COLOR_MAPPINGS: Record<string, string> = {
-  black: "bg-black",
-  white: "bg-white border border-gray-300",
-  red: "bg-red-600",
-  blue: "bg-blue-600",
-  green: "bg-green-600",
-  gray: "bg-gray-500",
-  pink: "bg-pink-500",
-  purple: "bg-purple-600",
-  yellow: "bg-yellow-400",
-  brown: "bg-amber-800",
+  default: "bg-[#F6F6F6]",
+  gold: "bg-[#F9F5E9]",
+  purple: "bg-[#F5F3F9]",
+  skyblue: "bg-[#F1F7FA]",
+  brown: "bg-[#F8F5F2]",
+  gray: "bg-gray-100"
 }
 
 export default function ProductsGrid({
@@ -82,7 +67,6 @@ export default function ProductsGrid({
   
   // Filter states - what's actually applied
   const [selectedTypes, setSelectedTypes] = useState<string[]>([])
-  const [selectedColors, setSelectedColors] = useState<string[]>([])
   const [selectedSizes, setSelectedSizes] = useState<string[]>([])
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
 
@@ -91,18 +75,16 @@ export default function ProductsGrid({
   
   // Pending filter states - what's shown in the filter sheet before applying
   const [pendingTypes, setPendingTypes] = useState<string[]>([])
-  const [pendingColors, setPendingColors] = useState<string[]>([])
   const [pendingSizes, setPendingSizes] = useState<string[]>([])
   const [pendingCategories, setPendingCategories] = useState<string[]>([])
 
   // Handle filter sheet opening - initialize pending filters with current values
   const handleOpenFilterSheet = useCallback(() => {
     setPendingTypes([...selectedTypes])
-    setPendingColors([...selectedColors])
     setPendingSizes([...selectedSizes])
     setPendingCategories([...selectedCategories])
     setIsFilterOpen(true)
-  }, [selectedTypes, selectedColors, selectedSizes, selectedCategories])
+  }, [selectedTypes, selectedSizes, selectedCategories])
 
   // Handle filter sheet closing directly - no state changes
   const handleCloseFilterSheet = useCallback(() => {
@@ -199,14 +181,13 @@ export default function ProductsGrid({
 
     // Apply type filter (only for "all" and "other" product types)
     if ((productType === "all" || productType === "other") && selectedTypes.length > 0) {
-      result = result.filter((product) => selectedTypes.includes(product.type))
-    }
-
-    // Apply color filter
-    if (selectedColors.length > 0) {
-      result = result.filter(
-        (product) => product.colors && product.colors.some((color) => selectedColors.includes(color))
-      )
+      result = result.filter((product) => {
+        // Treat "bag" as part of "accessory" category
+        if (product.type === "bag" && selectedTypes.includes("accessory")) {
+          return true;
+        }
+        return selectedTypes.includes(product.type);
+      })
     }
 
     // Apply size filter
@@ -247,7 +228,6 @@ export default function ProductsGrid({
     sortBy,
     searchQuery,
     selectedTypes,
-    selectedColors,
     selectedSizes,
     selectedCategories,
     productType
@@ -270,12 +250,6 @@ export default function ProductsGrid({
     )
   }, [])
 
-  const togglePendingColor = useCallback((color: string) => {
-    setPendingColors(prev => 
-      prev.includes(color) ? prev.filter(c => c !== color) : [...prev, color]
-    )
-  }, [])
-
   const togglePendingSize = useCallback((size: string) => {
     setPendingSizes(prev => 
       prev.includes(size) ? prev.filter(s => s !== size) : [...prev, size]
@@ -289,21 +263,14 @@ export default function ProductsGrid({
   const applyFilters = useCallback(() => {
     setSelectedCategories([...pendingCategories])
     setSelectedTypes([...pendingTypes])
-    setSelectedColors([...pendingColors])
     setSelectedSizes([...pendingSizes])
     setIsFilterOpen(false)
-  }, [pendingCategories, pendingTypes, pendingColors, pendingSizes])
+  }, [pendingCategories, pendingTypes, pendingSizes])
 
   const clearAllFilters = useCallback(() => {
     setPendingCategories([])
     setPendingTypes([])
-    setPendingColors([])
     setPendingSizes([])
-  }, [])
-
-  // Helper functions
-  const getColorStyle = useCallback((color: string) => {
-    return `${COLOR_MAPPINGS[color]} h-6 w-6 rounded-full cursor-pointer transition-all duration-200`
   }, [])
 
   return (
@@ -315,7 +282,7 @@ export default function ProductsGrid({
             <Input
               type="text"
               placeholder="Search products..."
-              className="pl-10 border-none bg-white dark:bg-gray-900 shadow-sm rounded-full w-full md:min-w-[280px]"
+              className="pl-10 border-none bg-white shadow-sm rounded-full w-full md:min-w-[280px]"
               value={searchQuery}
               onChange={handleSearch}
               autoComplete="off"
@@ -327,12 +294,12 @@ export default function ProductsGrid({
         <div className="flex items-center gap-4 self-start md:self-auto">
           <div className="hidden md:block">
             <Select value={sortBy} onValueChange={handleSortChange}>
-              <SelectTrigger className="bg-white dark:bg-gray-800 border-none min-w-[180px] shadow-sm">
+              <SelectTrigger className="bg-white border border-gray-200 min-w-[180px] shadow-md hover:shadow-lg text-foreground font-medium">
                 <SelectValue placeholder="Sort by" />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="featured">Featured</SelectItem>
-                <SelectItem value="newest">Newest</SelectItem>
+              <SelectContent className="bg-white border border-gray-200 shadow-lg">
+                <SelectItem value="featured" className="hover:bg-gray-100 cursor-pointer">Featured</SelectItem>
+                <SelectItem value="newest" className="hover:bg-gray-100 cursor-pointer">Newest</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -340,7 +307,7 @@ export default function ProductsGrid({
           {/* Filter Button - separate from Sheet */}
           <Button
             variant="outline"
-            className="bg-white dark:bg-gray-800 border-none shadow-sm flex items-center gap-2"
+            className="bg-white border border-gray-200 shadow-md hover:shadow-lg flex items-center gap-2 text-foreground font-medium"
             onClick={handleOpenFilterSheet}
           >
             <SlidersHorizontal className="h-4 w-4" />
@@ -362,14 +329,14 @@ export default function ProductsGrid({
               <Button
                       variant={sortBy === "featured" ? "default" : "outline"}
                       onClick={() => handleSortChange("featured")}
-                      className={sortBy === "featured" ? "bg-[#aa0202] text-[#f4edca] dark:bg-[#8a0505] dark:text-[#f4edca]" : ""}
+                      className={sortBy === "featured" ? "bg-[#aa0202] text-[#f4edca]" : ""}
               >
                       Featured
               </Button>
                     <Button
                       variant={sortBy === "newest" ? "default" : "outline"}
                       onClick={() => handleSortChange("newest")}
-                      className={sortBy === "newest" ? "bg-[#aa0202] text-[#f4edca] dark:bg-[#8a0505] dark:text-[#f4edca]" : ""}
+                      className={sortBy === "newest" ? "bg-[#aa0202] text-[#f4edca]" : ""}
                     >
                       Newest
                     </Button>
@@ -387,8 +354,8 @@ export default function ProductsGrid({
                             onClick={() => togglePendingCategory(cat)}
                             className={`h-4 w-4 rounded border cursor-pointer transition-colors duration-200 ${
                               pendingCategories.includes(cat)
-                                ? "bg-[#aa0202] dark:bg-[#cb0000] border-transparent"
-                                : "border-[#8a0505] dark:border-[#aa0202]"
+                                ? "bg-[#aa0202] border-transparent"
+                                : "border-[#8a0505]"
                             }`}
                           >
                             {pendingCategories.includes(cat) && (
@@ -400,7 +367,7 @@ export default function ProductsGrid({
                                 strokeWidth="2"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                                className="text-[#f4edca] dark:text-[#f4edca]"
+                                className="text-[#f4edca]"
                               >
                                 <polyline points="20 6 9 17 4 12"></polyline>
                               </svg>
@@ -424,8 +391,8 @@ export default function ProductsGrid({
                             onClick={() => togglePendingType(type)}
                             className={`h-4 w-4 rounded border cursor-pointer transition-colors duration-200 ${
                               pendingTypes.includes(type)
-                                ? "bg-[#aa0202] dark:bg-[#cb0000] border-transparent"
-                                : "border-[#8a0505] dark:border-[#aa0202]"
+                                ? "bg-[#aa0202] border-transparent"
+                                : "border-[#8a0505]"
                             }`}
                           >
                             {pendingTypes.includes(type) && (
@@ -437,7 +404,7 @@ export default function ProductsGrid({
                                 strokeWidth="2"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                                className="text-[#f4edca] dark:text-[#f4edca]"
+                                className="text-[#f4edca]"
                               >
                                 <polyline points="20 6 9 17 4 12"></polyline>
                               </svg>
@@ -449,22 +416,6 @@ export default function ProductsGrid({
                     </div>
                   </div>
                 )}
-
-                {/* Color filter */}
-                <div>
-                  <h3 className="text-lg font-medium mb-4">Colors</h3>
-                  <div className="flex flex-wrap gap-3">
-                    {COLORS.map((color) => (
-                      <div
-                        key={color}
-                        className={`${getColorStyle(color)} ${
-                          pendingColors.includes(color) ? "ring-2 ring-[#aa0202] dark:ring-[#cb0000] ring-offset-2" : ""
-                        }`}
-                        onClick={() => togglePendingColor(color)}
-                      />
-                    ))}
-                  </div>
-                </div>
 
                 {/* Size filter - only show if relevant product type is selected */}
                 {shouldShowSizeFilter && displaySizes.length > 0 && (
@@ -482,8 +433,8 @@ export default function ProductsGrid({
                           key={size}
                           className={`px-3 py-2 border rounded-md text-sm cursor-pointer transition-colors duration-200 ${
                             pendingSizes.includes(size)
-                              ? "bg-[#aa0202] dark:bg-[#cb0000] text-[#f4edca] border-transparent"
-                              : "border-[#8a0505] dark:border-[#aa0202] hover:border-[#aa0202]"
+                              ? "bg-[#aa0202] text-[#f4edca] border-transparent"
+                              : "border-[#8a0505] hover:border-[#aa0202]"
                           }`}
                           onClick={() => togglePendingSize(size)}
                         >
@@ -500,7 +451,7 @@ export default function ProductsGrid({
                   <Button variant="outline" className="flex-1" onClick={clearAllFilters}>
                     Clear All
                   </Button>
-                  <Button className="flex-1 bg-[#aa0202] text-[#f4edca] hover:bg-[#8a0505] dark:bg-[#8a0505] dark:hover:bg-[#aa0202]" onClick={applyFilters}>
+                  <Button className="flex-1 bg-[#aa0202] text-[#f4edca]" onClick={applyFilters}>
                     Apply Filters
                   </Button>
                 </div>
@@ -528,7 +479,7 @@ export default function ProductsGrid({
             ) : (
             <div className="col-span-full text-center py-16">
               <h3 className="text-xl font-medium mb-2">No products found</h3>
-              <p className="text-gray-500 dark:text-gray-400">Try adjusting your search or filter criteria</p>
+              <p className="text-gray-500">Try adjusting your search or filter criteria</p>
             </div>
           )}
               </motion.div>

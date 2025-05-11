@@ -12,74 +12,95 @@ export default function Footer() {
             <p className="text-accent-2 text-sm mb-4">
               Premium footwear for men, women, and kids. Quality, comfort, and style in every step.
             </p>
-            <div className="flex space-x-4">
-              <Link href="#" className="text-accent-3 hover:text-accent-1 transition-colors p-1.5 hover:bg-accent-3/10 rounded-full dark:text-[#f4edca] dark:hover:text-accent-1">
+            <div className="flex space-x-4 mt-4">
+              <Link href="#" className="text-accent-3 hover:text-accent-1 transition-colors p-1.5 hover:bg-accent-3/10 rounded-full">
                 <Facebook size={20} />
-                <span className="sr-only">Facebook</span>
               </Link>
-              <Link href="#" className="text-accent-3 hover:text-accent-1 transition-colors p-1.5 hover:bg-accent-3/10 rounded-full dark:text-[#f4edca] dark:hover:text-accent-1">
+              <Link href="#" className="text-accent-3 hover:text-accent-1 transition-colors p-1.5 hover:bg-accent-3/10 rounded-full">
                 <Twitter size={20} />
-                <span className="sr-only">Twitter</span>
               </Link>
-              <Link href="#" className="text-accent-3 hover:text-accent-1 transition-colors p-1.5 hover:bg-accent-3/10 rounded-full dark:text-[#f4edca] dark:hover:text-accent-1">
+              <Link href="#" className="text-accent-3 hover:text-accent-1 transition-colors p-1.5 hover:bg-accent-3/10 rounded-full">
                 <Instagram size={20} />
-                <span className="sr-only">Instagram</span>
               </Link>
-              <Link href="#" className="text-accent-3 hover:text-accent-1 transition-colors p-1.5 hover:bg-accent-3/10 rounded-full dark:text-[#f4edca] dark:hover:text-accent-1">
+              <Link href="#" className="text-accent-3 hover:text-accent-1 transition-colors p-1.5 hover:bg-accent-3/10 rounded-full">
                 <Youtube size={20} />
-                <span className="sr-only">Youtube</span>
               </Link>
             </div>
           </div>
 
           {/* Right Section */}
           <div className="flex flex-col md:flex-row space-y-8 md:space-y-0 md:space-x-16">
-            <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider mb-2 text-accent-1">Shop</h3>
-              <ul className="space-y-1.5">
-                <li>
-                  <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm dark:text-[#f4edca] dark:hover:text-accent-1">
-                    All Products
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm dark:text-[#f4edca] dark:hover:text-accent-1">
-                    Footwear
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm dark:text-[#f4edca] dark:hover:text-accent-1">
-                    Clothing
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm dark:text-[#f4edca] dark:hover:text-accent-1">
-                    Accessories
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/size-guide" className="text-accent-3 hover:text-accent-1 transition-colors text-sm dark:text-[#f4edca] dark:hover:text-accent-1">
-                    Size Guide
-                  </Link>
-                </li>
-              </ul>
+            {/* Mobile: row layout for Shop and Support, Desktop: original layout */}
+            <div className="flex flex-row md:flex-col space-x-8 md:space-x-0 space-y-0 md:space-y-0">
+              <div>
+                <h3 className="text-sm font-semibold uppercase tracking-wider mb-2 text-accent-1">Shop</h3>
+                <ul className="space-y-1.5">
+                  <li>
+                    <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
+                      All Products
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
+                      Footwear
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
+                      Clothing
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/products" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
+                      Accessories
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/size-guide" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
+                      Size Guide
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="md:hidden">
+                <h3 className="text-sm font-semibold uppercase tracking-wider mb-2 text-accent-1">Support</h3>
+                <ul className="space-y-1.5">
+                  <li>
+                    <Link href="/contact" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
+                      Contact Us
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/under-construction" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
+                      FAQs
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
+                      About Us
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </div>
 
-            <div>
+            {/* Desktop Only Support Section */}
+            <div className="hidden md:block">
               <h3 className="text-sm font-semibold uppercase tracking-wider mb-2 text-accent-1">Support</h3>
               <ul className="space-y-1.5">
                 <li>
-                  <Link href="/contact" className="text-accent-3 hover:text-accent-1 transition-colors text-sm dark:text-[#f4edca] dark:hover:text-accent-1">
+                  <Link href="/contact" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
                     Contact Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/under-construction" className="text-accent-3 hover:text-accent-1 transition-colors text-sm dark:text-[#f4edca] dark:hover:text-accent-1">
+                  <Link href="/under-construction" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
                     FAQs
                   </Link>
                 </li>
                 <li>
-                  <Link href="/" className="text-accent-3 hover:text-accent-1 transition-colors text-sm dark:text-[#f4edca] dark:hover:text-accent-1">
+                  <Link href="/" className="text-accent-3 hover:text-accent-1 transition-colors text-sm">
                     About Us
                   </Link>
                 </li>
