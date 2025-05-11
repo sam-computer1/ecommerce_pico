@@ -1,8 +1,11 @@
 "use client"
 
 import { MapPin, Phone, Mail, Clock } from "lucide-react"
-import Map from "@/components/map"
-import { useState } from "react"
+import dynamic from 'next/dynamic'
+import { useState, useEffect } from "react"
+
+// Dynamic import with no SSR for Map component
+const Map = dynamic(() => import("@/components/map"), { ssr: false })
 
 // Store coordinates for Vietnam location
 const STORE_LOCATION = {
@@ -15,6 +18,11 @@ const STORE_LOCATION = {
 export default function ContactPage() {
   // No need for state since we only have one location now
   const location = STORE_LOCATION
+  const [isMounted, setIsMounted] = useState(false)
+  
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   return (
     <main className="flex-1 bg-background text-foreground">
@@ -23,27 +31,44 @@ export default function ContactPage() {
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold mb-2 text-foreground">Contact Us</h1>
             <p className="text-lg text-foreground/80 max-w-2xl mx-auto">
-              We'd love to hear from you. Please reach out directly to our Vietnam office using the information below.
+              We'd love to hear from you. Please reach out to any of our offices using the information below.
             </p>
           </div>
 
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-semibold mb-6 text-foreground">Our Location</h2>
+            <h2 className="text-2xl font-semibold mb-6 text-foreground">Our Locations</h2>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow-md max-w-2xl w-full">
+            {/* Vietnam Office (Headquarters) */}
+            <div className="bg-white p-6 rounded-lg shadow-md w-full">
               <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
               
-              {/* Location */}
               <div className="flex space-x-3 mb-4">
                 <MapPin className="h-5 w-5 text-[#1A1A1A] mt-1 flex-shrink-0" />
                 <div>
-                  <p className="font-medium text-[#1A1A1A]">Vietnam</p>
+                  <p className="font-medium text-[#1A1A1A] text-xl">Vietnam <span className="text-sm text-[#5E5E5E] ml-2">(Headquarters)</span></p>
                   <p className="text-[#5E5E5E]">351/43 Đ. Lê Đại Hành, Phường 11, Quận 11, Hồ Chí Minh 760000, Vietnam</p>
                   <div className="mt-2 text-[#5E5E5E]">
-                    <p>Phone: +84 286 286 5087</p>
-                    <p>Email: info@picocorp.com</p>
+                    <p>Phone: +84376803008</p>
+                    <p>Email: info@worldofpico.com</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* USA Office */}
+            <div className="bg-white p-6 rounded-lg shadow-md w-full">
+              <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
+              
+              <div className="flex space-x-3 mb-4">
+                <MapPin className="h-5 w-5 text-[#1A1A1A] mt-1 flex-shrink-0" />
+                <div>
+                  <p className="font-medium text-[#1A1A1A] text-xl">United States <span className="text-sm text-[#5E5E5E] ml-2">(US Office)</span></p>
+                  <p className="text-[#5E5E5E]">2810 N Church St, PMB 287126, Wilmington, Delaware, USA 19802-4447</p>
+                  <div className="mt-2 text-[#5E5E5E]">
+                    <p>Phone: +1 302 469 0140</p>
+                    <p>Email: anirban@aatmaa-group.com</p>
                   </div>
                 </div>
               </div>
@@ -80,13 +105,13 @@ export default function ContactPage() {
           </div>
 
           <div className="mt-16 text-center">
-            <h2 className="text-2xl font-semibold mb-6 text-foreground">Visit Our Office</h2>
+            <h2 className="text-2xl font-semibold mb-6 text-foreground">Visit Our Headquarters</h2>
             <div className="bg-white rounded-lg shadow-md overflow-hidden h-[400px]">
-              <Map location={location} />
+              {isMounted && <Map location={location} />}
             </div>
             <div className="flex justify-center mt-4">
               <div className="bg-white p-4 rounded-lg shadow-md transition-all duration-200 ring-2 ring-[#D4AF37] max-w-md w-full">
-                <p className="font-semibold text-foreground">Vietnam Office</p>
+                <p className="font-semibold text-foreground text-xl">Vietnam Office (Headquarters)</p>
                 <p className="text-sm text-foreground/80">351/43 Đ. Lê Đại Hành, Phường 11, Quận 11, Hồ Chí Minh 760000, Vietnam</p>
               </div>
             </div>
