@@ -270,3 +270,130 @@
   color: hsl(var(--accent-3));
 }
 
+/* Markdown Content Styling */
+.markdown-content {
+  line-height: 1.5;
+}
+
+.markdown-content p {
+  margin-bottom: 0.5rem;
+}
+
+.markdown-content strong,
+.markdown-content b {
+  font-weight: 600;
+}
+
+.markdown-content em,
+.markdown-content i {
+  font-style: italic;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  margin: 0.5rem 0 0.5rem 1.5rem;
+}
+
+.markdown-content ul li {
+  list-style-type: disc;
+}
+
+.markdown-content ol li {
+  list-style-type: decimal;
+}
+
+.markdown-content a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+}
+
+.markdown-content code {
+  font-family: monospace;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.markdown-content blockquote {
+  border-left: 3px solid hsl(var(--muted-foreground));
+  padding-left: 0.75rem;
+  color: hsl(var(--muted-foreground));
+  font-style: italic;
+  margin: 0.5rem 0;
+}
+
+.markdown-content hr {
+  border: none;
+  border-top: 1px solid hsl(var(--border));
+  margin: 1rem 0;
+}
+
+.markdown-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Chat widget specific styling */
+.fixed.bottom-5.right-5.z-\[100\] > button {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 0 2px rgba(var(--primary), 0.3);
+}
+
+.fixed.bottom-5.right-5.z-\[100\] > button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(var(--primary), 0.5);
+}
+
+.fixed.bottom-5.right-5.z-\[100\] > .card {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.dark .fixed.bottom-5.right-5.z-\[100\] > .card {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* Animation for chat open/close */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fixed.bottom-5.right-5.z-\[100\] > .card {
+  animation: slideUp 0.3s ease-out;
+}
+
+/* Bot message typing animation */
+@keyframes typingDots {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.typing-indicator span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+  margin: 0 1px;
+  animation: typingDots 1.4s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+

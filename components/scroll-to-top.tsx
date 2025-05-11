@@ -38,11 +38,11 @@ export default function ScrollToTop() {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.5 }}
           transition={{ duration: 0.3 }}
-          className="fixed bottom-6 right-6 z-50"
+          className="fixed bottom-20 right-5 z-50"
         >
           <Button
             onClick={scrollToTop}
-            className="p-2 rounded-full bg-[#aa0202] hover:bg-[#8a0505] dark:bg-[#cb0000] dark:hover:bg-[#aa0202] text-white shadow-lg hover:shadow-xl transition-all border-2 border-white dark:border-[#f4edca]"
+            className="h-12 w-12 rounded-full shadow-lg bg-secondary hover:bg-secondary/90 text-secondary-foreground border-2 border-white/20 dark:border-white/10 transition-all hover:shadow-xl"
             size="icon"
             aria-label="Scroll to top"
           >
