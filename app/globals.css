@@ -1,0 +1,277 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 48, 92%, 93%;          /* #f4edca - Light mode background */
+    --foreground: 0, 88%, 22%;           /* #690707 - Light mode foreground */
+    
+    --accent-1: 0, 100%, 40%;            /* #cb0000 - Accent color 1 */
+    --accent-2: 0, 99%, 33%;             /* #aa0202 - Accent color 2 */
+    --accent-3: 0, 96%, 28%;             /* #8a0505 - Accent color 3 */
+    
+    --card: 48, 92%, 98%;               
+    --card-foreground: 0, 88%, 22%;      /* Same as foreground */
+    
+    --primary: 0, 100%, 40%;             /* Using accent-1 as primary */
+    --primary-foreground: 48, 92%, 93%;  /* Using background as primary foreground */
+    
+    --secondary: 48, 92%, 88%;           /* Slightly darker than background */
+    --secondary-foreground: 0, 88%, 22%; /* Same as foreground */
+    
+    --muted: 48, 70%, 85%;
+    --muted-foreground: 0, 88%, 32%;     /* Slightly lighter than foreground */
+    
+    --accent: 0, 96%, 28%;               /* Using accent-3 as accent */
+    --accent-foreground: 48, 92%, 93%;   /* Using background as accent foreground */
+    
+    --destructive: 0, 100%, 40%;         /* Using accent-1 as destructive */
+    --destructive-foreground: 48, 92%, 93%; /* Using background as destructive foreground */
+    
+    --border: 48, 70%, 80%;
+    --input: 48, 70%, 80%;
+    --ring: 0, 88%, 22%;                 /* Same as foreground */
+    
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground transition-colors duration-300;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    width: 100%; /* Ensure full width */
+    position: relative; /* For proper containment */
+  }
+  
+  /* Mobile viewport fixes */
+  input, textarea, select {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+  }
+  
+  /* Ensure content is contained within viewport */
+  html {
+    overflow-x: hidden;
+    width: 100vw;
+  }
+}
+
+/* Custom styles */
+.product-card {
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: translateY(-4px);
+}
+
+/* Animation for the hero sections */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomOut {
+  from {
+    transform: scale(1.05);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.hero-text {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.hero-text:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.hero-text:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.hero-text:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: hsl(var(--muted));
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #aa0202;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #8a0505;
+}
+
+/* Scroll-driven animations */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-reveal {
+  view-timeline-name: --reveal;
+  view-timeline-axis: block;
+  animation: reveal linear both;
+  animation-timeline: --reveal;
+  animation-range: entry 10% cover 30%;
+}
+
+/* Luxury animations for product cards */
+.product-card img {
+  transition: transform 0.8s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.product-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Add a shining animation effect for buttons */
+@keyframes shine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.shine-effect {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background-size: 200% 100%;
+  animation: shine 2s infinite;
+}
+
+/* Filter scrollbar for product filters */
+.filter-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.filter-scrollbar::-webkit-scrollbar-track {
+  background-color: hsl(var(--muted));
+  border-radius: 3px;
+}
+
+.filter-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #aa0202;
+  border-radius: 3px;
+}
+
+.filter-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #8a0505;
+}
+
+.filter-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #aa0202 hsl(var(--muted));
+}
+
+/* Helper classes for accent text colors */
+.text-accent-1 {
+  color: hsl(var(--accent-1));
+}
+
+.text-accent-2 {
+  color: hsl(var(--accent-2));
+}
+
+.text-accent-3 {
+  color: hsl(var(--accent-3));
+}
+
+/* Markdown Content Styling */
+.markdown-content {
+  line-height: 1.5;
+}
+
+.markdown-content p {
+  margin-bottom: 0.5rem;
+}
+
+.markdown-content strong,
+.markdown-content b {
+  font-weight: 600;
+}
+
+.markdown-content em,
+.markdown-content i {
+  font-style: italic;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  margin: 0.5rem 0 0.5rem 1.5rem;
+}
+
+.markdown-content ul li {
+  list-style-type: disc;
+}
+
+.markdown-content ol li {
+  list-style-type: decimal;
+}
+
+.markdown-content a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+}
+
+.markdown-content code {
+  font-family: monospace;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.markdown-content blockquote {
+  border-left: 3px solid hsl(var(--muted-foreground));
+  padding-left: 0.75rem;
+  color: hsl(var(--muted-foreground));
+  font-style: italic;
+  margin: 0.5rem 0;
+}
+
+.markdown-content hr {
+  border: none;
+  border-top: 1px solid hsl(var(--border));
+  margin: 1rem 0;
+}
+
+.markdown-content p:last-child {
+  margin-bottom: 0;
+}
+
+
+
