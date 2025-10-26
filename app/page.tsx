@@ -176,7 +176,7 @@ export default function HomePage() {
               variants={fadeInScale}
               className="relative h-[400px] rounded-lg overflow-hidden shadow-xl order-1 md:order-2"
             >
-              <Image src="https://203fr2t3uf9dwcdt.public.blob.vercel-storage.com/Pico_pics/8c074977-6abd-49f7-880f-e86e6fda6849-GNeczudDdumtOnABrULkH1gXx85fNM.JPG?height=800&width=600&text=About PICo." alt="About our company" fill className="object-cover" />
+              <Image src="https://5lewiexqmin2zbg0.public.blob.vercel-storage.com/ShoesPics/shoes2.JPG" alt="About our company" fill className="object-cover" />
             </motion.div>
           </div>
         </div>
@@ -196,7 +196,7 @@ export default function HomePage() {
               variants={fadeInScale}
               className="relative h-[400px] rounded-lg overflow-hidden shadow-xl order-1 md:order-1"
             >
-              <Image src="https://203fr2t3uf9dwcdt.public.blob.vercel-storage.com/Pico_pics/931293a0-d055-4b52-9107-249ddd06f4b8-ak7t3St8BPfgX54FjnmbVgAPgJVV0y.JPG?height=800&width=600&text=Our Vision" alt="Our company vision" fill className="object-cover" />
+              <Image src="https://5lewiexqmin2zbg0.public.blob.vercel-storage.com/ShoesPics/shoes7.JPG" alt="Our company vision" fill className="object-cover" />
             </motion.div>
             <motion.div 
               variants={fadeInUp}
@@ -234,7 +234,7 @@ export default function HomePage() {
               variants={fadeInScale}
               className="relative h-[400px] rounded-lg overflow-hidden shadow-xl order-1 md:order-2"
             >
-              <Image src="https://203fr2t3uf9dwcdt.public.blob.vercel-storage.com/Pico_pics/7eee46af-44bd-41cd-9876-c48a7bb56f82-iF5qLkcLXvCLNwnq5wH2clsrlUiVGz.JPG?height=800&width=600" alt="Our workshop" fill className="object-cover" />
+              <Image src="https://5lewiexqmin2zbg0.public.blob.vercel-storage.com/ShoesPics/shoes15.JPG" alt="Our workshop" fill className="object-cover" />
             </motion.div>
           </div>
         </div>
