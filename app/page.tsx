@@ -20,35 +20,35 @@ const TEAM_MEMBERS: TeamMemberProps[] = [
     name: "Jai Prakash Chharia",
     position: "Chairman",
     bio: "Jai Prakash Chharia is a seasoned leader with over 40 years of experience in international trade and 30+ years as an entrepreneur. His extensive expertise across industries and global markets gives PICo. a strategic advantage in the apparel, accessories, and footwear sector. Known for his ability to navigate complex trade environments, forge international partnerships, and drive sustainable growth, Mr. Chharia brings visionary leadership, sharp business acumen, and a commitment to ethical practices. As Chairman, he provides strategic direction and fosters a culture of innovation, integrity, and excellence.",
-    imageSrc: "https://203fr2t3uf9dwcdt.public.blob.vercel-storage.com/Pico_pics/Mr.%20Jai%20Prakash-xO1SNGQEyA48xG0ypBV5olhunM4Qhi.jpg"
+    imageSrc: "https://5lewiexqmin2zbg0.public.blob.vercel-storage.com/TeamPics/Mr.%20Jai%20Prakash.jpg"
   },
   {
     id: 2,
     name: "Johnny Tranz",
     position: "Director (Technical)",
     bio: "Johnny Tran brings over three decades of expertise in footwear manufacturing and international trade to his role as Director (Technical) at PICo. His career spans key markets across Asia, including Hong Kong, Vietnam, and Korea, where he has worked with leading manufacturers and global brands such as Reebok, Decathlon, Zara, and American Eagle. With a strong foundation in sales, product development, and technical operations, Johnny has a proven track record of driving innovation, ensuring production excellence, and meeting the highest quality standards. At PICo., he leads technical strategy and manufacturing, leveraging his deep industry knowledge to deliver cutting-edge, high-performance footwear solutions.",
-    imageSrc: "https://203fr2t3uf9dwcdt.public.blob.vercel-storage.com/Pico_pics/Mr.%20Johnny-5e3F49qCKebyn5i0k57qGbIm1PRYp9.jpg"
+    imageSrc: "https://5lewiexqmin2zbg0.public.blob.vercel-storage.com/TeamPics/Mr.%20Johnny.jpg"
   },
   {
     id: 3,
     name: "Subhrodeep Banerjee",
     position: "Director (IT and Digital Processes)",
     bio: "Subhrodeep Banerjee brings over 16 years of experience in the IT industry, specializing in SAP ERP implementation across multiple domains. He has worked with several multinational corporations and also served as a faculty member and guest lecturer in Bhutan and West Bengal. Holding an MBA in Finance, M.Com., CS (Inter.), B.Com., LLB, and certifications in DIT and SAP, he is proficient in SAP FICO, FSCM, FICA, PP, MM, and SD. His combined expertise in IT, finance, and law positions him as a key contributor to enterprise resource planning and business process optimization.",
-    imageSrc: "https://203fr2t3uf9dwcdt.public.blob.vercel-storage.com/Pico_pics/Mr.%20Subhrodeep-heUHKhck9im1y39TNtGXsoyfh3qfoy.jpg"
+    imageSrc: "https://5lewiexqmin2zbg0.public.blob.vercel-storage.com/TeamPics/Mr.%20Subhrodeep.jpg"
   },
   {
     id: 4,
     name: "Ashutosh Chharia",
     position: "Director (Factory Operations & Production)",
     bio: "Ashutosh Chharia is a results-driven leader with over a decade of experience in managing large-scale manufacturing operations. Holding a B.Tech in Food Engineering and Processing, he combines strong technical expertise with hands-on operational leadership. At PICo., he oversees the full production lifecycle—from raw material procurement to final output—ensuring efficiency, quality, and timely delivery. His core strengths include process optimization, strategic production planning, quality management, cost control, and team leadership. With a focus on operational excellence and regulatory compliance, Ashutosh plays a key role in maintaining PICo.'s high production standards and competitive edge.",
-    imageSrc: "https://203fr2t3uf9dwcdt.public.blob.vercel-storage.com/Pico_pics/Ashutosh-FdsAZjhOL8Vn41MnSceufKALuohAeM.jpeg"
+    imageSrc: "https://5lewiexqmin2zbg0.public.blob.vercel-storage.com/TeamPics/Mr.%20Ashutosh.jpg"
   },
   {
     id: 5,
     name: "Harshvardhan Chharia",
     position: "Director (Communication)/Legal Representative",
     bio: "Harshvardhan Chharia is a strategic leader driving PICo.'s communications and legal operations. With a B.Com. in International Trade and a postgraduate specialization in Public Relations and Corporate Communications, he blends global business insight with expert communication skills. He leads the company's brand strategy, stakeholder engagement, and public relations while ensuring consistent and impactful messaging across all channels. As Legal Representative, he oversees corporate governance, regulatory compliance, and interdepartmental coordination. Harshvardhan's integrated approach to communication, legal affairs, and international business supports PICo.'s sustained growth and global positioning.",
-    imageSrc: "https://203fr2t3uf9dwcdt.public.blob.vercel-storage.com/Pico_pics/Mr.%20Harshvardhan-1cjTlna4y9txXDFgYvyjQCKgQwY2cO.jpg"
+    imageSrc: "https://5lewiexqmin2zbg0.public.blob.vercel-storage.com/TeamPics/Mr.%20Harshvardhan.jpg"
   }
 ]
 

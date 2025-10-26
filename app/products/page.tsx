@@ -10,7 +10,7 @@ export default function ProductsPage() {
       <ProductsHeader
         title="All Products"
         description="Discover our complete collection of premium products"
-        imageSrc="https://203fr2t3uf9dwcdt.public.blob.vercel-storage.com/Pico_pics/931293a0-d055-4b52-9107-249ddd06f4b8-ak7t3St8BPfgX54FjnmbVgAPgJVV0y.JPG"
+        imageSrc="https://5lewiexqmin2zbg0.public.blob.vercel-storage.com/ShoesPics/shoes11.JPG"
         theme="brown"
       />
 
