@@ -61,15 +61,10 @@ export default function ContactPage() {
             <div className="bg-white p-6 rounded-lg shadow-md w-full">
               <h2 className="text-2xl font-bold mb-6">Get in Touch</h2>
               
-              <div className="flex space-x-3 mb-4">
-                <MapPin className="h-5 w-5 text-[#1A1A1A] mt-1 flex-shrink-0" />
-                <div>
-                  <p className="font-medium text-[#1A1A1A] text-xl">United States <span className="text-sm text-[#5E5E5E] ml-2">(US Office)</span></p>
-                  <p className="text-[#5E5E5E]">2810 N Church St, PMB 287126, Wilmington, Delaware, USA 19802-4447</p>
-                  <div className="mt-2 text-[#5E5E5E]">
-                    <p>Phone: +1 302 469 0140</p>
-                    <p>Email: anirban@aatmaa-group.com</p>
-                  </div>
+              <div className="mb-4">
+                <div className="text-[#5E5E5E]">
+                  <p>Phone: +1 302 469 0140</p>
+                  <p>Email: anirban@aatmaa-group.com</p>
                 </div>
               </div>
             </div>
